@@ -1,0 +1,1080 @@
+
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
+
+    <link rel="shortcut icon" href="../../../_static/logo.png"/><meta name="generator" content="sphinx-5.1.1, furo 2022.06.21"/>
+        <title>pythia.pipelines.base - pythia 0.12.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../index.html"><div class="brand">pythia 0.12.1 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../../../_static/logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">pythia 0.12.1 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../README_.html">pythia README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/index.html">Code examples</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../modules.html">API Documentation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../pythia.html">pythia package</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../pythia.applications.html">pythia.applications package</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pythia.applications.annotation.html">pythia.applications.annotation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pythia.applications.base.html">pythia.applications.base</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pythia.applications.command_line.html">pythia.applications.command_line</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pythia.applications.demo.html">pythia.applications.demo</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../pythia.cli.html">pythia.cli package</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pythia.cli.app.html">pythia.cli.app</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../pythia.event_stream.html">pythia.event_stream package</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pythia.event_stream.base.html">pythia.event_stream.base</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pythia.event_stream.kafka.html">pythia.event_stream.kafka</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pythia.event_stream.log.html">pythia.event_stream.log</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pythia.event_stream.memory.html">pythia.event_stream.memory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pythia.event_stream.redis.html">pythia.event_stream.redis</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../pythia.models.html">pythia.models package</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pythia.models.base.html">pythia.models.base</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../pythia.pipelines.html">pythia.pipelines package</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pythia.pipelines.base.html">pythia.pipelines.base</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../pythia.utils.html">pythia.utils package</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pythia.utils.ds.html">pythia.utils.ds</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pythia.utils.ext.html">pythia.utils.ext</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pythia.utils.gst.html">pythia.utils.gst</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pythia.utils.maskrcnn.html">pythia.utils.maskrcnn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pythia.utils.message_handlers.html">pythia.utils.message_handlers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pythia.utils.str2pythia.html">pythia.utils.str2pythia</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pythia.config.html">pythia.config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pythia.exceptions.html">pythia.exceptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pythia.iterators.html">pythia.iterators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pythia.paths.html">pythia.paths</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pythia.types.html">pythia.types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../development.html">Developers corner</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/pytest_.html">Pytest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/coverage.html">Coverage</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <h1>Source code for pythia.pipelines.base</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Pipeline.</span>
+
+<span class="sd">A Gstreamer pipeline, used to process video/image input.</span>
+<span class="sd">Contains:</span>
+
+<span class="sd">    A source: video/image.</span>
+<span class="sd">    A sink: display/file.</span>
+<span class="sd">    At least one PythIA model.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">abc</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">textwrap</span> <span class="kn">import</span> <span class="n">dedent</span> <span class="k">as</span> <span class="n">_</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Collection</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Iterator</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">parse_qs</span>
+<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">urlparse</span>
+<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">urlunparse</span>
+
+<span class="kn">from</span> <span class="nn">pythia.exceptions</span> <span class="kn">import</span> <span class="n">IncompatiblePipelineError</span>
+<span class="kn">from</span> <span class="nn">pythia.exceptions</span> <span class="kn">import</span> <span class="n">InvalidPipelineError</span>
+<span class="kn">from</span> <span class="nn">pythia.models.base</span> <span class="kn">import</span> <span class="n">Analytics</span>
+<span class="kn">from</span> <span class="nn">pythia.models.base</span> <span class="kn">import</span> <span class="n">InferenceEngine</span>
+<span class="kn">from</span> <span class="nn">pythia.models.base</span> <span class="kn">import</span> <span class="n">Tracker</span>
+<span class="kn">from</span> <span class="nn">pythia.types</span> <span class="kn">import</span> <span class="n">Con</span>
+<span class="kn">from</span> <span class="nn">pythia.types</span> <span class="kn">import</span> <span class="n">HasConnections</span>
+<span class="kn">from</span> <span class="nn">pythia.types</span> <span class="kn">import</span> <span class="n">SinkUri</span>
+<span class="kn">from</span> <span class="nn">pythia.types</span> <span class="kn">import</span> <span class="n">SourceUri</span>
+<span class="kn">from</span> <span class="nn">pythia.utils.ext</span> <span class="kn">import</span> <span class="n">get_arch</span>
+<span class="kn">from</span> <span class="nn">pythia.utils.gst</span> <span class="kn">import</span> <span class="n">GLib</span>
+<span class="kn">from</span> <span class="nn">pythia.utils.gst</span> <span class="kn">import</span> <span class="n">Gst</span>
+<span class="kn">from</span> <span class="nn">pythia.utils.gst</span> <span class="kn">import</span> <span class="n">gst_init</span>
+<span class="kn">from</span> <span class="nn">pythia.utils.str2pythia</span> <span class="kn">import</span> <span class="n">find_analytics</span>
+<span class="kn">from</span> <span class="nn">pythia.utils.str2pythia</span> <span class="kn">import</span> <span class="n">find_models</span>
+<span class="kn">from</span> <span class="nn">pythia.utils.str2pythia</span> <span class="kn">import</span> <span class="n">find_tracker</span>
+
+<span class="n">PSB</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="s2">&quot;PythiaTestSource&quot;</span><span class="p">,</span> <span class="s2">&quot;PythiaSource&quot;</span><span class="p">,</span> <span class="s2">&quot;PythiaMultiSource&quot;</span><span class="p">]</span>
+<span class="n">PS</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span>
+    <span class="s2">&quot;PythiaFakesink&quot;</span><span class="p">,</span> <span class="s2">&quot;PythiaFilesink&quot;</span><span class="p">,</span> <span class="s2">&quot;PythiaMultifileSink&quot;</span><span class="p">,</span> <span class="s2">&quot;PythiaLiveSink&quot;</span>
+<span class="p">]</span>
+
+<span class="n">UNABLE_TO_PLAY_PIPELINE</span> <span class="o">=</span> <span class="s2">&quot;Unable to play the pipeline.&quot;</span>
+
+
+<div class="viewcode-block" id="PythiaSourceBase"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.PythiaSourceBase">[docs]</a><span class="k">class</span> <span class="nc">PythiaSourceBase</span><span class="p">(</span><span class="n">abc</span><span class="o">.</span><span class="n">ABC</span><span class="p">,</span> <span class="n">HasConnections</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Base class wrapper for Gstreamer sources.</span>
+
+<span class="sd">    The main goal is to define a skeleton for quickly building sources,</span>
+<span class="sd">    and subclasses must implement their rendering logic in the `gst`</span>
+<span class="sd">    method.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">CONNECTIONS</span><span class="p">:</span> <span class="n">Con</span> <span class="o">=</span> <span class="p">{}</span>
+
+<div class="viewcode-block" id="PythiaSourceBase.__init__"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.PythiaSourceBase.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">uris</span><span class="p">:</span> <span class="n">SourceUri</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Construct an instance from `SourceUri` s.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            uris: Collection of `SourceUri` s.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pythia_params</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">uris</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pop_pythia_args_from_uris</span><span class="p">(</span><span class="n">uris</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">SourceUri</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Iterate over the configured uris.</span>
+
+<span class="sd">        Yields:</span>
+<span class="sd">            Own `SourceUri`s.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">uris</span>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Get the number of sources.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            The number of configured uris.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">uris</span><span class="p">)</span>
+
+<div class="viewcode-block" id="PythiaSourceBase.gst"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.PythiaSourceBase.gst">[docs]</a>    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">gst</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Render as string with `gst-launch`-like syntax.&quot;&quot;&quot;</span></div>
+
+<div class="viewcode-block" id="PythiaSourceBase.from_uris"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.PythiaSourceBase.from_uris">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_uris</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">uris</span><span class="p">:</span> <span class="n">SourceUri</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PSB</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Factory to build a concrete source from a collection of uris.</span>
+
+<span class="sd">        Depending on the received uris, instantiates a concrete</span>
+<span class="sd">        :class:`PythiaSourceBase`.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            uris: Collection of uris to build the source from.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            The instantiated source object.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: No source uris received</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">num_uris</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">uris</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">num_uris</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">uris</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">PythiaTestSource</span><span class="p">(</span><span class="o">*</span><span class="n">uris</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">PythiaSource</span><span class="p">(</span><span class="o">*</span><span class="n">uris</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">num_uris</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">PythiaMultiSource</span><span class="p">(</span><span class="o">*</span><span class="n">uris</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No source uris&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PythiaSourceBase.pop_pythia_args_from_uris"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.PythiaSourceBase.pop_pythia_args_from_uris">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">pop_pythia_args_from_uris</span><span class="p">(</span>
+        <span class="n">uris</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">SourceUri</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">SourceUri</span><span class="p">]]:</span>
+        <span class="sd">&quot;&quot;&quot;Pop pythia-related query params from source uri.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            uris: input uris to filter</span>
+
+<span class="sd">        &quot;&quot;&quot;</span></div></div>
+
+
+<div class="viewcode-block" id="clean_single_uri"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.clean_single_uri">[docs]</a><span class="k">def</span> <span class="nf">clean_single_uri</span><span class="p">(</span><span class="n">uri</span><span class="p">:</span> <span class="n">SourceUri</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="n">SourceUri</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Extract muxer width and height.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        uri: input uris to parse.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        extracted: dictionary containing popped params.</span>
+<span class="sd">        list containing the single uri wihtout its pythia query params.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; clean_single_uri(&quot;file://video.mp4?muxer_width=1280&amp;muxer_height=720&quot;)</span>
+<span class="sd">        ({&#39;muxer_width&#39;: 1280, &#39;muxer_height&#39;: 720}, [&#39;file://video.mp4&#39;])</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>  <span class="c1"># noqa: C0301</span>
+    <span class="n">parsed</span> <span class="o">=</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">parsed</span><span class="o">.</span><span class="n">_asdict</span><span class="p">()</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="n">parse_qs</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;query&quot;</span><span class="p">],</span> <span class="n">strict_parsing</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">extracted</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;muxer_width&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">query</span><span class="p">[</span><span class="s2">&quot;muxer_width&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]),</span>
+        <span class="s2">&quot;muxer_height&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">query</span><span class="p">[</span><span class="s2">&quot;muxer_height&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]),</span>
+        <span class="s2">&quot;num_buffers&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">query</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;num_buffers&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;-1&quot;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]),</span>
+    <span class="p">}</span>
+    <span class="n">clean_query</span> <span class="o">=</span> <span class="n">parsed</span><span class="o">.</span><span class="n">query</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">extracted</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">clean_query</span> <span class="o">=</span> <span class="n">clean_query</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">clean_query</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\&amp;+&quot;</span><span class="p">,</span> <span class="s2">&quot;&amp;&quot;</span><span class="p">,</span> <span class="n">clean_query</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;&amp;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;?&quot;</span><span class="p">)</span>
+    <span class="n">parts</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">parsed</span><span class="p">[:</span><span class="mi">4</span><span class="p">],</span> <span class="n">clean_query</span><span class="p">,</span> <span class="o">*</span><span class="n">parsed</span><span class="p">[</span><span class="mi">5</span><span class="p">:]]</span>
+    <span class="n">clean_uri</span> <span class="o">=</span> <span class="n">urlunparse</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">extracted</span><span class="p">,</span> <span class="n">clean_uri</span></div>
+
+
+<div class="viewcode-block" id="PythiaSource"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.PythiaSource">[docs]</a><span class="k">class</span> <span class="nc">PythiaSource</span><span class="p">(</span><span class="n">PythiaSourceBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Uridecodebin wrapper building block for a single source.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="PythiaSource.pop_pythia_args_from_uris"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.PythiaSource.pop_pythia_args_from_uris">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">pop_pythia_args_from_uris</span><span class="p">(</span>
+        <span class="n">uris</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">SourceUri</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">SourceUri</span><span class="p">]]:</span>
+        <span class="sd">&quot;&quot;&quot;Extract muxer width and height.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            uris: input uris to filter</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            extracted: dictionary containing popped params.</span>
+<span class="sd">            list containing the single uri wihtout its pythia query params.</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; uris = [&quot;file://video.mp4?muxer_width=1280&amp;muxer_height=720&quot;]</span>
+<span class="sd">            &gt;&gt;&gt; PythiaSource.pop_pythia_args_from_uris(uris)</span>
+<span class="sd">            ({&#39;muxer_width&#39;: 1280, &#39;muxer_height&#39;: 720}, [&#39;file://video.mp4&#39;])</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">extracted</span><span class="p">,</span> <span class="n">clean_uri</span> <span class="o">=</span> <span class="n">clean_single_uri</span><span class="p">(</span><span class="n">uris</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">extracted</span><span class="p">,</span> <span class="p">[</span><span class="n">clean_uri</span><span class="p">]</span></div>
+
+    <span class="n">CONNECTIONS</span><span class="p">:</span> <span class="n">Con</span> <span class="o">=</span> <span class="p">{}</span>
+
+<div class="viewcode-block" id="PythiaSource.gst"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.PythiaSource.gst">[docs]</a>    <span class="k">def</span> <span class="nf">gst</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Render from single uridecodebin up to nvmuxer.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Rendered string</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="n">_</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="s2">        uridecodebin</span>
+<span class="s2">          uri=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">uris</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">        ! queue</span>
+<span class="s2">        ! nvvideoconvert</span>
+<span class="s2">        ! video/x-raw(memory:NVMM)</span>
+<span class="s2">        ! m.sink_0</span>
+<span class="s2">        nvstreammux</span>
+<span class="s2">          name=m</span>
+<span class="s2">          batch-size=</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">          width=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pythia_params</span><span class="p">[</span><span class="s1">&#39;muxer_width&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">          height=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pythia_params</span><span class="p">[</span><span class="s1">&#39;muxer_height&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">        &quot;&quot;&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="PythiaMultiSource"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.PythiaMultiSource">[docs]</a><span class="k">class</span> <span class="nc">PythiaMultiSource</span><span class="p">(</span><span class="n">PythiaSourceBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Uridecodebin wrapper building block for multiple sources.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="PythiaMultiSource.pop_pythia_args_from_uris"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.PythiaMultiSource.pop_pythia_args_from_uris">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">pop_pythia_args_from_uris</span><span class="p">(</span>
+        <span class="n">uris</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">SourceUri</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">SourceUri</span><span class="p">]]:</span>
+        <span class="sd">&quot;&quot;&quot;Extract muxer width and height.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            uris: input uris to filter</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            extracted: dictionary containing popped params.</span>
+<span class="sd">            list containing the single uri wihtout its pythia query params.</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; uris = [</span>
+<span class="sd">            ...     &quot;./frames/%04d.jpg?muxer_width=320&amp;muxer_height=240&quot;,</span>
+<span class="sd">            ...     &quot;./annotations/%04d.jpg?muxer_width=1280&amp;muxer_height=100&quot;,</span>
+<span class="sd">            ... ]</span>
+<span class="sd">            &gt;&gt;&gt; PythiaMultiSource.pop_pythia_args_from_uris(uris)</span>
+<span class="sd">            ({&#39;muxer_width&#39;: 1280, &#39;muxer_height&#39;: 240}, [&#39;./frames/%04d.jpg&#39;, &#39;./annotations/%04d.jpg&#39;])</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>  <span class="c1"># noqa: C0301</span>
+        <span class="n">extrema</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;muxer_width&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;muxer_height&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">uris_out</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">uri</span> <span class="ow">in</span> <span class="n">uris</span><span class="p">:</span>
+            <span class="n">extracted</span><span class="p">,</span> <span class="n">clean_uri</span> <span class="o">=</span> <span class="n">clean_single_uri</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+            <span class="n">uris_out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">clean_uri</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">extrema</span><span class="p">:</span>
+                <span class="n">extrema</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">extrema</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">extracted</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">extrema</span><span class="p">,</span> <span class="n">uris_out</span></div>
+
+<div class="viewcode-block" id="PythiaMultiSource.gst"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.PythiaMultiSource.gst">[docs]</a>    <span class="k">def</span> <span class="nf">gst</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Render from several uridecodebin up to nvmuxer.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Rendered string</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">suffix</span> <span class="o">=</span> <span class="n">_</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="s2">            nvstreammux</span>
+<span class="s2">              name=m</span>
+<span class="s2">              batch-size=</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">uris</span><span class="p">)</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">        &quot;&quot;&quot;</span>
+        <span class="p">)</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="s2">            uridecodebin</span>
+<span class="s2">              uri=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">uris</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">            ! queue</span>
+<span class="s2">            ! nvvideoconvert</span>
+<span class="s2">            ! video/x-raw(memory:NVMM)</span>
+<span class="s2">            ! m.sink_</span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">            nvstreammux</span>
+<span class="s2">              name=m</span>
+<span class="s2">              batch-size=1</span>
+<span class="s2">            &quot;&quot;&quot;</span>
+            <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">uris</span><span class="p">))</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">suffix</span><span class="si">}</span><span class="s2">&quot;</span></div></div>
+
+
+<div class="viewcode-block" id="PythiaTestSource"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.PythiaTestSource">[docs]</a><span class="k">class</span> <span class="nc">PythiaTestSource</span><span class="p">(</span><span class="n">PythiaSourceBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;videotestsrc wrapper building block.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="PythiaTestSource.pop_pythia_args_from_uris"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.PythiaTestSource.pop_pythia_args_from_uris">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">pop_pythia_args_from_uris</span><span class="p">(</span>
+        <span class="n">uris</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">SourceUri</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">SourceUri</span><span class="p">]]:</span>
+        <span class="sd">&quot;&quot;&quot;Extract muxer width and height.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            uris: input uris to filter</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            extracted: dictionary containing popped params.</span>
+<span class="sd">            list containing the single uri wihtout its pythia query params.</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; uris = [&quot;test://?muxer_width=320&amp;muxer_height=240&quot;]</span>
+<span class="sd">            &gt;&gt;&gt; PythiaTestSource.pop_pythia_args_from_uris(uris)</span>
+<span class="sd">            ({&#39;muxer_width&#39;: 320, &#39;muxer_height&#39;: 240}, [&#39;test:&#39;])</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">extracted</span><span class="p">,</span> <span class="n">clean_uri</span> <span class="o">=</span> <span class="n">clean_single_uri</span><span class="p">(</span><span class="n">uris</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">extracted</span><span class="p">,</span> <span class="p">[</span><span class="n">clean_uri</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="PythiaTestSource.gst"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.PythiaTestSource.gst">[docs]</a>    <span class="k">def</span> <span class="nf">gst</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Render from single videotestsrc up to nvmuxer.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Rendered string.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">_</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        videotestsrc</span>
+<span class="s2">          num-buffers=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pythia_params</span><span class="p">[</span><span class="s1">&#39;num_buffers&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">        ! queue</span>
+<span class="s2">        ! nvvideoconvert</span>
+<span class="s2">        ! video/x-raw(memory:NVMM)</span>
+<span class="s2">        ! m.sink_0</span>
+<span class="s2">        nvstreammux</span>
+<span class="s2">          name=m</span>
+<span class="s2">          batch-size=</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">          nvbuf-memory-type=0</span>
+<span class="s2">          width=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pythia_params</span><span class="p">[</span><span class="s1">&#39;muxer_width&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">          height=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pythia_params</span><span class="p">[</span><span class="s1">&#39;muxer_height&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">        &quot;&quot;&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="PythiaSink"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.PythiaSink">[docs]</a><span class="k">class</span> <span class="nc">PythiaSink</span><span class="p">(</span><span class="n">abc</span><span class="o">.</span><span class="n">ABC</span><span class="p">,</span> <span class="n">HasConnections</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Class used to construct sink from uris.&quot;&quot;&quot;</span>
+
+    <span class="n">CONNECTIONS</span><span class="p">:</span> <span class="n">Con</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">VIDEO_EXTENSIONS</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;.mp4&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;.avi&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;.mov&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;.mkv&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;.webm&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;.flv&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;.wmv&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;.mpg&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;.mpeg&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;.m4v&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+
+<div class="viewcode-block" id="PythiaSink.__init__"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.PythiaSink.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">:</span> <span class="n">SinkUri</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Instantiate sink wrapper with one of the available uris.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            uri: the uri to build a gst sink and finish the pipeline.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">uri</span> <span class="o">=</span> <span class="n">uri</span></div>
+
+<div class="viewcode-block" id="PythiaSink.from_uri"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.PythiaSink.from_uri">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_uri</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">uri</span><span class="p">:</span> <span class="n">SinkUri</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PS</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Factory constructor from `SinkUri` .</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            uri: the uri to use. Must fulfill one of the following</span>
+<span class="sd">                conditions:</span>
+
+<span class="sd">                * be one of (&#39;live&#39;, &#39;fakesink&#39;). If set to &#39;live&#39;, the</span>
+<span class="sd">                  output will be the screen. If set to &#39;fakesink&#39;, use</span>
+<span class="sd">                  the fakesing `Gst.Element` .</span>
+<span class="sd">                * If a string containing a `%` , the underlying element</span>
+<span class="sd">                  will be a `multifilesink` .</span>
+<span class="sd">                * Otherwise, it mus be a string pointing to a path, and</span>
+<span class="sd">                  have a valid and supported video extension.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            The instantiated `PythiaSink` , depending on its uri.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: unsupported sink uri.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">uri</span> <span class="o">==</span> <span class="s2">&quot;live&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">PythiaLiveSink</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">uri</span> <span class="o">==</span> <span class="s2">&quot;fakesink&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">PythiaFakesink</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s2">&quot;%&quot;</span> <span class="ow">in</span> <span class="n">Path</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span><span class="o">.</span><span class="n">stem</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">PythiaMultifileSink</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">Path</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span><span class="o">.</span><span class="n">suffix</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">VIDEO_EXTENSIONS</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">PythiaFilesink</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown sink uri: </span><span class="si">{</span><span class="n">uri</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PythiaSink.gst"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.PythiaSink.gst">[docs]</a>    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">gst</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Render as string with `gst-launch`-like syntax.&quot;&quot;&quot;</span></div></div>
+
+
+<div class="viewcode-block" id="PythiaFakesink"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.PythiaFakesink">[docs]</a><span class="k">class</span> <span class="nc">PythiaFakesink</span><span class="p">(</span><span class="n">PythiaSink</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;fakesink wrapper building block for a single sink.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="PythiaFakesink.gst"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.PythiaFakesink.gst">[docs]</a>    <span class="k">def</span> <span class="nf">gst</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Simple fakesink.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Rendered string</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s2">&quot;fakesink&quot;</span></div></div>
+
+
+<div class="viewcode-block" id="PythiaFilesink"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.PythiaFilesink">[docs]</a><span class="k">class</span> <span class="nc">PythiaFilesink</span><span class="p">(</span><span class="n">PythiaSink</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;filesink wrapper building block for a single sink.</span>
+
+<span class="sd">    Uses `encodebin` to attempt to properly parse upstream buffers.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="PythiaFilesink.gst"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.PythiaFilesink.gst">[docs]</a>    <span class="k">def</span> <span class="nf">gst</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Render from single encodebin up to filesink.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Rendered string</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="n">_</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="s2">            encodebin</span>
+<span class="s2">            ! filesink</span>
+<span class="s2">              location=&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">uri</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="s2">            &quot;&quot;&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="PythiaMultifileSink"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.PythiaMultifileSink">[docs]</a><span class="k">class</span> <span class="nc">PythiaMultifileSink</span><span class="p">(</span><span class="n">PythiaSink</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;multifilesink building block for a single multioutput sink.</span>
+
+<span class="sd">    Uses `encodebin` to attempt to properly parse upstream buffers.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">SUPPORTED_FORMATS</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;.jpg&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            nvvideoconvert</span>
+<span class="s2">            ! jpegenc</span>
+<span class="s2">              quality=100</span>
+<span class="s2">              idct-method=float</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;.png&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            nvvideoconvert</span>
+<span class="s2">            ! avenc_png</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;.webp&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            nvvideoconvert</span>
+<span class="s2">            ! webpenc</span>
+<span class="s2">              lossless=true</span>
+<span class="s2">              quality=100</span>
+<span class="s2">              speed=6</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+<div class="viewcode-block" id="PythiaMultifileSink.gst"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.PythiaMultifileSink.gst">[docs]</a>    <span class="k">def</span> <span class="nf">gst</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Render from single encodebin up to multifilesink.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Rendered string</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">encode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">SUPPORTED_FORMATS</span><span class="p">[</span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">uri</span><span class="p">)</span><span class="o">.</span><span class="n">suffix</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">_</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="s2">            </span><span class="si">{</span><span class="n">encode</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">            ! multifilesink</span>
+<span class="s2">              location=&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">uri</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="s2">            &quot;&quot;&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="PythiaLiveSink"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.PythiaLiveSink">[docs]</a><span class="k">class</span> <span class="nc">PythiaLiveSink</span><span class="p">(</span><span class="n">PythiaSink</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;nveglglessink wrapper.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="PythiaLiveSink.__init__"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.PythiaLiveSink.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">:</span> <span class="n">SinkUri</span><span class="p">,</span> <span class="n">arch</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Construct nveglglessink wrapper.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            uri: uri for `PythiaSink`&#39;s constructor.</span>
+<span class="sd">            arch: platform architecture, to differentiate GPU and</span>
+<span class="sd">                jetson devices. If not set, automatically computed by</span>
+<span class="sd">                :func:`get_arch`. In jetson devices, injects an</span>
+<span class="sd">                additional `nvegltransform`.</span>
+
+<span class="sd">        See Also:</span>
+<span class="sd">            https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_FAQ.html#why-is-a-gst-nvegltransform-plugin-required-on-a-jetson-platform-upstream-from-gst-nveglglessink</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">arch</span> <span class="o">=</span> <span class="n">arch</span> <span class="ow">or</span> <span class="n">get_arch</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="s2">&quot;! nvegltransform&quot;</span> <span class="k">if</span> <span class="n">get_arch</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;aarch64&quot;</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span></div>
+
+<div class="viewcode-block" id="PythiaLiveSink.gst"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.PythiaLiveSink.gst">[docs]</a>    <span class="k">def</span> <span class="nf">gst</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Render from nvvideoconvert to nveglglessink.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Rendered string</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">_</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="s2">            nvvideoconvert</span>
+<span class="s2">            </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">            ! nveglglessink</span>
+<span class="s2">            &quot;&quot;&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="BasePipeline"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.BasePipeline">[docs]</a><span class="k">class</span> <span class="nc">BasePipeline</span><span class="p">(</span><span class="n">HasConnections</span><span class="p">,</span> <span class="n">abc</span><span class="o">.</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Common abstraction wrapper for pythia pipelines.&quot;&quot;&quot;</span>
+
+    <span class="n">_pipeline</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Gst</span><span class="o">.</span><span class="n">Pipeline</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">models</span><span class="p">:</span> <span class="n">Collection</span><span class="p">[</span><span class="n">InferenceEngine</span><span class="p">]</span>
+    <span class="n">analytics</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Analytics</span><span class="p">]</span>
+    <span class="n">tracker</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tracker</span><span class="p">]</span>
+
+<div class="viewcode-block" id="BasePipeline.gst"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.BasePipeline.gst">[docs]</a>    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">gst</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Render its string for to use in `gst-launch`-like syntax.&quot;&quot;&quot;</span></div>
+
+    <span class="nd">@property</span>
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">CONNECTIONS</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Con</span><span class="p">:</span>  <span class="c1"># type: ignore[override] # noqa: C0103,C0116</span>
+        <span class="o">...</span>
+
+<div class="viewcode-block" id="BasePipeline.validate"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.BasePipeline.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Checks for internal compliance of specified elements.</span>
+
+<span class="sd">        &gt; Tracker requires at least one InferenceEngine &gt; Analytics</span>
+<span class="sd">        requires at least one InferenceEngine, and Tracker if it has</span>
+<span class="sd">        Direction Detection or Line Crossing. &gt; SecondaryInference</span>
+<span class="sd">        Engine requires at least a PrimaryInferenceEngine</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            IncompatiblePipelineError: `Analytics` requires `Tracker`</span>
+<span class="sd">                but none supplied.</span>
+<span class="sd">            IncompatiblePipelineError: `Tracker` requires `Model` but</span>
+<span class="sd">                none supplied.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">analytics</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">models</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">IncompatiblePipelineError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Analytics requires at least 1 InferenceEngine.&quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot; Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">models</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span>
+                <span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">analytics</span><span class="o">.</span><span class="n">requires_tracker</span> <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tracker</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">IncompatiblePipelineError</span><span class="p">(</span>
+                    <span class="s2">&quot;Current Analytics spec requires at least Tracker, &quot;</span>
+                    <span class="s2">&quot;but none found.&quot;</span>
+                <span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tracker</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">models</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">IncompatiblePipelineError</span><span class="p">(</span>
+                    <span class="s2">&quot;Tracker requires at least 1 InferenceEngine.&quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot; Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">models</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span>
+                <span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">pipeline</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Gst</span><span class="o">.</span><span class="n">Pipeline</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Gstreamer pipeline lazy property.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            The only Gstremaer pipeline on this app, instantiated.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pipeline</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_pipeline</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_launch</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pipeline</span>
+
+<div class="viewcode-block" id="BasePipeline.parse_launch"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.BasePipeline.parse_launch">[docs]</a>    <span class="k">def</span> <span class="nf">parse_launch</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Gst</span><span class="o">.</span><span class="n">Pipeline</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Instantiate the internal `Gst.Pipeline`.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            The instantiated :class:`Gst.Pipeline`.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            NotImplementedError: pipeline already instantiated.</span>
+<span class="sd">            InvalidPipelineError: Unable to parse pipeline because of a</span>
+<span class="sd">                syntax error in the pipeline string.</span>
+<span class="sd">            GLib.Error: Syntax unrelated error - unable to parse</span>
+<span class="sd">                pipeline.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">gst_init</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pipeline</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+                <span class="s2">&quot;TODO: make a copy of the pipeline,&quot;</span>
+                <span class="s2">&quot; this one is already in use&quot;</span>
+            <span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Gst</span><span class="o">.</span><span class="n">parse_launch</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gst</span><span class="p">())</span>
+        <span class="k">except</span> <span class="n">GLib</span><span class="o">.</span><span class="n">Error</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s2">&quot;syntax error&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">InvalidPipelineError</span> <span class="kn">from</span> <span class="nn">exc</span>
+            <span class="k">raise</span></div>
+
+<div class="viewcode-block" id="BasePipeline.start"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.BasePipeline.start">[docs]</a>    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Gst</span><span class="o">.</span><span class="n">StateChangeReturn</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Start the pipeline by setting it to PLAYING state.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            The state change result enum.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            RuntimeError: Unable to play the pipeline.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pipeline</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">Gst</span><span class="o">.</span><span class="n">State</span><span class="o">.</span><span class="n">PLAYING</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="n">Gst</span><span class="o">.</span><span class="n">StateChangeReturn</span><span class="o">.</span><span class="n">FAILURE</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ERROR: </span><span class="si">{</span><span class="n">UNABLE_TO_PLAY_PIPELINE</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span></div>
+
+<div class="viewcode-block" id="BasePipeline.stop"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.BasePipeline.stop">[docs]</a>    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Set the pipeline to null state.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pipeline</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">Gst</span><span class="o">.</span><span class="n">State</span><span class="o">.</span><span class="n">NULL</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BasePipeline.send_eos"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.BasePipeline.send_eos">[docs]</a>    <span class="k">def</span> <span class="nf">send_eos</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Send a gstreamer &#39;end of stream&#39; signal.&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">pipeline</span><span class="o">.</span><span class="n">send_event</span><span class="p">(</span><span class="n">Gst</span><span class="o">.</span><span class="n">Event</span><span class="o">.</span><span class="n">new_eos</span><span class="p">())</span></div></div>
+
+
+<span class="n">ModelType</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span>
+    <span class="n">Collection</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Path</span><span class="p">,</span> <span class="n">InferenceEngine</span><span class="p">]],</span> <span class="n">Path</span><span class="p">,</span> <span class="n">InferenceEngine</span><span class="p">,</span> <span class="kc">None</span>
+<span class="p">]</span>
+
+
+<div class="viewcode-block" id="Pipeline"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.Pipeline">[docs]</a><span class="k">class</span> <span class="nc">Pipeline</span><span class="p">(</span><span class="n">BasePipeline</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Wrapper to ease pipeline creation from simple building blocks.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Pipeline.__init__"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.Pipeline.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>  <span class="c1"># noqa: R0913</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">sources</span><span class="p">:</span> <span class="n">SourceUri</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="n">SourceUri</span><span class="p">]</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">SourceUri</span><span class="p">],</span>
+        <span class="n">models</span><span class="p">:</span> <span class="n">ModelType</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">sink</span><span class="p">:</span> <span class="n">SinkUri</span> <span class="o">=</span> <span class="s2">&quot;fakesink&quot;</span><span class="p">,</span>
+        <span class="n">analytics</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Path</span><span class="p">,</span> <span class="n">Analytics</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">tracker</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Path</span><span class="p">,</span> <span class="n">Tracker</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Initialize pipeline wrapper to incrementally build pipeline.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            sources: Collection of uri sources to join in `nvstreammux`.</span>
+<span class="sd">            models: Collection of models to insert in the pipeline.</span>
+<span class="sd">            sink: Final element of the pipeline.</span>
+<span class="sd">            analytics: Optional `nvdsanalytics`.</span>
+<span class="sd">            tracker: Optional `nvtracker`.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: invalid analytics or tracker object.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sources</span><span class="p">,</span> <span class="n">SourceUri</span><span class="p">):</span>
+            <span class="n">sources</span> <span class="o">=</span> <span class="p">[</span><span class="n">sources</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">PythiaSourceBase</span><span class="o">.</span><span class="n">from_uris</span><span class="p">(</span><span class="o">*</span><span class="n">sources</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">models</span><span class="p">,</span> <span class="p">(</span><span class="n">Path</span><span class="p">,</span> <span class="n">InferenceEngine</span><span class="p">)):</span>
+            <span class="n">models</span> <span class="o">=</span> <span class="p">[</span><span class="n">models</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">models</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">model</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">InferenceEngine</span><span class="p">)</span>
+                <span class="k">else</span> <span class="n">InferenceEngine</span><span class="o">.</span><span class="n">from_folder</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span>
+            <span class="p">]</span>
+            <span class="k">if</span> <span class="n">models</span>
+            <span class="k">else</span> <span class="p">[]</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model_map</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">InferenceEngine</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">if</span> <span class="n">analytics</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">analytics</span> <span class="o">=</span> <span class="n">analytics</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">analytics</span><span class="p">,</span> <span class="n">Analytics</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">analytics</span> <span class="o">=</span> <span class="n">analytics</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">analytics</span><span class="p">,</span> <span class="n">Path</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">analytics</span> <span class="o">=</span> <span class="n">Analytics</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="n">analytics</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unhandled </span><span class="si">{</span><span class="n">analytics</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">tracker</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tracker</span> <span class="o">=</span> <span class="n">tracker</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tracker</span><span class="p">,</span> <span class="n">Tracker</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tracker</span> <span class="o">=</span> <span class="n">tracker</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tracker</span><span class="p">,</span> <span class="n">Path</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tracker</span> <span class="o">=</span> <span class="n">Tracker</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="n">tracker</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unhandled </span><span class="si">{</span><span class="n">tracker</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">sink</span> <span class="o">=</span> <span class="n">PythiaSink</span><span class="o">.</span><span class="n">from_uri</span><span class="p">(</span><span class="n">sink</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">CONNECTIONS</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Con</span><span class="p">:</span>  <span class="c1"># type: ignore[override] # noqa: C0103</span>
+        <span class="n">cons</span><span class="p">:</span> <span class="n">Con</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">dict</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">connectable</span> <span class="ow">in</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">models</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sink</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">element_name</span><span class="p">,</span> <span class="n">connections</span> <span class="ow">in</span> <span class="n">connectable</span><span class="o">.</span><span class="n">CONNECTIONS</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">for</span> <span class="n">signal</span><span class="p">,</span> <span class="n">callback</span> <span class="ow">in</span> <span class="n">connections</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="n">cons</span><span class="p">[</span><span class="n">element_name</span><span class="p">][</span><span class="n">signal</span><span class="p">]</span> <span class="o">=</span> <span class="n">callback</span>
+
+        <span class="k">return</span> <span class="n">cons</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">model_map</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">InferenceEngine</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Lazyproperty mapping from model names to inference engines.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A dictionary whose keys are nvinfer names and their values</span>
+<span class="sd">                are their respective :class:`InferenceEngine` wrappers.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_map</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">gst</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_map</span>
+
+<div class="viewcode-block" id="Pipeline.gst"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.Pipeline.gst">[docs]</a>    <span class="k">def</span> <span class="nf">gst</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Render its string for to use in `gst-launch`-like syntax.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            The pipeline as it would be used when calling `gst-launch`.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">gst</span><span class="p">()</span>
+        <span class="n">models</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">models</span><span class="p">):</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;model_</span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_model_map</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span>
+            <span class="n">models</span> <span class="o">+=</span> <span class="n">model</span><span class="o">.</span><span class="n">gst</span><span class="p">(</span>
+                <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+                <span class="n">unique_id</span><span class="o">=</span><span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="n">sink</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sink</span><span class="o">.</span><span class="n">gst</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">_</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            </span><span class="si">{</span><span class="n">source</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">            </span><span class="si">{</span><span class="s1">&#39;! &#39;</span><span class="o">+</span><span class="n">models</span> <span class="k">if</span> <span class="n">models</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">            ! </span><span class="si">{</span><span class="n">sink</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">        &quot;&quot;&quot;</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="StringPipeline"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.StringPipeline">[docs]</a><span class="k">class</span> <span class="nc">StringPipeline</span><span class="p">(</span><span class="n">BasePipeline</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Pythia pipeline wrapper to construct from pipeline strings.&quot;&quot;&quot;</span>
+
+    <span class="n">CONNECTIONS</span><span class="p">:</span> <span class="n">Con</span> <span class="o">=</span> <span class="p">{}</span>
+
+<div class="viewcode-block" id="StringPipeline.__init__"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.StringPipeline.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pipeline_string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Initialize pipeline wrapper using a pipeline string.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            pipeline_string: A `gst-launch`-like pipeline string.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            InvalidPipelineError: Unable to parse pipeline because of a</span>
+<span class="sd">                syntax error in the pipeline string.</span>
+<span class="sd">            GLib.Error: Syntax unrelated error - unable to parse</span>
+<span class="sd">                pipeline.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pipeline_string</span> <span class="o">=</span> <span class="n">pipeline_string</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pipeline</span>
+        <span class="k">except</span> <span class="n">GLib</span><span class="o">.</span><span class="n">Error</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s2">&quot;gst_parse_error&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">):</span>
+                <span class="k">raise</span>
+            <span class="k">raise</span> <span class="n">InvalidPipelineError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Unable to parse pipeline:</span><span class="se">\n</span><span class="s2">```gst</span><span class="se">\n</span><span class="si">{</span><span class="n">pipeline_string</span><span class="si">}</span><span class="se">\n</span><span class="s2">```&quot;</span>
+            <span class="p">)</span> <span class="kn">from</span> <span class="nn">exc</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">models</span> <span class="o">=</span> <span class="n">find_models</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pipeline</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">analytics</span> <span class="o">=</span> <span class="n">find_analytics</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pipeline</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tracker</span> <span class="o">=</span> <span class="n">find_tracker</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pipeline</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="StringPipeline.gst"><a class="viewcode-back" href="../../../pythia.pipelines.base.html#pythia.pipelines.base.StringPipeline.gst">[docs]</a>    <span class="k">def</span> <span class="nf">gst</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pipeline_string</span></div></div>
+</pre></div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2022, RMC Labs
+            </div>
+            Made with &#128420; by <a href="https://dev.rmclabs.io">RMC Labs</a> in Concon, Chile 
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/scripts/furo.js"></script>
+    </body>
+</html>

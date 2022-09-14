@@ -1,0 +1,33 @@
+pythia package
+==============
+
+.. automodule:: pythia
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   pythia.applications
+   pythia.cli
+   pythia.event_stream
+   pythia.models
+   pythia.pipelines
+   pythia.utils
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   pythia.config
+   pythia.exceptions
+   pythia.iterators
+   pythia.paths
+   pythia.types
