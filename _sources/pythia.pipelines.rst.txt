@@ -1,0 +1,16 @@
+pythia.pipelines package
+========================
+
+.. automodule:: pythia.pipelines
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   pythia.pipelines.base

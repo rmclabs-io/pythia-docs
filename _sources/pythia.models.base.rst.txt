@@ -1,0 +1,8 @@
+pythia.models.base
+==================
+
+.. automodule:: pythia.models.base
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:

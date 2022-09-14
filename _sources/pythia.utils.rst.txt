@@ -1,0 +1,21 @@
+pythia.utils package
+====================
+
+.. automodule:: pythia.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   pythia.utils.ds
+   pythia.utils.ext
+   pythia.utils.gst
+   pythia.utils.maskrcnn
+   pythia.utils.message_handlers
+   pythia.utils.str2pythia
