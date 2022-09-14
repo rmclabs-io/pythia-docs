@@ -7,7 +7,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Code examples" href="examples/index.html" /><link rel="prev" title="Welcome to pythia’s documentation" href="index.html" />
 
     <link rel="shortcut icon" href="_static/logo.png"/><meta name="generator" content="sphinx-5.1.1, furo 2022.06.21"/>
-        <title>pythia README - pythia 0.12.1 documentation</title>
+        <title>pythia README - pythia 1.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -124,7 +124,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">pythia 0.12.1 documentation</div></a>
+      <a href="index.html"><div class="brand">pythia 1.0.1 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -150,7 +150,7 @@
     <img class="sidebar-logo" src="_static/logo.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">pythia 0.12.1 documentation</span>
+  <span class="sidebar-brand-text">pythia 1.0.1 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
@@ -249,6 +249,15 @@
           <section id="pythia-readme">
 <h1>pythia README<a class="headerlink" href="#pythia-readme" title="Permalink to this heading">#</a></h1>
 <p>Pythonic Deepstream.</p>
+<hr class="docutils" />
+<p><a class="reference external" href="https://pypi.org/project/pythiags/"><img alt="PyPI - Version" src="https://img.shields.io/pypi/v/pythiags" /></a>
+<a class="reference external" href="https://pypi.org/project/pythiags/"><img alt="PyPI - Wheels" src="https://img.shields.io/pypi/wheel/pythiags" /></a>
+<a class="reference external" href="https://rmclabs-io.github.io/pythia-docs/"><img alt="Docs" src="https://img.shields.io/badge/docs-github_pages-blue" /></a></p>
+<hr class="docutils" />
+<p><a class="reference external" href="https://conventionalcommits.org"><img alt="Conventional Commits" src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg" /></a>
+<a class="reference external" href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg" /></a>
+<a class="reference external" href="https://github.com/PyCQA/bandit"><img alt="security: bandit" src="https://img.shields.io/badge/security-bandit-yellow.svg" /></a></p>
+<hr class="docutils" />
 <p><a class="reference external" href="https://developer.nvidia.com/deepstream-sdk">NVidia Deepstream</a> is an excellent gstreamer
 framework which allows to build ai-powered, performant applications running on nvidia
 hardware. Its python API and bindings, however, have a bunch of painpoints which we’ve
@@ -274,13 +283,14 @@ the environment. Pythia comes with ready-to-run demo applications, and a
 buffer probe.</p></li>
 <li><p>Ready to use Docker images for both aarch64 (jetson) and x86_64 (nvidia gpu).</p></li>
 </ul>
-<section id="sample-usage">
-<h2>Sample Usage<a class="headerlink" href="#sample-usage" title="Permalink to this heading">#</a></h2>
-<section id="gst-pylaunch">
-<h3>gst-pylaunch<a class="headerlink" href="#gst-pylaunch" title="Permalink to this heading">#</a></h3>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h2>
+<section id="running-pythia-from-the-cli">
+<h3>Running pythia from the cli<a class="headerlink" href="#running-pythia-from-the-cli" title="Permalink to this heading">#</a></h3>
+<details><summary> gst-pylaunch</summary>
 <p>You can run familiar pipelines and attach buffer probes from simple python modules.</p>
-<section id="setup">
-<h4>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h4>
+<section id="create-files">
+<h4>Create Files<a class="headerlink" href="#create-files" title="Permalink to this heading">#</a></h4>
 <!-- gst-pylaunch probe -->
 <ul class="simple">
 <li><p>Create a file <code class="docutils literal notranslate"><span class="pre">probe.py</span></code> with:</p></li>
@@ -368,12 +378,16 @@ backends: logging (stdout <default>, stderr, file available), in-memory (deque),
 kafka, redis, or implement your own streaming connector with the <code class="docutils literal notranslate"><span class="pre">PYTHIA_STREAM_URI</span></code>
 env var. Check the documentation for more details.</p></li>
 </ul>
+</details>
 </section>
 </section>
-<section id="creating-pythia-based-applications">
-<h3>Creating pythia based applications<a class="headerlink" href="#creating-pythia-based-applications" title="Permalink to this heading">#</a></h3>
+<section id="develop-applications-based-on-pythia">
+<h3>Develop applications based on pythia<a class="headerlink" href="#develop-applications-based-on-pythia" title="Permalink to this heading">#</a></h3>
+<details><summary>python API</summary>
 <p>If you want more granular control over the behavior of the application, its signals,
 events, and messages, you can instead program an aplication using pythia’s API.</p>
+<section id="id1">
+<h4>Create Files<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
 <p>Continuing with the same pipeline as in the previous example,</p>
 <!-- api application -->
 <ul class="simple">
@@ -464,8 +478,9 @@ events, and messages, you can instead program an aplication using pythia’s API
 
 </pre></div>
 </div>
-<section id="id1">
-<h4>Running pythia<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
+</section>
+<section id="id2">
+<h4>Running pythia<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
 <!-- api console -->
 <ul class="simple">
 <li><p>run the application with:</p></li>
@@ -488,17 +503,28 @@ messaging.</p></li>
 with <code class="docutils literal notranslate"><span class="pre">app(background=True)</span></code> instead. See the documentation for details and more
 examples.</p>
 </section>
+<section id="id3">
+<h4>Check your output<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Check the kafka topics to see the incoming detections.</p></li>
+</ul>
+</details>
 </section>
 </section>
-<section id="id2">
-<h2>Setup<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
 <section id="prerequisites">
 <h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>nvidia hardware (either jetson or gpu)</p></li>
-<li><p>One of (a) recent docker (with support <code class="docutils literal notranslate"><span class="pre">--gpus=all</span></code>), (b) <code class="docutils literal notranslate"><span class="pre">nvidia-docker</span></code> installed,
-or (c) deepstream with
-<a class="reference external" href="https://github.com/rmclabs.io/deepstream_python_apps">these bindings</a></p></li>
+<li><p>One of</p>
+<ul>
+<li><p>recent docker (with support <code class="docutils literal notranslate"><span class="pre">--gpus=all</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nvidia-docker</span></code> installed,</p></li>
+<li><p>environment with deepstream 6.1 and <a class="reference external" href="https://github.com/rmclabs.io/deepstream_python_apps">these bindings</a></p></li>
+</ul>
+</li>
 </ul>
 </section>
 <section id="install">
@@ -506,7 +532,7 @@ or (c) deepstream with
 <section id="non-docker">
 <h4>non-docker<a class="headerlink" href="#non-docker" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pythia</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pythiags</span></code></p></li>
 </ul>
 </section>
 <section id="docker">
@@ -532,6 +558,63 @@ of the documentation.</p>
 </section>
 <section id="faq">
 <h2>FAQ<a class="headerlink" href="#faq" title="Permalink to this heading">#</a></h2>
+<p>Check out ongoing and future development <a class="reference external" href="https://github.com/rmclabs-io/pythiags/projects">here</a></p>
+<section id="faq-common-issues">
+<h3>FAQ / Common Issues<a class="headerlink" href="#faq-common-issues" title="Permalink to this heading">#</a></h3>
+<ul>
+<li><p>Q: Package installation fails:</p>
+<ul class="simple">
+<li><p>A1: upgrade your pip: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--upgrade</span> <span class="pre">pip</span></code> (Required “pip&gt;=10”).</p></li>
+<li><p>A2: Make sure you’ve installed the build prerequisites, as listed in <code class="docutils literal notranslate"><span class="pre">reqs/apt.build.list</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Q: My application is running slow on Jetson</p>
+<ul>
+<li><p>A: Ensure to enable jetson-clocks and maxn (See
+<a class="reference external" href="https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_Performance.html#jetson">reference</a>)
+:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo nvpmodel -m 0</span>
+<span class="go">sudo jetson_clocks</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>Q: Program exits with error “Unable to get a Window, abort.”
+A: Make sure x11 is properly configured. This is common when running through ssh
+sessions. In most of the cases, this just means you need to have the <code class="docutils literal notranslate"><span class="pre">DISPLAY</span></code>
+environment variable correctly set. To list available displays, run the <code class="docutils literal notranslate"><span class="pre">w</span></code>
+command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ w
+<span class="m">09</span>:53:38 up <span class="m">2</span> days, <span class="m">17</span>:26,  <span class="m">1</span> user,  load average: <span class="m">0</span>,36, <span class="m">0</span>,33, <span class="m">0</span>,23
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+rmclabs  :0       :0               lun16   ?xdm?   <span class="m">3</span>:06m  <span class="m">0</span>.02s /usr/lib/gdm3/gdm-x-session --run-script /usr/lib/gnome-session/run-systemd-session unity-session.     target
+rmclabs  pts/11   <span class="m">10</span>.100.10.79     <span class="m">09</span>:57    <span class="m">1</span>.00s  <span class="m">0</span>.10s  <span class="m">0</span>.00s w
+</pre></div>
+</div>
+<p>From here, choose a display corresponding to a local connection (<code class="docutils literal notranslate"><span class="pre">:0</span></code> in this case,
+including the colon). Then, export the environment variable and run again your program:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">DISPLAY</span><span class="o">=</span>:0
+<span class="c1"># run your program here</span>
+</pre></div>
+</div>
+</li>
+<li><p>Q: Program exits with error (from docker):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">X Error of failed request:  BadShmSeg (invalidshared segment parameter)</span>
+<span class="go">  Major opcode of failed request:  150 (XVideo)</span>
+<span class="go">  Minor opcode of failed request:  19 ()</span>
+<span class="go">  Segment id in failed request:  0x121</span>
+<span class="go">  Serial number of failed request:  57</span>
+<span class="go">  Current serial number in output stream:  58</span>
+<span class="go">python: ../../src/hb-object-private.hh:154: Type* hb_object_reference(Type*) [with Type = hb_unicode_funcs_t]: Assertion `hb_object_is_valid (obj)&#39; failed.</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>A: Add <code class="docutils literal notranslate"><span class="pre">--ipc=host</span></code> flag to docker run.</p></li>
+</ul>
+</li>
+</ul>
+</section>
 </section>
 <section id="contribute">
 <h2>Contribute<a class="headerlink" href="#contribute" title="Permalink to this heading">#</a></h2>
@@ -540,86 +623,18 @@ of the documentation.</p>
 <li><p>clone</p></li>
 <li><p>Pull Request from new branch</p></li>
 <li><p>[Optional, recommended]: use provided devcontainer.</p></li>
-<li><p>[Optional, recommended]: run <code class="docutils literal notranslate"><span class="pre">pre-commit</span> <span class="pre">install</span></code>
-to validate commits.</p></li>
+<li><p>[Optional, recommended]: run <code class="docutils literal notranslate"><span class="pre">pre-commit</span> <span class="pre">install</span></code> to validate commits.</p></li>
 <li><p>add tests, docs, code, scripts, etc</p></li>
 <li><p>[Optional] check code manually, with <code class="docutils literal notranslate"><span class="pre">./scripts/format</span></code>, <code class="docutils literal notranslate"><span class="pre">./scripts/lint</span></code>,
 <code class="docutils literal notranslate"><span class="pre">./scripts/docs</span></code>, <code class="docutils literal notranslate"><span class="pre">./scripts/test</span></code>, etc.</p></li>
 <li><p>Commit using
 <a class="reference external" href="https://www.conventionalcommits.org/en/v1.0.0/#summary">Conventional commits</a>.</p></li>
-<li><p>push</p></li>
+<li><p>push, wait for ci and/or maintainers feedback</p></li>
 <li><p>repeat 6-8 until success!</p></li>
 </ol>
 <p>For more instructions, visit the
-<a class="reference external" href="https://dev.rmclabs.io/pythia/docs/examples.html">Developers section</a>
+<a class="reference external" href="https://rmclabs-io.github.io/pythia-docs/development">Developers section</a>
 of the documentation.</p>
-</section>
-<section id="todo">
-<h2>TODO<a class="headerlink" href="#todo" title="Permalink to this heading">#</a></h2>
-<section id="todo-fixme-wip">
-<h3>TODO, FIXME, WIP:<a class="headerlink" href="#todo-fixme-wip" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pythia.models.base:Analytics.requires_tracker</span></code>: Not implemented.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pythia.models.base:InferenceEngine</span></code>: when an inference engine builds a <code class="docutils literal notranslate"><span class="pre">.engine</span></code>
-file, it should report/write back to its <code class="docutils literal notranslate"><span class="pre">config-file</span></code> the  incoming
-<code class="docutils literal notranslate"><span class="pre">[property].engine-file</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pythia.models.base:InferenceEngine.locate_compiled_model</span></code>: multiple engines selection
-parse batch size and precision to prioritize when several <code class="docutils literal notranslate"><span class="pre">.engine</span></code>s are available.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pythia.pipelines.base:PythiaMultiSource</span></code>: Compute <code class="docutils literal notranslate"><span class="pre">batched-push-timeout</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pythia.pipelines.base:PythiaMultiSource</span></code>: What should the <code class="docutils literal notranslate"><span class="pre">nvmuxer</span></code>’s width and
-height be if sources have different caps?</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pythia.pipelines.base:BasePipeline.send_eos</span></code>: handle return error or async / signal.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pythia.pipelines.base:BasePipeline.stop</span></code>:  handle return: error or async / signal.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pythia.pipelines.base:BasePipeline.start</span></code>:  handle return: error or async / signal.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pythia.pipelines.base:BasePipeline.start</span></code>: typeguard <code class="docutils literal notranslate"><span class="pre">self._pipeline</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pythia.pipelines.base:BasePipeline.validate</span></code>: Validate secondary and primary engine</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pythia.pipelines.base:BasePipeline</span></code>: make decorator for when self._pipeline is not
-set, as this funcitonality is required in several places: <code class="docutils literal notranslate"><span class="pre">parse_launch</span></code>, <code class="docutils literal notranslate"><span class="pre">start</span></code>, …</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pythia.pipelines.base</span></code>: add backend with choices “nvinfer”, “nvinferserver”</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pythia.pipelines.base</span></code>: check mlflow model registry and interop with safe ai</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">gst-pylaunch</span></code>: cli args compatibility with <code class="docutils literal notranslate"><span class="pre">gst-launch-1.0</span></code>:</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>gst-launch-1.0 --help
-Usage:
-  gst-launch-1.0 [OPTION?] PIPELINE-DESCRIPTION
-
-Help Options:
-  -h, --help                        Show help options
-  --help-all                        Show all help options
-  --help-gst                        Show GStreamer Options
-
-Application Options:
-  -t, --tags                        Output tags (also known as metadata)
-  -c, --toc                         Output TOC (chapters and editions)
-  -v, --verbose                     Output status information and property notifications
-  -q, --quiet                       Do not print any progress information
-  -m, --messages                    Output messages
-  -X, --exclude=PROPERTY-NAME       Do not output status information for the specified property if verbose output is enabled (can be used multiple times)
-  -f, --no-fault                    Do not install a fault handler
-  -e, --eos-on-shutdown             Force EOS on sources before shutting the pipeline down
-  --version                         Print version information and exit
-</pre></div>
-</div>
-</section>
-<section id="operacion-refactor">
-<h3>Operacion refactor<a class="headerlink" href="#operacion-refactor" title="Permalink to this heading">#</a></h3>
-<p>[ ] Terminar pruebas integracion:
-[ ] Armar matriz de combinaciones posibles entre soruces, models y sinks
-[ ] Crear types a partir de los elementos de deepstream:
-[ ] Frame
-[ ] Batch
-[ ] Analytics
-…
-*[ ] Reimplementar <strong>iter</strong> para que funcione como la gente pythonica
-[ ] Crear pipas de ejemplo
-[ ] Crear apps de ejemplo con casos de uso comunes
-[ ] Diseñar e implementar empaquetamiento models
-[ ] Ojo con interop con safe-ai
-[ ] Validacion de parametros en nvinfer
-[ ] Manejo de parametros en nvinfer
-[ ] Ver si analytics y trakcer caen en la misma categoria o hay que implementarlos aparte
-[ ] Implementar server</p>
-</section>
 </section>
 </section>
 
@@ -678,20 +693,22 @@ Application Options:
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">pythia README</a><ul>
-<li><a class="reference internal" href="#sample-usage">Sample Usage</a><ul>
-<li><a class="reference internal" href="#gst-pylaunch">gst-pylaunch</a><ul>
-<li><a class="reference internal" href="#setup">Setup</a></li>
+<li><a class="reference internal" href="#examples">Examples</a><ul>
+<li><a class="reference internal" href="#running-pythia-from-the-cli">Running pythia from the cli</a><ul>
+<li><a class="reference internal" href="#create-files">Create Files</a></li>
 <li><a class="reference internal" href="#running-pythia">Running pythia</a></li>
 <li><a class="reference internal" href="#check-your-output">Check your output</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#creating-pythia-based-applications">Creating pythia based applications</a><ul>
-<li><a class="reference internal" href="#id1">Running pythia</a></li>
+<li><a class="reference internal" href="#develop-applications-based-on-pythia">Develop applications based on pythia</a><ul>
+<li><a class="reference internal" href="#id1">Create Files</a></li>
+<li><a class="reference internal" href="#id2">Running pythia</a></li>
+<li><a class="reference internal" href="#id3">Check your output</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id2">Setup</a><ul>
+<li><a class="reference internal" href="#setup">Setup</a><ul>
 <li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
 <li><a class="reference internal" href="#install">Install</a><ul>
 <li><a class="reference internal" href="#non-docker">non-docker</a></li>
@@ -701,13 +718,11 @@ Application Options:
 </ul>
 </li>
 <li><a class="reference internal" href="#usage">Usage</a></li>
-<li><a class="reference internal" href="#faq">FAQ</a></li>
-<li><a class="reference internal" href="#contribute">Contribute</a></li>
-<li><a class="reference internal" href="#todo">TODO</a><ul>
-<li><a class="reference internal" href="#todo-fixme-wip">TODO, FIXME, WIP:</a></li>
-<li><a class="reference internal" href="#operacion-refactor">Operacion refactor</a></li>
+<li><a class="reference internal" href="#faq">FAQ</a><ul>
+<li><a class="reference internal" href="#faq-common-issues">FAQ / Common Issues</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#contribute">Contribute</a></li>
 </ul>
 </li>
 </ul>
