@@ -7,7 +7,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Code examples" href="examples/index.html" /><link rel="prev" title="Welcome to pythia’s documentation" href="index.html" />
 
     <link rel="shortcut icon" href="_static/logo.png"/><meta name="generator" content="sphinx-5.1.1, furo 2022.06.21"/>
-        <title>pythia README - pythia 1.2.1 documentation</title>
+        <title>pythia README - pythia 1.2.2 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -124,7 +124,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">pythia 1.2.1 documentation</div></a>
+      <a href="index.html"><div class="brand">pythia 1.2.2 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -150,7 +150,7 @@
     <img class="sidebar-logo" src="_static/logo.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">pythia 1.2.1 documentation</span>
+  <span class="sidebar-brand-text">pythia 1.2.2 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
@@ -538,9 +538,22 @@ examples.</p>
 <section id="docker">
 <h4>docker<a class="headerlink" href="#docker" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">login</span> <span class="pre">ghcr.io</span></code> (See instructions <a class="reference external" href="https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry">here</a>)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span> <span class="pre">ghcr.io/rmclabs-io/pythia</span></code> or <code class="docutils literal notranslate"><span class="pre">ghcr.io/rmclabs-io/pythia-l4t</span></code></p></li>
 <li><p>Build your image using <code class="docutils literal notranslate"><span class="pre">FROM</span> <span class="pre">ghcr.io/rmclabs-io/pythia</span></code> or
 <code class="docutils literal notranslate"><span class="pre">FROM</span> <span class="pre">ghcr.io/rmclabs-io/pythia-l4t</span></code></p></li>
+</ul>
+<p>NOTE: <code class="docutils literal notranslate"><span class="pre">latest</span></code> tag is deliberately not published.</p>
+<ul>
+<li><p>run docker with the following flags at least:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>docker run <span class="se">\</span>
+  --gpus<span class="o">=</span>all <span class="se">\</span>
+  -v /tmp/.X11-unix:/tmp/.X11-unix <span class="se">\</span>
+  -e DISPLAY <span class="se">\</span>
+  ghcr.io/rmclabs-io/pythia-dev:1.2.1
+</pre></div>
+</div>
+</li>
 </ul>
 <p>Alternatively, you could use <code class="docutils literal notranslate"><span class="pre">ghcr.io/rmclabs-io/pythia-dev</span></code> or
 <code class="docutils literal notranslate"><span class="pre">FROM</span> <span class="pre">ghcr.io/rmclabs-io/pythia-l4t-dev</span></code>.</p>
