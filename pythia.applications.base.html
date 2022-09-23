@@ -7,7 +7,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="pythia.applications.command_line" href="pythia.applications.command_line.html" /><link rel="prev" title="pythia.applications.annotation" href="pythia.applications.annotation.html" />
 
     <link rel="shortcut icon" href="_static/logo.png"/><meta name="generator" content="sphinx-5.1.1, furo 2022.06.21"/>
-        <title>pythia.applications.base - pythia 1.0.4 documentation</title>
+        <title>pythia.applications.base - pythia 1.2.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -124,7 +124,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">pythia 1.0.4 documentation</div></a>
+      <a href="index.html"><div class="brand">pythia 1.2.0 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -150,7 +150,7 @@
     <img class="sidebar-logo" src="_static/logo.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">pythia 1.0.4 documentation</span>
+  <span class="sidebar-brand-text">pythia 1.2.0 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
@@ -301,9 +301,9 @@ Bus Call</p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="pythia.applications.base.BackgroundLoop">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pythia.applications.base.</span></span><span class="sig-name descname"><span class="pre">BackgroundLoop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pythia.types.html#pythia.types.Loop" title="pythia.types.Loop"><span class="pre">Loop</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pythia/applications/base.html#BackgroundLoop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.applications.base.BackgroundLoop" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Thread</span></code></p>
+<dt class="sig sig-object py" id="pythia.applications.base.BackgroundThreadLoop">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pythia.applications.base.</span></span><span class="sig-name descname"><span class="pre">BackgroundThreadLoop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pythia.types.html#pythia.types.Loop" title="pythia.types.Loop"><span class="pre">Loop</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pythia/applications/base.html#BackgroundThreadLoop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.applications.base.BackgroundThreadLoop" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Thread</span></code>, <a class="reference internal" href="#pythia.applications.base.RunLoop" title="pythia.applications.base.RunLoop"><code class="xref py py-class docutils literal notranslate"><span class="pre">RunLoop</span></code></a></p>
 <p>Simple thread to run a loop without blocking.</p>
 <p>Initialize a background thread to run the loop in.</p>
 <dl class="field-list simple">
@@ -317,8 +317,8 @@ Bus Call</p>
 </dd>
 </dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="pythia.applications.base.BackgroundLoop.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pythia.types.html#pythia.types.Loop" title="pythia.types.Loop"><span class="pre">Loop</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pythia/applications/base.html#BackgroundLoop.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.applications.base.BackgroundLoop.__init__" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="pythia.applications.base.BackgroundThreadLoop.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pythia.types.html#pythia.types.Loop" title="pythia.types.Loop"><span class="pre">Loop</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pythia/applications/base.html#BackgroundThreadLoop.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.applications.base.BackgroundThreadLoop.__init__" title="Permalink to this definition">#</a></dt>
 <dd><p>Initialize a background thread to run the loop in.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -332,15 +332,25 @@ Bus Call</p>
 </dl>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.applications.base.BackgroundThreadLoop._abc_impl">
+<span class="sig-name descname"><span class="pre">_abc_impl</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;_abc_data</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#pythia.applications.base.BackgroundThreadLoop._abc_impl" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.applications.base.BackgroundThreadLoop._is_protocol">
+<span class="sig-name descname"><span class="pre">_is_protocol</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#pythia.applications.base.BackgroundThreadLoop._is_protocol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
-<dt class="sig sig-object py" id="pythia.applications.base.BackgroundLoop.quit">
-<span class="sig-name descname"><span class="pre">quit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pythia/applications/base.html#BackgroundLoop.quit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.applications.base.BackgroundLoop.quit" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="pythia.applications.base.BackgroundThreadLoop.quit">
+<span class="sig-name descname"><span class="pre">quit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pythia/applications/base.html#BackgroundThreadLoop.quit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.applications.base.BackgroundThreadLoop.quit" title="Permalink to this definition">#</a></dt>
 <dd><p>Quit the running loop.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="pythia.applications.base.BackgroundLoop.run">
-<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pythia/applications/base.html#BackgroundLoop.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.applications.base.BackgroundLoop.run" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="pythia.applications.base.BackgroundThreadLoop.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pythia/applications/base.html#BackgroundThreadLoop.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.applications.base.BackgroundThreadLoop.run" title="Permalink to this definition">#</a></dt>
 <dd><p>Run and block running the loop.</p>
 </dd></dl>
 
@@ -376,7 +386,7 @@ handler for the ‘message::eos’ detailed signal. Only values from
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pythia.applications.base.BaseApplication._before_pipeline_start">
-<span class="sig-name descname"><span class="pre">_before_pipeline_start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loop</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pythia.applications.base.BackgroundLoop" title="pythia.applications.base.BackgroundLoop"><span class="pre">BackgroundLoop</span></a></span></span><a class="reference internal" href="_modules/pythia/applications/base.html#BaseApplication._before_pipeline_start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.applications.base.BaseApplication._before_pipeline_start" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">_before_pipeline_start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loop</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pythia.applications.base.RunLoop" title="pythia.applications.base.RunLoop"><span class="pre">RunLoop</span></a></span></span><a class="reference internal" href="_modules/pythia/applications/base.html#BaseApplication._before_pipeline_start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.applications.base.BaseApplication._before_pipeline_start" title="Permalink to this definition">#</a></dt>
 <dd><p>Call hook - run before pipeline start.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -520,6 +530,12 @@ source (or sink) pad.</p>
 </dl>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.applications.base.BaseApplication.loop_cls">
+<span class="sig-name descname"><span class="pre">loop_cls</span></span><a class="headerlink" href="#pythia.applications.base.BaseApplication.loop_cls" title="Permalink to this definition">#</a></dt>
+<dd><p>alias of <a class="reference internal" href="#pythia.applications.base.BackgroundThreadLoop" title="pythia.applications.base.BackgroundThreadLoop"><code class="xref py py-class docutils literal notranslate"><span class="pre">BackgroundThreadLoop</span></code></a></p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="pythia.applications.base.BaseApplication.probe">
 <span class="sig-name descname"><span class="pre">probe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">element_name:</span> <span class="pre">str,</span> <span class="pre">pad_direction:</span> <span class="pre">~typing.Literal['sink',</span> <span class="pre">'src'],</span> <span class="pre">*probe_args,</span> <span class="pre">pad_probe_type:</span> <span class="pre">~gi.repository.Gst.PadProbeType</span> <span class="pre">=</span> <span class="pre">&lt;flags</span> <span class="pre">GST_PAD_PROBE_TYPE_BUFFER</span> <span class="pre">of</span> <span class="pre">type</span> <span class="pre">Gst.PadProbeType&gt;,</span> <span class="pre">backend_uri:</span> <span class="pre">~typing.Optional[str]</span> <span class="pre">=</span> <span class="pre">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pythia/applications/base.html#BaseApplication.probe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.applications.base.BaseApplication.probe" title="Permalink to this definition">#</a></dt>
@@ -579,6 +595,106 @@ all generated data into the remote service.</p>
 <p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">Callable</span></code>[[<code class="xref py py-obj docutils literal notranslate"><span class="pre">BA</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Pad</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">PadProbeInfo</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">PadProbeReturn</span></code>]</p>
 </dd></dl>
 
+<dl class="py class">
+<dt class="sig sig-object py" id="pythia.applications.base.ForegroundLoop">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pythia.applications.base.</span></span><span class="sig-name descname"><span class="pre">ForegroundLoop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pythia.types.html#pythia.types.Loop" title="pythia.types.Loop"><span class="pre">Loop</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pythia/applications/base.html#ForegroundLoop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.applications.base.ForegroundLoop" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pythia.applications.base.RunLoop" title="pythia.applications.base.RunLoop"><code class="xref py py-class docutils literal notranslate"><span class="pre">RunLoop</span></code></a></p>
+<p>Simple Loop wrapper implementation to run a blocking loop.</p>
+<p>Initialize a foreground glib loop.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>loop</strong> – the loop to run. If not set, uses
+<code class="xref py py-class docutils literal notranslate"><span class="pre">GLib.MainLoop</span></code></p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.applications.base.ForegroundLoop.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pythia.types.html#pythia.types.Loop" title="pythia.types.Loop"><span class="pre">Loop</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pythia/applications/base.html#ForegroundLoop.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.applications.base.ForegroundLoop.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>Initialize a foreground glib loop.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>loop</strong> – the loop to run. If not set, uses
+<code class="xref py py-class docutils literal notranslate"><span class="pre">GLib.MainLoop</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.applications.base.ForegroundLoop._abc_impl">
+<span class="sig-name descname"><span class="pre">_abc_impl</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;_abc_data</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#pythia.applications.base.ForegroundLoop._abc_impl" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.applications.base.ForegroundLoop._is_protocol">
+<span class="sig-name descname"><span class="pre">_is_protocol</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#pythia.applications.base.ForegroundLoop._is_protocol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.applications.base.ForegroundLoop.join">
+<span class="sig-name descname"><span class="pre">join</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pythia/applications/base.html#ForegroundLoop.join"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.applications.base.ForegroundLoop.join" title="Permalink to this definition">#</a></dt>
+<dd><p>Run the main loop in the foreground.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pythia.applications.base.ForegroundLoop.loop">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">loop</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="pythia.types.html#pythia.types.Loop" title="pythia.types.Loop"><span class="pre">Loop</span></a></em><a class="headerlink" href="#pythia.applications.base.ForegroundLoop.loop" title="Permalink to this definition">#</a></dt>
+<dd><p>Lazy property for the loop.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>initialized or pre-existing loop.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.applications.base.ForegroundLoop.quit">
+<span class="sig-name descname"><span class="pre">quit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pythia/applications/base.html#ForegroundLoop.quit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.applications.base.ForegroundLoop.quit" title="Permalink to this definition">#</a></dt>
+<dd><p>Quit the main loop running the foreground.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.applications.base.ForegroundLoop.start">
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pythia/applications/base.html#ForegroundLoop.start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.applications.base.ForegroundLoop.start" title="Permalink to this definition">#</a></dt>
+<dd><p>Ensure the lazy property is accessed at least once.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pythia.applications.base.RunLoop">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pythia.applications.base.</span></span><span class="sig-name descname"><span class="pre">RunLoop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pythia/applications/base.html#RunLoop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.applications.base.RunLoop" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Protocol</span></code></p>
+<p>Loop wrapper interface.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.applications.base.RunLoop._abc_impl">
+<span class="sig-name descname"><span class="pre">_abc_impl</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;_abc_data</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#pythia.applications.base.RunLoop._abc_impl" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.applications.base.RunLoop._is_protocol">
+<span class="sig-name descname"><span class="pre">_is_protocol</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#pythia.applications.base.RunLoop._is_protocol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.applications.base.RunLoop.join">
+<span class="sig-name descname"><span class="pre">join</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pythia/applications/base.html#RunLoop.join"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.applications.base.RunLoop.join" title="Permalink to this definition">#</a></dt>
+<dd><p>Run and block the loop.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.applications.base.RunLoop.quit">
+<span class="sig-name descname"><span class="pre">quit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pythia/applications/base.html#RunLoop.quit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.applications.base.RunLoop.quit" title="Permalink to this definition">#</a></dt>
+<dd><p>Stop the running loop.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.applications.base.RunLoop.start">
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pythia/applications/base.html#RunLoop.start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.applications.base.RunLoop.start" title="Permalink to this definition">#</a></dt>
+<dd><p>Ensure the loop is running / activated.</p>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="pythia.applications.base._build_probe">
 <span class="sig-prename descclassname"><span class="pre">pythia.applications.base.</span></span><span class="sig-name descname"><span class="pre">_build_probe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">probe</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend_uri</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pythia/applications/base.html#_build_probe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.applications.base._build_probe" title="Permalink to this definition">#</a></dt>
@@ -608,21 +724,6 @@ all generated data into the remote service.</p>
 <dt class="sig sig-object py" id="pythia.applications.base._get_probe_pad_idx">
 <span class="sig-prename descclassname"><span class="pre">pythia.applications.base.</span></span><span class="sig-name descname"><span class="pre">_get_probe_pad_idx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signature</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FullArgSpec</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pythia/applications/base.html#_get_probe_pad_idx"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.applications.base._get_probe_pad_idx" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="pythia.applications.base.ensure_loop">
-<span class="sig-prename descclassname"><span class="pre">pythia.applications.base.</span></span><span class="sig-name descname"><span class="pre">ensure_loop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pythia.types.html#pythia.types.Loop" title="pythia.types.Loop"><span class="pre">Loop</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="pythia.types.html#pythia.types.Loop" title="pythia.types.Loop"><span class="pre">Loop</span></a></span></span><a class="reference internal" href="_modules/pythia/applications/base.html#ensure_loop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.applications.base.ensure_loop" title="Permalink to this definition">#</a></dt>
-<dd><p>Return an existing loop.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>loop</strong> – If set, the loop to return. Else, a new one is provieded.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>An exisitng loop, either the one received, or a new
-<cite>GLib.MainLoop</cite>, if one is received.</p>
-</dd>
-</dl>
-</dd></dl>
 
 </section>
 
