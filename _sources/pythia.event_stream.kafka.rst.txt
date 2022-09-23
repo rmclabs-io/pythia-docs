@@ -1,8 +1,0 @@
-pythia.event\_stream.kafka
-==========================
-
-.. automodule:: pythia.event_stream.kafka
-   :members:
-   :undoc-members:
-   :show-inheritance:
-   :private-members:

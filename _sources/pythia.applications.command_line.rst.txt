@@ -1,8 +1,0 @@
-pythia.applications.command\_line
-=================================
-
-.. automodule:: pythia.applications.command_line
-   :members:
-   :undoc-members:
-   :show-inheritance:
-   :private-members:

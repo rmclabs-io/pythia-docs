@@ -1,8 +1,0 @@
-pythia.utils.str2pythia
-=======================
-
-.. automodule:: pythia.utils.str2pythia
-   :members:
-   :undoc-members:
-   :show-inheritance:
-   :private-members:

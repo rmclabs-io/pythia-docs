@@ -1,8 +1,0 @@
-pythia.event\_stream.redis
-==========================
-
-.. automodule:: pythia.event_stream.redis
-   :members:
-   :undoc-members:
-   :show-inheritance:
-   :private-members:

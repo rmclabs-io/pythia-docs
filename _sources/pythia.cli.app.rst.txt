@@ -1,8 +1,0 @@
-pythia.cli.app
-==============
-
-.. automodule:: pythia.cli.app
-   :members:
-   :undoc-members:
-   :show-inheritance:
-   :private-members:

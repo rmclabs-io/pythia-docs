@@ -1,8 +1,0 @@
-pythia.event\_stream.base
-=========================
-
-.. automodule:: pythia.event_stream.base
-   :members:
-   :undoc-members:
-   :show-inheritance:
-   :private-members:

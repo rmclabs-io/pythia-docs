@@ -1,8 +1,0 @@
-pythia.pipelines.base
-=====================
-
-.. automodule:: pythia.pipelines.base
-   :members:
-   :undoc-members:
-   :show-inheritance:
-   :private-members:

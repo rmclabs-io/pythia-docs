@@ -1,8 +1,0 @@
-pythia.applications.annotation
-==============================
-
-.. automodule:: pythia.applications.annotation
-   :members:
-   :undoc-members:
-   :show-inheritance:
-   :private-members:

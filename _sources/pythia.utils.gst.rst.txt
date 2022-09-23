@@ -1,8 +1,0 @@
-pythia.utils.gst
-================
-
-.. automodule:: pythia.utils.gst
-   :members:
-   :undoc-members:
-   :show-inheritance:
-   :private-members:

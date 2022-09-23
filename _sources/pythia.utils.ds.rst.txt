@@ -1,8 +1,0 @@
-pythia.utils.ds
-===============
-
-.. automodule:: pythia.utils.ds
-   :members:
-   :undoc-members:
-   :show-inheritance:
-   :private-members:

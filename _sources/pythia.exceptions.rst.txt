@@ -1,8 +1,0 @@
-pythia.exceptions
-=================
-
-.. automodule:: pythia.exceptions
-   :members:
-   :undoc-members:
-   :show-inheritance:
-   :private-members:
