@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="#" /><link rel="search" title="Search" href="search.html" />
 
-    <link rel="shortcut icon" href="_static/logo.png"/><meta name="generator" content="sphinx-5.1.1, furo 2022.06.21"/><title>Index - pythia 0.12.1 documentation</title>
+    <link rel="shortcut icon" href="_static/logo.png"/><meta name="generator" content="sphinx-5.1.1, furo 2022.06.21"/><title>Index - pythia 1.1.0 documentation</title>
 <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -122,7 +122,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">pythia 0.12.1 documentation</div></a>
+      <a href="index.html"><div class="brand">pythia 1.1.0 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -148,7 +148,7 @@
     <img class="sidebar-logo" src="_static/logo.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">pythia 0.12.1 documentation</span>
+  <span class="sidebar-brand-text">pythia 1.1.0 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
@@ -262,9 +262,11 @@
 </li>
           <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesMaskRcnn.__init__">(pythia.applications.annotation.AnnotateFramesMaskRcnn method)</a>
 </li>
-          <li><a href="pythia.applications.base.html#pythia.applications.base.BackgroundLoop.__init__">(pythia.applications.base.BackgroundLoop method)</a>
+          <li><a href="pythia.applications.base.html#pythia.applications.base.BackgroundThreadLoop.__init__">(pythia.applications.base.BackgroundThreadLoop method)</a>
 </li>
           <li><a href="pythia.applications.base.html#pythia.applications.base.BaseApplication.__init__">(pythia.applications.base.BaseApplication method)</a>
+</li>
+          <li><a href="pythia.applications.base.html#pythia.applications.base.ForegroundLoop.__init__">(pythia.applications.base.ForegroundLoop method)</a>
 </li>
           <li><a href="pythia.event_stream.base.html#pythia.event_stream.base.Backend.__init__">(pythia.event_stream.base.Backend method)</a>
 </li>
@@ -291,6 +293,12 @@
           <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesBbox._abc_impl">(pythia.applications.annotation.AnnotateFramesBbox attribute)</a>
 </li>
           <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesMaskRcnn._abc_impl">(pythia.applications.annotation.AnnotateFramesMaskRcnn attribute)</a>
+</li>
+          <li><a href="pythia.applications.base.html#pythia.applications.base.BackgroundThreadLoop._abc_impl">(pythia.applications.base.BackgroundThreadLoop attribute)</a>
+</li>
+          <li><a href="pythia.applications.base.html#pythia.applications.base.ForegroundLoop._abc_impl">(pythia.applications.base.ForegroundLoop attribute)</a>
+</li>
+          <li><a href="pythia.applications.base.html#pythia.applications.base.RunLoop._abc_impl">(pythia.applications.base.RunLoop attribute)</a>
 </li>
           <li><a href="pythia.event_stream.base.html#pythia.event_stream.base.Backend._abc_impl">(pythia.event_stream.base.Backend attribute)</a>
 </li>
@@ -415,9 +423,15 @@
 </li>
         <li><a href="pythia.utils.ds.html#pythia.utils.ds._is_frameanalytics_meta">_is_frameanalytics_meta() (in module pythia.utils.ds)</a>
 </li>
-        <li><a href="pythia.models.base.html#pythia.models.base.Analytics._is_protocol">_is_protocol (pythia.models.base.Analytics attribute)</a>
+        <li><a href="pythia.applications.base.html#pythia.applications.base.BackgroundThreadLoop._is_protocol">_is_protocol (pythia.applications.base.BackgroundThreadLoop attribute)</a>
 
         <ul>
+          <li><a href="pythia.applications.base.html#pythia.applications.base.ForegroundLoop._is_protocol">(pythia.applications.base.ForegroundLoop attribute)</a>
+</li>
+          <li><a href="pythia.applications.base.html#pythia.applications.base.RunLoop._is_protocol">(pythia.applications.base.RunLoop attribute)</a>
+</li>
+          <li><a href="pythia.models.base.html#pythia.models.base.Analytics._is_protocol">(pythia.models.base.Analytics attribute)</a>
+</li>
           <li><a href="pythia.models.base.html#pythia.models.base.InferenceEngine._is_protocol">(pythia.models.base.InferenceEngine attribute)</a>
 </li>
           <li><a href="pythia.models.base.html#pythia.models.base.Tracker._is_protocol">(pythia.models.base.Tracker attribute)</a>
@@ -605,7 +619,7 @@
 </li>
         <li><a href="pythia.applications.base.html#pythia.applications.base.BaseApplication.backend">backend() (pythia.applications.base.BaseApplication method)</a>
 </li>
-        <li><a href="pythia.applications.base.html#pythia.applications.base.BackgroundLoop">BackgroundLoop (class in pythia.applications.base)</a>
+        <li><a href="pythia.applications.base.html#pythia.applications.base.BackgroundThreadLoop">BackgroundThreadLoop (class in pythia.applications.base)</a>
 </li>
         <li><a href="pythia.applications.base.html#pythia.applications.base.BaseApplication">BaseApplication (class in pythia.applications.base)</a>
 </li>
@@ -745,12 +759,10 @@
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="pythia.utils.gst.html#pythia.utils.gst.element_repr">element_repr() (in module pythia.utils.gst)</a>
 </li>
-        <li><a href="pythia.applications.base.html#pythia.applications.base.ensure_loop">ensure_loop() (in module pythia.applications.base)</a>
+        <li><a href="pythia.cli.app.html#pythia.cli.app.Exit">Exit (class in pythia.cli.app)</a>
 </li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="pythia.cli.app.html#pythia.cli.app.Exit">Exit (class in pythia.cli.app)</a>
-</li>
         <li><a href="pythia.utils.maskrcnn.html#pythia.utils.maskrcnn.extract_maskrcnn_mask">extract_maskrcnn_mask() (in module pythia.utils.maskrcnn)</a>
 </li>
         <li><a href="pythia.cli.app.html#pythia.cli.app.Exit.EXTRACTION_NOT_BOUND">EXTRACTION_NOT_BOUND (pythia.cli.app.Exit attribute)</a>
@@ -770,6 +782,8 @@
         <li><a href="pythia.utils.str2pythia.html#pythia.utils.str2pythia.find_models">find_models() (in module pythia.utils.str2pythia)</a>
 </li>
         <li><a href="pythia.utils.str2pythia.html#pythia.utils.str2pythia.find_tracker">find_tracker() (in module pythia.utils.str2pythia)</a>
+</li>
+        <li><a href="pythia.applications.base.html#pythia.applications.base.ForegroundLoop">ForegroundLoop (class in pythia.applications.base)</a>
 </li>
         <li><a href="pythia.utils.ds.html#pythia.utils.ds.FrameAnalytics">FrameAnalytics (class in pythia.utils.ds)</a>
 </li>
@@ -935,6 +949,14 @@
   <h2>J</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.applications.base.html#pythia.applications.base.ForegroundLoop.join">join() (pythia.applications.base.ForegroundLoop method)</a>
+
+        <ul>
+          <li><a href="pythia.applications.base.html#pythia.applications.base.RunLoop.join">(pythia.applications.base.RunLoop method)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="pythia.applications.annotation.html#pythia.applications.annotation._DumpLogger.json">json() (pythia.applications.annotation._DumpLogger method)</a>
 </li>
     </ul></td>
@@ -979,10 +1001,10 @@
 </li>
         <li><a href="pythia.models.base.html#pythia.models.base.InferenceEngine.locate_source_model">locate_source_model() (pythia.models.base.InferenceEngine class method)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="pythia.event_stream.log.html#pythia.event_stream.log.Backend.logger">logger (pythia.event_stream.log.Backend property)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="pythia.utils.gst.html#pythia.utils.gst.long_to_uint64">long_to_uint64() (in module pythia.utils.gst)</a>
 </li>
         <li><a href="pythia.types.html#pythia.types.Loop">Loop (class in pythia.types)</a>
@@ -998,7 +1020,11 @@
 </li>
           <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesMaskRcnn.loop">(pythia.applications.annotation.AnnotateFramesMaskRcnn attribute)</a>
 </li>
+          <li><a href="pythia.applications.base.html#pythia.applications.base.ForegroundLoop.loop">(pythia.applications.base.ForegroundLoop property)</a>
+</li>
         </ul></li>
+        <li><a href="pythia.applications.base.html#pythia.applications.base.BaseApplication.loop_cls">loop_cls (pythia.applications.base.BaseApplication attribute)</a>
+</li>
         <li><a href="pythia.models.base.html#pythia.models.base.Tracker.low_level_library">low_level_library (pythia.models.base.Tracker attribute)</a>
 </li>
     </ul></td>
@@ -1458,9 +1484,13 @@
   <h2>Q</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="pythia.applications.base.html#pythia.applications.base.BackgroundLoop.quit">quit() (pythia.applications.base.BackgroundLoop method)</a>
+        <li><a href="pythia.applications.base.html#pythia.applications.base.BackgroundThreadLoop.quit">quit() (pythia.applications.base.BackgroundThreadLoop method)</a>
 
         <ul>
+          <li><a href="pythia.applications.base.html#pythia.applications.base.ForegroundLoop.quit">(pythia.applications.base.ForegroundLoop method)</a>
+</li>
+          <li><a href="pythia.applications.base.html#pythia.applications.base.RunLoop.quit">(pythia.applications.base.RunLoop method)</a>
+</li>
           <li><a href="pythia.types.html#pythia.types.Loop.quit">(pythia.types.Loop method)</a>
 </li>
         </ul></li>
@@ -1482,24 +1512,26 @@
 </li>
         <li><a href="pythia.utils.maskrcnn.html#pythia.utils.maskrcnn.resize_mask_vec">resize_mask_vec() (in module pythia.utils.maskrcnn)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="pythia.html#pythia.AnnotateFramesBase.run">run() (pythia.AnnotateFramesBase class method)</a>
 
         <ul>
           <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesBase.run">(pythia.applications.annotation.AnnotateFramesBase class method)</a>
 </li>
-          <li><a href="pythia.applications.base.html#pythia.applications.base.BackgroundLoop.run">(pythia.applications.base.BackgroundLoop method)</a>
+          <li><a href="pythia.applications.base.html#pythia.applications.base.BackgroundThreadLoop.run">(pythia.applications.base.BackgroundThreadLoop method)</a>
 </li>
           <li><a href="pythia.types.html#pythia.types.Loop.run">(pythia.types.Loop method)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="pythia.html#pythia.AnnotateFramesBase.run_with_probe">run_with_probe() (pythia.AnnotateFramesBase class method)</a>
 
         <ul>
           <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesBase.run_with_probe">(pythia.applications.annotation.AnnotateFramesBase class method)</a>
 </li>
         </ul></li>
+        <li><a href="pythia.applications.base.html#pythia.applications.base.RunLoop">RunLoop (class in pythia.applications.base)</a>
+</li>
     </ul></td>
   </tr></table>
 </section>
@@ -1520,8 +1552,14 @@
 </li>
         <li><a href="pythia.types.html#pythia.types.SourceUri">SourceUri (in module pythia.types)</a>
 </li>
-        <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.BasePipeline.start">start() (pythia.pipelines.base.BasePipeline method)</a>
+        <li><a href="pythia.applications.base.html#pythia.applications.base.ForegroundLoop.start">start() (pythia.applications.base.ForegroundLoop method)</a>
+
+        <ul>
+          <li><a href="pythia.applications.base.html#pythia.applications.base.RunLoop.start">(pythia.applications.base.RunLoop method)</a>
 </li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.BasePipeline.start">(pythia.pipelines.base.BasePipeline method)</a>
+</li>
+        </ul></li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="pythia.applications.base.html#pythia.applications.base.BaseApplication.stop">stop() (pythia.applications.base.BaseApplication method)</a>
