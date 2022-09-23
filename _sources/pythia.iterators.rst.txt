@@ -1,0 +1,8 @@
+pythia.iterators
+================
+
+.. automodule:: pythia.iterators
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:

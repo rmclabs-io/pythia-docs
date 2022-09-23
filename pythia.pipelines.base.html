@@ -1,0 +1,1142 @@
+
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="pythia.utils package" href="pythia.utils.html" /><link rel="prev" title="pythia.pipelines package" href="pythia.pipelines.html" />
+
+    <link rel="shortcut icon" href="_static/logo.png"/><meta name="generator" content="sphinx-5.1.1, furo 2022.06.21"/>
+        <title>pythia.pipelines.base - pythia 1.2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">pythia 1.2.0 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">pythia 1.2.0 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="README_.html">pythia README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Code examples</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="modules.html">API Documentation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current has-children"><a class="reference internal" href="pythia.html">pythia package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l3 has-children"><a class="reference internal" href="pythia.applications.html">pythia.applications package</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="pythia.applications.annotation.html">pythia.applications.annotation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pythia.applications.base.html">pythia.applications.base</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pythia.applications.command_line.html">pythia.applications.command_line</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pythia.applications.demo.html">pythia.applications.demo</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pythia.cli.html">pythia.cli package</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="pythia.cli.app.html">pythia.cli.app</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pythia.event_stream.html">pythia.event_stream package</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="pythia.event_stream.base.html">pythia.event_stream.base</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pythia.event_stream.kafka.html">pythia.event_stream.kafka</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pythia.event_stream.log.html">pythia.event_stream.log</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pythia.event_stream.memory.html">pythia.event_stream.memory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pythia.event_stream.redis.html">pythia.event_stream.redis</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pythia.models.html">pythia.models package</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="pythia.models.base.html">pythia.models.base</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current has-children"><a class="reference internal" href="pythia.pipelines.html">pythia.pipelines package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l4 current current-page"><a class="current reference internal" href="#">pythia.pipelines.base</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pythia.utils.html">pythia.utils package</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="pythia.utils.ds.html">pythia.utils.ds</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pythia.utils.ext.html">pythia.utils.ext</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pythia.utils.gst.html">pythia.utils.gst</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pythia.utils.maskrcnn.html">pythia.utils.maskrcnn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pythia.utils.message_handlers.html">pythia.utils.message_handlers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pythia.utils.str2pythia.html">pythia.utils.str2pythia</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pythia.config.html">pythia.config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pythia.exceptions.html">pythia.exceptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pythia.iterators.html">pythia.iterators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pythia.paths.html">pythia.paths</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pythia.types.html">pythia.types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="development.html">Developers corner</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="development/pytest_.html">Pytest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/coverage.html">Coverage</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="module-pythia.pipelines.base">
+<span id="pythia-pipelines-base"></span><h1>pythia.pipelines.base<a class="headerlink" href="#module-pythia.pipelines.base" title="Permalink to this heading">#</a></h1>
+<p>Pipeline.</p>
+<p>A Gstreamer pipeline, used to process video/image input.
+Contains:</p>
+<blockquote>
+<div><p>A source: video/image.
+A sink: display/file.
+At least one PythIA model.</p>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<dl class="simple">
+<dt>Although a one-shot uridecodebin usage seems to work, there seems to</dt><dd><p>be an issue with quickly subsequent runs, producing segfaults.</p>
+</dd>
+</dl>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="pythia.pipelines.base.BasePipeline">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pythia.pipelines.base.</span></span><span class="sig-name descname"><span class="pre">BasePipeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pythia/pipelines/base.html#BasePipeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.BasePipeline" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pythia.types.html#pythia.types.HasConnections" title="pythia.types.HasConnections"><code class="xref py py-class docutils literal notranslate"><span class="pre">HasConnections</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Common abstraction wrapper for pythia pipelines.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="pythia.pipelines.base.BasePipeline.CONNECTIONS">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CONNECTIONS</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#pythia.pipelines.base.BasePipeline.CONNECTIONS" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.BasePipeline._abc_impl">
+<span class="sig-name descname"><span class="pre">_abc_impl</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;_abc_data</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#pythia.pipelines.base.BasePipeline._abc_impl" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.BasePipeline._is_protocol">
+<span class="sig-name descname"><span class="pre">_is_protocol</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#pythia.pipelines.base.BasePipeline._is_protocol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.BasePipeline._pipeline">
+<span class="sig-name descname"><span class="pre">_pipeline</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Pipeline</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pythia.pipelines.base.BasePipeline._pipeline" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.BasePipeline.analytics">
+<span class="sig-name descname"><span class="pre">analytics</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pythia.models.base.html#pythia.models.base.Analytics" title="pythia.models.base.Analytics"><span class="pre">Analytics</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#pythia.pipelines.base.BasePipeline.analytics" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.pipelines.base.BasePipeline.gst">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">gst</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/pythia/pipelines/base.html#BasePipeline.gst"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.BasePipeline.gst" title="Permalink to this definition">#</a></dt>
+<dd><p>Render its string for to use in <cite>gst-launch</cite>-like syntax.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.BasePipeline.models">
+<span class="sig-name descname"><span class="pre">models</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Collection</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pythia.models.base.html#pythia.models.base.InferenceEngine" title="pythia.models.base.InferenceEngine"><span class="pre">InferenceEngine</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#pythia.pipelines.base.BasePipeline.models" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.pipelines.base.BasePipeline.parse_launch">
+<span class="sig-name descname"><span class="pre">parse_launch</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Pipeline</span></span></span><a class="reference internal" href="_modules/pythia/pipelines/base.html#BasePipeline.parse_launch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.BasePipeline.parse_launch" title="Permalink to this definition">#</a></dt>
+<dd><p>Instantiate the internal <cite>Gst.Pipeline</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The instantiated <code class="xref py py-class docutils literal notranslate"><span class="pre">Gst.Pipeline</span></code>.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>NotImplementedError</strong> – pipeline already instantiated.</p></li>
+<li><p><a class="reference internal" href="pythia.exceptions.html#pythia.exceptions.InvalidPipelineError" title="pythia.exceptions.InvalidPipelineError"><strong>InvalidPipelineError</strong></a> – Unable to parse pipeline because of a
+    syntax error in the pipeline string.</p></li>
+<li><p><strong>GLib.Error</strong> – Syntax unrelated error - unable to parse
+    pipeline.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pythia.pipelines.base.BasePipeline.pipeline">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pipeline</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Pipeline</span></em><a class="headerlink" href="#pythia.pipelines.base.BasePipeline.pipeline" title="Permalink to this definition">#</a></dt>
+<dd><p>Gstreamer pipeline lazy property.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The only Gstremaer pipeline on this app, instantiated.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.pipelines.base.BasePipeline.send_eos">
+<span class="sig-name descname"><span class="pre">send_eos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pythia/pipelines/base.html#BasePipeline.send_eos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.BasePipeline.send_eos" title="Permalink to this definition">#</a></dt>
+<dd><p>Send a gstreamer ‘end of stream’ signal.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.pipelines.base.BasePipeline.start">
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">StateChangeReturn</span></span></span><a class="reference internal" href="_modules/pythia/pipelines/base.html#BasePipeline.start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.BasePipeline.start" title="Permalink to this definition">#</a></dt>
+<dd><p>Start the pipeline by setting it to PLAYING state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The state change result enum.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>RuntimeError</strong> – Unable to play the pipeline.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.pipelines.base.BasePipeline.stop">
+<span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pythia/pipelines/base.html#BasePipeline.stop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.BasePipeline.stop" title="Permalink to this definition">#</a></dt>
+<dd><p>Set the pipeline to null state.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.BasePipeline.tracker">
+<span class="sig-name descname"><span class="pre">tracker</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pythia.models.base.html#pythia.models.base.Tracker" title="pythia.models.base.Tracker"><span class="pre">Tracker</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#pythia.pipelines.base.BasePipeline.tracker" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.pipelines.base.BasePipeline.validate">
+<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pythia/pipelines/base.html#BasePipeline.validate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.BasePipeline.validate" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks for internal compliance of specified elements.</p>
+<p>&gt; Tracker requires at least one InferenceEngine &gt; Analytics
+requires at least one InferenceEngine, and Tracker if it has
+Direction Detection or Line Crossing. &gt; SecondaryInference
+Engine requires at least a PrimaryInferenceEngine</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="pythia.exceptions.html#pythia.exceptions.IncompatiblePipelineError" title="pythia.exceptions.IncompatiblePipelineError"><strong>IncompatiblePipelineError</strong></a> – <cite>Analytics</cite> requires <cite>Tracker</cite>
+    but none supplied.</p></li>
+<li><p><a class="reference internal" href="pythia.exceptions.html#pythia.exceptions.IncompatiblePipelineError" title="pythia.exceptions.IncompatiblePipelineError"><strong>IncompatiblePipelineError</strong></a> – <cite>Tracker</cite> requires <cite>Model</cite> but
+    none supplied.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pythia.pipelines.base.Pipeline">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pythia.pipelines.base.</span></span><span class="sig-name descname"><span class="pre">Pipeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sources</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SourceUri</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">SourceUri</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">SourceUri</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">models</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ModelType</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SinkUri</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'fakesink'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">analytics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Path</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="pythia.models.base.html#pythia.models.base.Analytics" title="pythia.models.base.Analytics"><span class="pre">Analytics</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tracker</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Path</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="pythia.models.base.html#pythia.models.base.Tracker" title="pythia.models.base.Tracker"><span class="pre">Tracker</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pythia/pipelines/base.html#Pipeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.Pipeline" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pythia.pipelines.base.BasePipeline" title="pythia.pipelines.base.BasePipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasePipeline</span></code></a></p>
+<p>Wrapper to ease pipeline creation from simple building blocks.</p>
+<p>Initialize pipeline wrapper to incrementally build pipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sources</strong> – Collection of uri sources to join in <cite>nvstreammux</cite>.</p></li>
+<li><p><strong>models</strong> – Collection of models to insert in the pipeline.</p></li>
+<li><p><strong>sink</strong> – Final element of the pipeline.</p></li>
+<li><p><strong>analytics</strong> – Optional <cite>nvdsanalytics</cite>.</p></li>
+<li><p><strong>tracker</strong> – Optional <cite>nvtracker</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – invalid analytics or tracker object.</p>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="pythia.pipelines.base.Pipeline.CONNECTIONS">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CONNECTIONS</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#pythia.pipelines.base.Pipeline.CONNECTIONS" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.pipelines.base.Pipeline.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sources</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SourceUri</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">SourceUri</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">SourceUri</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">models</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ModelType</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SinkUri</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'fakesink'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">analytics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Path</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="pythia.models.base.html#pythia.models.base.Analytics" title="pythia.models.base.Analytics"><span class="pre">Analytics</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tracker</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Path</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="pythia.models.base.html#pythia.models.base.Tracker" title="pythia.models.base.Tracker"><span class="pre">Tracker</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pythia/pipelines/base.html#Pipeline.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.Pipeline.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>Initialize pipeline wrapper to incrementally build pipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sources</strong> – Collection of uri sources to join in <cite>nvstreammux</cite>.</p></li>
+<li><p><strong>models</strong> – Collection of models to insert in the pipeline.</p></li>
+<li><p><strong>sink</strong> – Final element of the pipeline.</p></li>
+<li><p><strong>analytics</strong> – Optional <cite>nvdsanalytics</cite>.</p></li>
+<li><p><strong>tracker</strong> – Optional <cite>nvtracker</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – invalid analytics or tracker object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.Pipeline._abc_impl">
+<span class="sig-name descname"><span class="pre">_abc_impl</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;_abc_data</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#pythia.pipelines.base.Pipeline._abc_impl" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.Pipeline._is_protocol">
+<span class="sig-name descname"><span class="pre">_is_protocol</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#pythia.pipelines.base.Pipeline._is_protocol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.Pipeline.analytics">
+<span class="sig-name descname"><span class="pre">analytics</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pythia.models.base.html#pythia.models.base.Analytics" title="pythia.models.base.Analytics"><span class="pre">Analytics</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#pythia.pipelines.base.Pipeline.analytics" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.pipelines.base.Pipeline.gst">
+<span class="sig-name descname"><span class="pre">gst</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/pythia/pipelines/base.html#Pipeline.gst"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.Pipeline.gst" title="Permalink to this definition">#</a></dt>
+<dd><p>Render its string for to use in <cite>gst-launch</cite>-like syntax.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The pipeline as it would be used when calling <cite>gst-launch</cite>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pythia.pipelines.base.Pipeline.model_map">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">model_map</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="pythia.models.base.html#pythia.models.base.InferenceEngine" title="pythia.models.base.InferenceEngine"><span class="pre">InferenceEngine</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#pythia.pipelines.base.Pipeline.model_map" title="Permalink to this definition">#</a></dt>
+<dd><p>Lazyproperty mapping from model names to inference engines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>A dictionary whose keys are nvinfer names and their values</dt><dd><p>are their respective <code class="xref py py-class docutils literal notranslate"><span class="pre">InferenceEngine</span></code> wrappers.</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.Pipeline.models">
+<span class="sig-name descname"><span class="pre">models</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Collection</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pythia.models.base.html#pythia.models.base.InferenceEngine" title="pythia.models.base.InferenceEngine"><span class="pre">InferenceEngine</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#pythia.pipelines.base.Pipeline.models" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.Pipeline.tracker">
+<span class="sig-name descname"><span class="pre">tracker</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pythia.models.base.html#pythia.models.base.Tracker" title="pythia.models.base.Tracker"><span class="pre">Tracker</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#pythia.pipelines.base.Pipeline.tracker" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaFakesink">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pythia.pipelines.base.</span></span><span class="sig-name descname"><span class="pre">PythiaFakesink</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pythia/pipelines/base.html#PythiaFakesink"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.PythiaFakesink" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pythia.pipelines.base.PythiaSink" title="pythia.pipelines.base.PythiaSink"><code class="xref py py-class docutils literal notranslate"><span class="pre">PythiaSink</span></code></a></p>
+<p>fakesink wrapper building block for a single sink.</p>
+<p>Instantiate sink wrapper with one of the available uris.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>uri</strong> – the uri to build a gst sink and finish the pipeline.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaFakesink._abc_impl">
+<span class="sig-name descname"><span class="pre">_abc_impl</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;_abc_data</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#pythia.pipelines.base.PythiaFakesink._abc_impl" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaFakesink._is_protocol">
+<span class="sig-name descname"><span class="pre">_is_protocol</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#pythia.pipelines.base.PythiaFakesink._is_protocol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaFakesink.gst">
+<span class="sig-name descname"><span class="pre">gst</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/pythia/pipelines/base.html#PythiaFakesink.gst"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.PythiaFakesink.gst" title="Permalink to this definition">#</a></dt>
+<dd><p>Simple fakesink.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Rendered string</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaFilesink">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pythia.pipelines.base.</span></span><span class="sig-name descname"><span class="pre">PythiaFilesink</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pythia/pipelines/base.html#PythiaFilesink"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.PythiaFilesink" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pythia.pipelines.base.PythiaSink" title="pythia.pipelines.base.PythiaSink"><code class="xref py py-class docutils literal notranslate"><span class="pre">PythiaSink</span></code></a></p>
+<p>filesink wrapper building block for a single sink.</p>
+<p>Uses <cite>encodebin</cite> to attempt to properly parse upstream buffers.</p>
+<p>Instantiate sink wrapper with one of the available uris.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>uri</strong> – the uri to build a gst sink and finish the pipeline.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaFilesink._abc_impl">
+<span class="sig-name descname"><span class="pre">_abc_impl</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;_abc_data</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#pythia.pipelines.base.PythiaFilesink._abc_impl" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaFilesink._is_protocol">
+<span class="sig-name descname"><span class="pre">_is_protocol</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#pythia.pipelines.base.PythiaFilesink._is_protocol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaFilesink.gst">
+<span class="sig-name descname"><span class="pre">gst</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/pythia/pipelines/base.html#PythiaFilesink.gst"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.PythiaFilesink.gst" title="Permalink to this definition">#</a></dt>
+<dd><p>Render from single encodebin up to filesink.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Rendered string</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaLiveSink">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pythia.pipelines.base.</span></span><span class="sig-name descname"><span class="pre">PythiaLiveSink</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pythia/pipelines/base.html#PythiaLiveSink"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.PythiaLiveSink" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pythia.pipelines.base.PythiaSink" title="pythia.pipelines.base.PythiaSink"><code class="xref py py-class docutils literal notranslate"><span class="pre">PythiaSink</span></code></a></p>
+<p>nveglglessink wrapper.</p>
+<p>Construct nveglglessink wrapper.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uri</strong> – uri for <cite>PythiaSink</cite>’s constructor.</p></li>
+<li><p><strong>arch</strong> – platform architecture, to differentiate GPU and
+jetson devices. If not set, automatically computed by
+<code class="xref py py-func docutils literal notranslate"><span class="pre">get_arch()</span></code>. In jetson devices, injects an
+additional <cite>nvegltransform</cite>.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_FAQ.html#why-is-a-gst-nvegltransform-plugin-required-on-a-jetson-platform-upstream-from-gst-nveglglessink">https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_FAQ.html#why-is-a-gst-nvegltransform-plugin-required-on-a-jetson-platform-upstream-from-gst-nveglglessink</a></p>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaLiveSink.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pythia/pipelines/base.html#PythiaLiveSink.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.PythiaLiveSink.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>Construct nveglglessink wrapper.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uri</strong> – uri for <cite>PythiaSink</cite>’s constructor.</p></li>
+<li><p><strong>arch</strong> – platform architecture, to differentiate GPU and
+jetson devices. If not set, automatically computed by
+<code class="xref py py-func docutils literal notranslate"><span class="pre">get_arch()</span></code>. In jetson devices, injects an
+additional <cite>nvegltransform</cite>.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_FAQ.html#why-is-a-gst-nvegltransform-plugin-required-on-a-jetson-platform-upstream-from-gst-nveglglessink">https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_FAQ.html#why-is-a-gst-nvegltransform-plugin-required-on-a-jetson-platform-upstream-from-gst-nveglglessink</a></p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaLiveSink._abc_impl">
+<span class="sig-name descname"><span class="pre">_abc_impl</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;_abc_data</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#pythia.pipelines.base.PythiaLiveSink._abc_impl" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaLiveSink._is_protocol">
+<span class="sig-name descname"><span class="pre">_is_protocol</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#pythia.pipelines.base.PythiaLiveSink._is_protocol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaLiveSink.gst">
+<span class="sig-name descname"><span class="pre">gst</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/pythia/pipelines/base.html#PythiaLiveSink.gst"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.PythiaLiveSink.gst" title="Permalink to this definition">#</a></dt>
+<dd><p>Render from nvvideoconvert to nveglglessink.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Rendered string</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaMultiSource">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pythia.pipelines.base.</span></span><span class="sig-name descname"><span class="pre">PythiaMultiSource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">uris</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pythia/pipelines/base.html#PythiaMultiSource"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.PythiaMultiSource" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pythia.pipelines.base.PythiaSourceBase" title="pythia.pipelines.base.PythiaSourceBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">PythiaSourceBase</span></code></a></p>
+<p>Uridecodebin wrapper building block for multiple sources.</p>
+<p>Construct an instance from <cite>SourceUri</cite> s.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>uris</strong> – Collection of <cite>SourceUri</cite> s.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaMultiSource._abc_impl">
+<span class="sig-name descname"><span class="pre">_abc_impl</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;_abc_data</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#pythia.pipelines.base.PythiaMultiSource._abc_impl" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaMultiSource._is_protocol">
+<span class="sig-name descname"><span class="pre">_is_protocol</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#pythia.pipelines.base.PythiaMultiSource._is_protocol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaMultiSource.gst">
+<span class="sig-name descname"><span class="pre">gst</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/pythia/pipelines/base.html#PythiaMultiSource.gst"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.PythiaMultiSource.gst" title="Permalink to this definition">#</a></dt>
+<dd><p>Render from several uridecodebin up to nvmuxer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Rendered string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaMultiSource.pop_pythia_args_from_uris">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pop_pythia_args_from_uris</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uris</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pythia/pipelines/base.html#PythiaMultiSource.pop_pythia_args_from_uris"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.PythiaMultiSource.pop_pythia_args_from_uris" title="Permalink to this definition">#</a></dt>
+<dd><p>Extract muxer width and height.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>uris</strong> – input uris to filter</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>dictionary containing popped params.
+list containing the single uri wihtout its pythia query params.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>extracted</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">uris</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">... </span>    <span class="s2">&quot;./frames/</span><span class="si">%04d</span><span class="s2">.jpg?muxer_width=320&amp;muxer_height=240&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;./annotations/</span><span class="si">%04d</span><span class="s2">.jpg?muxer_width=1280&amp;muxer_height=100&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PythiaMultiSource</span><span class="o">.</span><span class="n">pop_pythia_args_from_uris</span><span class="p">(</span><span class="n">uris</span><span class="p">)</span>
+<span class="go">({&#39;muxer_width&#39;: 1280, &#39;muxer_height&#39;: 240}, [&#39;./frames/%04d.jpg&#39;, &#39;./annotations/%04d.jpg&#39;])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaMultifileSink">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pythia.pipelines.base.</span></span><span class="sig-name descname"><span class="pre">PythiaMultifileSink</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pythia/pipelines/base.html#PythiaMultifileSink"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.PythiaMultifileSink" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pythia.pipelines.base.PythiaSink" title="pythia.pipelines.base.PythiaSink"><code class="xref py py-class docutils literal notranslate"><span class="pre">PythiaSink</span></code></a></p>
+<p>multifilesink building block for a single multioutput sink.</p>
+<p>Uses <cite>encodebin</cite> to attempt to properly parse upstream buffers.</p>
+<p>Instantiate sink wrapper with one of the available uris.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>uri</strong> – the uri to build a gst sink and finish the pipeline.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaMultifileSink.SUPPORTED_FORMATS">
+<span class="sig-name descname"><span class="pre">SUPPORTED_FORMATS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'.jpg':</span> <span class="pre">'\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">nvvideoconvert\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">!</span> <span class="pre">jpegenc\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">quality=100\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">idct-method=float\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">',</span> <span class="pre">'.png':</span> <span class="pre">'\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">nvvideoconvert\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">!</span> <span class="pre">avenc_png\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">',</span> <span class="pre">'.webp':</span> <span class="pre">'\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">nvvideoconvert\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">!</span> <span class="pre">webpenc\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">lossless=true\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">quality=100\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">speed=6\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">'}</span></em><a class="headerlink" href="#pythia.pipelines.base.PythiaMultifileSink.SUPPORTED_FORMATS" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaMultifileSink._abc_impl">
+<span class="sig-name descname"><span class="pre">_abc_impl</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;_abc_data</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#pythia.pipelines.base.PythiaMultifileSink._abc_impl" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaMultifileSink._is_protocol">
+<span class="sig-name descname"><span class="pre">_is_protocol</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#pythia.pipelines.base.PythiaMultifileSink._is_protocol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaMultifileSink.gst">
+<span class="sig-name descname"><span class="pre">gst</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/pythia/pipelines/base.html#PythiaMultifileSink.gst"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.PythiaMultifileSink.gst" title="Permalink to this definition">#</a></dt>
+<dd><p>Render from single encodebin up to multifilesink.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Rendered string</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaSink">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pythia.pipelines.base.</span></span><span class="sig-name descname"><span class="pre">PythiaSink</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pythia/pipelines/base.html#PythiaSink"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.PythiaSink" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code>, <a class="reference internal" href="pythia.types.html#pythia.types.HasConnections" title="pythia.types.HasConnections"><code class="xref py py-class docutils literal notranslate"><span class="pre">HasConnections</span></code></a></p>
+<p>Class used to construct sink from uris.</p>
+<p>Instantiate sink wrapper with one of the available uris.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>uri</strong> – the uri to build a gst sink and finish the pipeline.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaSink.CONNECTIONS">
+<span class="sig-name descname"><span class="pre">CONNECTIONS</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#pythia.pipelines.base.PythiaSink.CONNECTIONS" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaSink.VIDEO_EXTENSIONS">
+<span class="sig-name descname"><span class="pre">VIDEO_EXTENSIONS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['.mp4',</span> <span class="pre">'.avi',</span> <span class="pre">'.mov',</span> <span class="pre">'.mkv',</span> <span class="pre">'.webm',</span> <span class="pre">'.flv',</span> <span class="pre">'.wmv',</span> <span class="pre">'.mpg',</span> <span class="pre">'.mpeg',</span> <span class="pre">'.m4v']</span></em><a class="headerlink" href="#pythia.pipelines.base.PythiaSink.VIDEO_EXTENSIONS" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaSink.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pythia/pipelines/base.html#PythiaSink.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.PythiaSink.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>Instantiate sink wrapper with one of the available uris.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>uri</strong> – the uri to build a gst sink and finish the pipeline.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaSink._abc_impl">
+<span class="sig-name descname"><span class="pre">_abc_impl</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;_abc_data</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#pythia.pipelines.base.PythiaSink._abc_impl" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaSink._is_protocol">
+<span class="sig-name descname"><span class="pre">_is_protocol</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#pythia.pipelines.base.PythiaSink._is_protocol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaSink.from_uri">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_uri</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pythia.pipelines.base.PythiaFakesink" title="pythia.pipelines.base.PythiaFakesink"><span class="pre">PythiaFakesink</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#pythia.pipelines.base.PythiaFilesink" title="pythia.pipelines.base.PythiaFilesink"><span class="pre">PythiaFilesink</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#pythia.pipelines.base.PythiaMultifileSink" title="pythia.pipelines.base.PythiaMultifileSink"><span class="pre">PythiaMultifileSink</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#pythia.pipelines.base.PythiaLiveSink" title="pythia.pipelines.base.PythiaLiveSink"><span class="pre">PythiaLiveSink</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pythia/pipelines/base.html#PythiaSink.from_uri"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.PythiaSink.from_uri" title="Permalink to this definition">#</a></dt>
+<dd><p>Factory constructor from <cite>SinkUri</cite> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>uri</strong> – <p>the uri to use. Must fulfill one of the following
+conditions:</p>
+<ul class="simple">
+<li><p>be one of (‘live’, ‘fakesink’). If set to ‘live’, the
+output will be the screen. If set to ‘fakesink’, use
+the fakesing <cite>Gst.Element</cite> .</p></li>
+<li><p>If a string containing a <cite>%</cite> , the underlying element
+will be a <cite>multifilesink</cite> .</p></li>
+<li><p>Otherwise, it mus be a string pointing to a path, and
+have a valid and supported video extension.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The instantiated <cite>PythiaSink</cite> , depending on its uri.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – unsupported sink uri.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaSink.gst">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">gst</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/pythia/pipelines/base.html#PythiaSink.gst"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.PythiaSink.gst" title="Permalink to this definition">#</a></dt>
+<dd><p>Render as string with <cite>gst-launch</cite>-like syntax.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaSource">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pythia.pipelines.base.</span></span><span class="sig-name descname"><span class="pre">PythiaSource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">uris</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pythia/pipelines/base.html#PythiaSource"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.PythiaSource" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pythia.pipelines.base.PythiaSourceBase" title="pythia.pipelines.base.PythiaSourceBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">PythiaSourceBase</span></code></a></p>
+<p>Uridecodebin wrapper building block for a single source.</p>
+<p>Construct an instance from <cite>SourceUri</cite> s.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>uris</strong> – Collection of <cite>SourceUri</cite> s.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaSource.CONNECTIONS">
+<span class="sig-name descname"><span class="pre">CONNECTIONS</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#pythia.pipelines.base.PythiaSource.CONNECTIONS" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaSource._abc_impl">
+<span class="sig-name descname"><span class="pre">_abc_impl</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;_abc_data</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#pythia.pipelines.base.PythiaSource._abc_impl" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaSource._is_protocol">
+<span class="sig-name descname"><span class="pre">_is_protocol</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#pythia.pipelines.base.PythiaSource._is_protocol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaSource.gst">
+<span class="sig-name descname"><span class="pre">gst</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/pythia/pipelines/base.html#PythiaSource.gst"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.PythiaSource.gst" title="Permalink to this definition">#</a></dt>
+<dd><p>Render from single uridecodebin up to nvmuxer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Rendered string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaSource.pop_pythia_args_from_uris">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pop_pythia_args_from_uris</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uris</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pythia/pipelines/base.html#PythiaSource.pop_pythia_args_from_uris"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.PythiaSource.pop_pythia_args_from_uris" title="Permalink to this definition">#</a></dt>
+<dd><p>Extract muxer width and height.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>uris</strong> – input uris to filter</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>dictionary containing popped params.
+list containing the single uri wihtout its pythia query params.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>extracted</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">uris</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;file://video.mp4?muxer_width=1280&amp;muxer_height=720&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PythiaSource</span><span class="o">.</span><span class="n">pop_pythia_args_from_uris</span><span class="p">(</span><span class="n">uris</span><span class="p">)</span>
+<span class="go">({&#39;muxer_width&#39;: 1280, &#39;muxer_height&#39;: 720}, [&#39;file://video.mp4&#39;])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaSourceBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pythia.pipelines.base.</span></span><span class="sig-name descname"><span class="pre">PythiaSourceBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">uris</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pythia/pipelines/base.html#PythiaSourceBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.PythiaSourceBase" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code>, <a class="reference internal" href="pythia.types.html#pythia.types.HasConnections" title="pythia.types.HasConnections"><code class="xref py py-class docutils literal notranslate"><span class="pre">HasConnections</span></code></a></p>
+<p>Base class wrapper for Gstreamer sources.</p>
+<p>The main goal is to define a skeleton for quickly building sources,
+and subclasses must implement their rendering logic in the <cite>gst</cite>
+method.</p>
+<p>Construct an instance from <cite>SourceUri</cite> s.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>uris</strong> – Collection of <cite>SourceUri</cite> s.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaSourceBase.CONNECTIONS">
+<span class="sig-name descname"><span class="pre">CONNECTIONS</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#pythia.pipelines.base.PythiaSourceBase.CONNECTIONS" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaSourceBase.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">uris</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pythia/pipelines/base.html#PythiaSourceBase.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.PythiaSourceBase.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>Construct an instance from <cite>SourceUri</cite> s.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>uris</strong> – Collection of <cite>SourceUri</cite> s.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaSourceBase._abc_impl">
+<span class="sig-name descname"><span class="pre">_abc_impl</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;_abc_data</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#pythia.pipelines.base.PythiaSourceBase._abc_impl" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaSourceBase._is_protocol">
+<span class="sig-name descname"><span class="pre">_is_protocol</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#pythia.pipelines.base.PythiaSourceBase._is_protocol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaSourceBase.from_uris">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_uris</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">uris</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#pythia.pipelines.base.PythiaTestSource" title="pythia.pipelines.base.PythiaTestSource"><span class="pre">PythiaTestSource</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#pythia.pipelines.base.PythiaSource" title="pythia.pipelines.base.PythiaSource"><span class="pre">PythiaSource</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#pythia.pipelines.base.PythiaMultiSource" title="pythia.pipelines.base.PythiaMultiSource"><span class="pre">PythiaMultiSource</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pythia/pipelines/base.html#PythiaSourceBase.from_uris"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.PythiaSourceBase.from_uris" title="Permalink to this definition">#</a></dt>
+<dd><p>Factory to build a concrete source from a collection of uris.</p>
+<p>Depending on the received uris, instantiates a concrete
+<a class="reference internal" href="#pythia.pipelines.base.PythiaSourceBase" title="pythia.pipelines.base.PythiaSourceBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">PythiaSourceBase</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>uris</strong> – Collection of uris to build the source from.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The instantiated source object.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – No source uris received</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaSourceBase.gst">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">gst</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/pythia/pipelines/base.html#PythiaSourceBase.gst"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.PythiaSourceBase.gst" title="Permalink to this definition">#</a></dt>
+<dd><p>Render as string with <cite>gst-launch</cite>-like syntax.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaSourceBase.pop_pythia_args_from_uris">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pop_pythia_args_from_uris</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uris</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pythia/pipelines/base.html#PythiaSourceBase.pop_pythia_args_from_uris"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.PythiaSourceBase.pop_pythia_args_from_uris" title="Permalink to this definition">#</a></dt>
+<dd><p>Pop pythia-related query params from source uri.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>uris</strong> – input uris to filter</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaTestSource">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pythia.pipelines.base.</span></span><span class="sig-name descname"><span class="pre">PythiaTestSource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">uris</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pythia/pipelines/base.html#PythiaTestSource"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.PythiaTestSource" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pythia.pipelines.base.PythiaSourceBase" title="pythia.pipelines.base.PythiaSourceBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">PythiaSourceBase</span></code></a></p>
+<p>videotestsrc wrapper building block.</p>
+<p>Construct an instance from <cite>SourceUri</cite> s.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>uris</strong> – Collection of <cite>SourceUri</cite> s.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaTestSource._abc_impl">
+<span class="sig-name descname"><span class="pre">_abc_impl</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;_abc_data</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#pythia.pipelines.base.PythiaTestSource._abc_impl" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaTestSource._is_protocol">
+<span class="sig-name descname"><span class="pre">_is_protocol</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#pythia.pipelines.base.PythiaTestSource._is_protocol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaTestSource.gst">
+<span class="sig-name descname"><span class="pre">gst</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/pythia/pipelines/base.html#PythiaTestSource.gst"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.PythiaTestSource.gst" title="Permalink to this definition">#</a></dt>
+<dd><p>Render from single videotestsrc up to nvmuxer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Rendered string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.pipelines.base.PythiaTestSource.pop_pythia_args_from_uris">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pop_pythia_args_from_uris</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uris</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pythia/pipelines/base.html#PythiaTestSource.pop_pythia_args_from_uris"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.PythiaTestSource.pop_pythia_args_from_uris" title="Permalink to this definition">#</a></dt>
+<dd><p>Extract muxer width and height.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>uris</strong> – input uris to filter</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>dictionary containing popped params.
+list containing the single uri wihtout its pythia query params.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>extracted</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">uris</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;test://?muxer_width=320&amp;muxer_height=240&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PythiaTestSource</span><span class="o">.</span><span class="n">pop_pythia_args_from_uris</span><span class="p">(</span><span class="n">uris</span><span class="p">)</span>
+<span class="go">({&#39;muxer_width&#39;: 320, &#39;muxer_height&#39;: 240}, [&#39;test:&#39;])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pythia.pipelines.base.StringPipeline">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pythia.pipelines.base.</span></span><span class="sig-name descname"><span class="pre">StringPipeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pipeline_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pythia/pipelines/base.html#StringPipeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.StringPipeline" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pythia.pipelines.base.BasePipeline" title="pythia.pipelines.base.BasePipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasePipeline</span></code></a></p>
+<p>Pythia pipeline wrapper to construct from pipeline strings.</p>
+<p>Initialize pipeline wrapper using a pipeline string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pipeline_string</strong> – A <cite>gst-launch</cite>-like pipeline string.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="pythia.exceptions.html#pythia.exceptions.InvalidPipelineError" title="pythia.exceptions.InvalidPipelineError"><strong>InvalidPipelineError</strong></a> – Unable to parse pipeline because of a
+    syntax error in the pipeline string.</p></li>
+<li><p><strong>GLib.Error</strong> – Syntax unrelated error - unable to parse
+    pipeline.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.StringPipeline.CONNECTIONS">
+<span class="sig-name descname"><span class="pre">CONNECTIONS</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#pythia.pipelines.base.StringPipeline.CONNECTIONS" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.pipelines.base.StringPipeline.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pipeline_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pythia/pipelines/base.html#StringPipeline.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.StringPipeline.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>Initialize pipeline wrapper using a pipeline string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pipeline_string</strong> – A <cite>gst-launch</cite>-like pipeline string.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="pythia.exceptions.html#pythia.exceptions.InvalidPipelineError" title="pythia.exceptions.InvalidPipelineError"><strong>InvalidPipelineError</strong></a> – Unable to parse pipeline because of a
+    syntax error in the pipeline string.</p></li>
+<li><p><strong>GLib.Error</strong> – Syntax unrelated error - unable to parse
+    pipeline.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.StringPipeline._abc_impl">
+<span class="sig-name descname"><span class="pre">_abc_impl</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;_abc_data</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#pythia.pipelines.base.StringPipeline._abc_impl" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.pipelines.base.StringPipeline._is_protocol">
+<span class="sig-name descname"><span class="pre">_is_protocol</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#pythia.pipelines.base.StringPipeline._is_protocol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.pipelines.base.StringPipeline.gst">
+<span class="sig-name descname"><span class="pre">gst</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/pythia/pipelines/base.html#StringPipeline.gst"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.StringPipeline.gst" title="Permalink to this definition">#</a></dt>
+<dd><p>Render its string for to use in <cite>gst-launch</cite>-like syntax.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pythia.pipelines.base.clean_single_uri">
+<span class="sig-prename descclassname"><span class="pre">pythia.pipelines.base.</span></span><span class="sig-name descname"><span class="pre">clean_single_uri</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pythia/pipelines/base.html#clean_single_uri"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.pipelines.base.clean_single_uri" title="Permalink to this definition">#</a></dt>
+<dd><p>Extract muxer width and height.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>uri</strong> – input uris to parse.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>dictionary containing popped params.
+list containing the single uri wihtout its pythia query params.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>extracted</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">clean_single_uri</span><span class="p">(</span><span class="s2">&quot;file://video.mp4?muxer_width=1280&amp;muxer_height=720&quot;</span><span class="p">)</span>
+<span class="go">({&#39;muxer_width&#39;: 1280, &#39;muxer_height&#39;: 720}, [&#39;file://video.mp4&#39;])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="pythia.utils.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">pythia.utils package</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="pythia.pipelines.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">pythia.pipelines package</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2022, RMC Labs
+            </div>
+            Made with &#128420; by <a href="https://dev.rmclabs.io">RMC Labs</a> in Concon, Chile 
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/scripts/furo.js"></script>
+    </body>
+</html>

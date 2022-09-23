@@ -1,0 +1,20 @@
+pythia.event\_stream package
+============================
+
+.. automodule:: pythia.event_stream
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   pythia.event_stream.base
+   pythia.event_stream.kafka
+   pythia.event_stream.log
+   pythia.event_stream.memory
+   pythia.event_stream.redis

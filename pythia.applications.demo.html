@@ -4,10 +4,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="pythia README" href="README_.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="pythia.cli package" href="pythia.cli.html" /><link rel="prev" title="pythia.applications.command_line" href="pythia.applications.command_line.html" />
 
     <link rel="shortcut icon" href="_static/logo.png"/><meta name="generator" content="sphinx-5.1.1, furo 2022.06.21"/>
-        <title>pythia 1.2.0 documentation</title>
+        <title>pythia.applications.demo - pythia 1.2.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -124,7 +124,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="#"><div class="brand">pythia 1.2.0 documentation</div></a>
+      <a href="index.html"><div class="brand">pythia 1.2.0 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -144,7 +144,7 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="#">
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="index.html">
   
   <div class="sidebar-logo-container">
     <img class="sidebar-logo" src="_static/logo.png" alt="Logo"/>
@@ -158,16 +158,16 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <ul>
+  <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="README_.html">pythia README</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/index.html">Code examples</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="modules.html">API Documentation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="pythia.html">pythia package</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="pythia.applications.html">pythia.applications package</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="modules.html">API Documentation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current has-children"><a class="reference internal" href="pythia.html">pythia package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l3 current has-children"><a class="reference internal" href="pythia.applications.html">pythia.applications package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="pythia.applications.annotation.html">pythia.applications.annotation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pythia.applications.base.html">pythia.applications.base</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pythia.applications.command_line.html">pythia.applications.command_line</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pythia.applications.demo.html">pythia.applications.demo</a></li>
+<li class="toctree-l4 current current-page"><a class="current reference internal" href="#">pythia.applications.demo</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="pythia.cli.html">pythia.cli package</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -246,124 +246,37 @@
           </label>
         </div>
         <article role="main">
-          <section id="welcome-to-pythia-s-documentation">
-<h1>Welcome to pythia’s documentation<a class="headerlink" href="#welcome-to-pythia-s-documentation" title="Permalink to this heading">#</a></h1>
-<p>Feel free to browse the documentation and the examples.</p>
-<p>We suggest you start by reading the <a class="reference internal" href="README_.html"><span class="doc std std-doc">README</span></a> first, then check out the <a class="reference internal" href="examples/index.html"><span class="doc std std-doc">examples</span></a> and the <a class="reference internal" href="modules.html"><span class="doc std std-doc">api docs</span></a>.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="README_.html">pythia README</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="README_.html#examples">Examples</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="README_.html#running-pythia-from-the-cli">Running pythia from the cli</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="README_.html#create-files">Create Files</a></li>
-<li class="toctree-l4"><a class="reference internal" href="README_.html#running-pythia">Running pythia</a></li>
-<li class="toctree-l4"><a class="reference internal" href="README_.html#check-your-output">Check your output</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="README_.html#develop-applications-based-on-pythia">Develop applications based on pythia</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="README_.html#id1">Create Files</a></li>
-<li class="toctree-l4"><a class="reference internal" href="README_.html#id2">Running pythia</a></li>
-<li class="toctree-l4"><a class="reference internal" href="README_.html#id3">Check your output</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="README_.html#setup">Setup</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="README_.html#prerequisites">Prerequisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="README_.html#install">Install</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="README_.html#non-docker">non-docker</a></li>
-<li class="toctree-l4"><a class="reference internal" href="README_.html#docker">docker</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="README_.html#usage">Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="README_.html#faq">FAQ</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="README_.html#faq-common-issues">FAQ / Common Issues</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="README_.html#contribute">Contribute</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Code examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">API Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pythia.html">pythia package</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pythia.html#subpackages">Subpackages</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pythia.applications.html">pythia.applications package</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="pythia.applications.html#submodules">Submodules</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="pythia.applications.annotation.html">pythia.applications.annotation</a></li>
-<li class="toctree-l6"><a class="reference internal" href="pythia.applications.base.html">pythia.applications.base</a></li>
-<li class="toctree-l6"><a class="reference internal" href="pythia.applications.command_line.html">pythia.applications.command_line</a></li>
-<li class="toctree-l6"><a class="reference internal" href="pythia.applications.demo.html">pythia.applications.demo</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="pythia.cli.html">pythia.cli package</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="pythia.cli.html#submodules">Submodules</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="pythia.cli.app.html">pythia.cli.app</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="pythia.event_stream.html">pythia.event_stream package</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="pythia.event_stream.html#submodules">Submodules</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="pythia.event_stream.base.html">pythia.event_stream.base</a></li>
-<li class="toctree-l6"><a class="reference internal" href="pythia.event_stream.kafka.html">pythia.event_stream.kafka</a></li>
-<li class="toctree-l6"><a class="reference internal" href="pythia.event_stream.log.html">pythia.event_stream.log</a></li>
-<li class="toctree-l6"><a class="reference internal" href="pythia.event_stream.memory.html">pythia.event_stream.memory</a></li>
-<li class="toctree-l6"><a class="reference internal" href="pythia.event_stream.redis.html">pythia.event_stream.redis</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="pythia.models.html">pythia.models package</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="pythia.models.html#submodules">Submodules</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="pythia.models.base.html">pythia.models.base</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="pythia.pipelines.html">pythia.pipelines package</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="pythia.pipelines.html#submodules">Submodules</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="pythia.pipelines.base.html">pythia.pipelines.base</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="pythia.utils.html">pythia.utils package</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="pythia.utils.html#submodules">Submodules</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="pythia.utils.ds.html">pythia.utils.ds</a></li>
-<li class="toctree-l6"><a class="reference internal" href="pythia.utils.ext.html">pythia.utils.ext</a></li>
-<li class="toctree-l6"><a class="reference internal" href="pythia.utils.gst.html">pythia.utils.gst</a></li>
-<li class="toctree-l6"><a class="reference internal" href="pythia.utils.maskrcnn.html">pythia.utils.maskrcnn</a></li>
-<li class="toctree-l6"><a class="reference internal" href="pythia.utils.message_handlers.html">pythia.utils.message_handlers</a></li>
-<li class="toctree-l6"><a class="reference internal" href="pythia.utils.str2pythia.html">pythia.utils.str2pythia</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="pythia.html#submodules">Submodules</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pythia.config.html">pythia.config</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pythia.exceptions.html">pythia.exceptions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pythia.iterators.html">pythia.iterators</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pythia.paths.html">pythia.paths</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pythia.types.html">pythia.types</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="development.html">Developers corner</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="development/pytest_.html">Pytest</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development/coverage.html">Coverage</a></li>
-</ul>
-</li>
-</ul>
-</div>
+          <section id="module-pythia.applications.demo">
+<span id="pythia-applications-demo"></span><h1>pythia.applications.demo<a class="headerlink" href="#module-pythia.applications.demo" title="Permalink to this heading">#</a></h1>
+<p>Playbin.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pythia.applications.demo.Demo">
+<span class="sig-prename descclassname"><span class="pre">pythia.applications.demo.</span></span><span class="sig-name descname"><span class="pre">Demo</span></span><a class="headerlink" href="#pythia.applications.demo.Demo" title="Permalink to this definition">#</a></dt>
+<dd><p>alias of <a class="reference internal" href="#pythia.applications.demo._Demo" title="pythia.applications.demo._Demo"><code class="xref py py-class docutils literal notranslate"><span class="pre">_Demo</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pythia.applications.demo._Demo">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pythia.applications.demo.</span></span><span class="sig-name descname"><span class="pre">_Demo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pipeline</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pythia.pipelines.base.html#pythia.pipelines.base.BasePipeline" title="pythia.pipelines.base.BasePipeline"><span class="pre">BasePipeline</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pythia/applications/demo.html#_Demo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.applications.demo._Demo" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pythia.applications.command_line.html#pythia.applications.command_line.CliApplication" title="pythia.applications.command_line.CliApplication"><code class="xref py py-class docutils literal notranslate"><span class="pre">CliApplication</span></code></a></p>
+<p>Construct an application from a pipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pipeline</strong> – an instantiated <cite>Pipeline</cite>.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.applications.demo._Demo._play">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_play</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pythia/applications/demo.html#_Demo._play"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pythia.applications.demo._Demo._play" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pythia.applications.demo._Demo.play">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">play</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pythia.applications.demo._Demo.play" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
 
         </article>
@@ -371,16 +284,26 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="README_.html">
+          <a class="next-page" href="pythia.cli.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">pythia README</div>
+                <div class="title">pythia.cli package</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          
+          <a class="prev-page" href="pythia.applications.command_line.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">pythia.applications.command_line</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">

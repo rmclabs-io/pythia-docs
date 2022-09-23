@@ -1,0 +1,8 @@
+pythia.event\_stream.log
+========================
+
+.. automodule:: pythia.event_stream.log
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:

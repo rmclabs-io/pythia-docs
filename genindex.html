@@ -1,0 +1,1693 @@
+
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="#" /><link rel="search" title="Search" href="search.html" />
+
+    <link rel="shortcut icon" href="_static/logo.png"/><meta name="generator" content="sphinx-5.1.1, furo 2022.06.21"/><title>Index - pythia 1.2.0 documentation</title>
+<link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">pythia 1.2.0 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">pythia 1.2.0 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="README_.html">pythia README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Code examples</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="modules.html">API Documentation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="pythia.html">pythia package</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pythia.applications.html">pythia.applications package</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="pythia.applications.annotation.html">pythia.applications.annotation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pythia.applications.base.html">pythia.applications.base</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pythia.applications.command_line.html">pythia.applications.command_line</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pythia.applications.demo.html">pythia.applications.demo</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pythia.cli.html">pythia.cli package</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="pythia.cli.app.html">pythia.cli.app</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pythia.event_stream.html">pythia.event_stream package</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="pythia.event_stream.base.html">pythia.event_stream.base</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pythia.event_stream.kafka.html">pythia.event_stream.kafka</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pythia.event_stream.log.html">pythia.event_stream.log</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pythia.event_stream.memory.html">pythia.event_stream.memory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pythia.event_stream.redis.html">pythia.event_stream.redis</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pythia.models.html">pythia.models package</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="pythia.models.base.html">pythia.models.base</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pythia.pipelines.html">pythia.pipelines package</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="pythia.pipelines.base.html">pythia.pipelines.base</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="pythia.utils.html">pythia.utils package</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="pythia.utils.ds.html">pythia.utils.ds</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pythia.utils.ext.html">pythia.utils.ext</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pythia.utils.gst.html">pythia.utils.gst</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pythia.utils.maskrcnn.html">pythia.utils.maskrcnn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pythia.utils.message_handlers.html">pythia.utils.message_handlers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pythia.utils.str2pythia.html">pythia.utils.str2pythia</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pythia.config.html">pythia.config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pythia.exceptions.html">pythia.exceptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pythia.iterators.html">pythia.iterators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pythia.paths.html">pythia.paths</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pythia.types.html">pythia.types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="development.html">Developers corner</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="development/pytest_.html">Pytest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/coverage.html">Coverage</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          
+<section class="genindex-section">
+  <h1 id="index">Index</h1>
+  <div class="genindex-jumpbox"><a href="#_"><strong>_</strong></a> | <a href="#A"><strong>A</strong></a> | <a href="#B"><strong>B</strong></a> | <a href="#C"><strong>C</strong></a> | <a href="#D"><strong>D</strong></a> | <a href="#E"><strong>E</strong></a> | <a href="#F"><strong>F</strong></a> | <a href="#G"><strong>G</strong></a> | <a href="#H"><strong>H</strong></a> | <a href="#I"><strong>I</strong></a> | <a href="#J"><strong>J</strong></a> | <a href="#K"><strong>K</strong></a> | <a href="#L"><strong>L</strong></a> | <a href="#M"><strong>M</strong></a> | <a href="#N"><strong>N</strong></a> | <a href="#O"><strong>O</strong></a> | <a href="#P"><strong>P</strong></a> | <a href="#Q"><strong>Q</strong></a> | <a href="#R"><strong>R</strong></a> | <a href="#S"><strong>S</strong></a> | <a href="#T"><strong>T</strong></a> | <a href="#U"><strong>U</strong></a> | <a href="#V"><strong>V</strong></a> | <a href="#W"><strong>W</strong></a></div>
+</section>
+<section id="_" class="genindex-section">
+  <h2>_</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.html#pythia.AnnotateFramesBase.__init__">__init__() (pythia.AnnotateFramesBase method)</a>
+
+        <ul>
+          <li><a href="pythia.html#pythia.AnnotateFramesMaskRcnn.__init__">(pythia.AnnotateFramesMaskRcnn method)</a>
+</li>
+          <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesBase.__init__">(pythia.applications.annotation.AnnotateFramesBase method)</a>
+</li>
+          <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesMaskRcnn.__init__">(pythia.applications.annotation.AnnotateFramesMaskRcnn method)</a>
+</li>
+          <li><a href="pythia.applications.base.html#pythia.applications.base.BackgroundThreadLoop.__init__">(pythia.applications.base.BackgroundThreadLoop method)</a>
+</li>
+          <li><a href="pythia.applications.base.html#pythia.applications.base.BaseApplication.__init__">(pythia.applications.base.BaseApplication method)</a>
+</li>
+          <li><a href="pythia.applications.base.html#pythia.applications.base.ForegroundLoop.__init__">(pythia.applications.base.ForegroundLoop method)</a>
+</li>
+          <li><a href="pythia.event_stream.base.html#pythia.event_stream.base.Backend.__init__">(pythia.event_stream.base.Backend method)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.Pipeline.__init__">(pythia.pipelines.base.Pipeline method)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaLiveSink.__init__">(pythia.pipelines.base.PythiaLiveSink method)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaSink.__init__">(pythia.pipelines.base.PythiaSink method)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaSourceBase.__init__">(pythia.pipelines.base.PythiaSourceBase method)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.StringPipeline.__init__">(pythia.pipelines.base.StringPipeline method)</a>
+</li>
+        </ul></li>
+        <li><a href="pythia.html#pythia.AnnotateFramesBase._abc_impl">_abc_impl (pythia.AnnotateFramesBase attribute)</a>
+
+        <ul>
+          <li><a href="pythia.html#pythia.AnnotateFramesBbox._abc_impl">(pythia.AnnotateFramesBbox attribute)</a>
+</li>
+          <li><a href="pythia.html#pythia.AnnotateFramesMaskRcnn._abc_impl">(pythia.AnnotateFramesMaskRcnn attribute)</a>
+</li>
+          <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesBase._abc_impl">(pythia.applications.annotation.AnnotateFramesBase attribute)</a>
+</li>
+          <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesBbox._abc_impl">(pythia.applications.annotation.AnnotateFramesBbox attribute)</a>
+</li>
+          <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesMaskRcnn._abc_impl">(pythia.applications.annotation.AnnotateFramesMaskRcnn attribute)</a>
+</li>
+          <li><a href="pythia.applications.base.html#pythia.applications.base.BackgroundThreadLoop._abc_impl">(pythia.applications.base.BackgroundThreadLoop attribute)</a>
+</li>
+          <li><a href="pythia.applications.base.html#pythia.applications.base.ForegroundLoop._abc_impl">(pythia.applications.base.ForegroundLoop attribute)</a>
+</li>
+          <li><a href="pythia.applications.base.html#pythia.applications.base.RunLoop._abc_impl">(pythia.applications.base.RunLoop attribute)</a>
+</li>
+          <li><a href="pythia.event_stream.base.html#pythia.event_stream.base.Backend._abc_impl">(pythia.event_stream.base.Backend attribute)</a>
+</li>
+          <li><a href="pythia.event_stream.kafka.html#pythia.event_stream.kafka.Backend._abc_impl">(pythia.event_stream.kafka.Backend attribute)</a>
+</li>
+          <li><a href="pythia.event_stream.log.html#pythia.event_stream.log.Backend._abc_impl">(pythia.event_stream.log.Backend attribute)</a>
+</li>
+          <li><a href="pythia.event_stream.memory.html#pythia.event_stream.memory.Backend._abc_impl">(pythia.event_stream.memory.Backend attribute)</a>
+</li>
+          <li><a href="pythia.event_stream.redis.html#pythia.event_stream.redis.Backend._abc_impl">(pythia.event_stream.redis.Backend attribute)</a>
+</li>
+          <li><a href="pythia.models.base.html#pythia.models.base.Analytics._abc_impl">(pythia.models.base.Analytics attribute)</a>
+</li>
+          <li><a href="pythia.models.base.html#pythia.models.base.InferenceEngine._abc_impl">(pythia.models.base.InferenceEngine attribute)</a>
+</li>
+          <li><a href="pythia.models.base.html#pythia.models.base.Tracker._abc_impl">(pythia.models.base.Tracker attribute)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.BasePipeline._abc_impl">(pythia.pipelines.base.BasePipeline attribute)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.Pipeline._abc_impl">(pythia.pipelines.base.Pipeline attribute)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaFakesink._abc_impl">(pythia.pipelines.base.PythiaFakesink attribute)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaFilesink._abc_impl">(pythia.pipelines.base.PythiaFilesink attribute)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaLiveSink._abc_impl">(pythia.pipelines.base.PythiaLiveSink attribute)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaMultifileSink._abc_impl">(pythia.pipelines.base.PythiaMultifileSink attribute)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaMultiSource._abc_impl">(pythia.pipelines.base.PythiaMultiSource attribute)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaSink._abc_impl">(pythia.pipelines.base.PythiaSink attribute)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaSource._abc_impl">(pythia.pipelines.base.PythiaSource attribute)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaSourceBase._abc_impl">(pythia.pipelines.base.PythiaSourceBase attribute)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaTestSource._abc_impl">(pythia.pipelines.base.PythiaTestSource attribute)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.StringPipeline._abc_impl">(pythia.pipelines.base.StringPipeline attribute)</a>
+</li>
+          <li><a href="pythia.types.html#pythia.types.HasConnections._abc_impl">(pythia.types.HasConnections attribute)</a>
+</li>
+          <li><a href="pythia.types.html#pythia.types.Loop._abc_impl">(pythia.types.Loop attribute)</a>
+</li>
+          <li><a href="pythia.utils.ds.html#pythia.utils.ds.FrameAnalytics._abc_impl">(pythia.utils.ds.FrameAnalytics attribute)</a>
+</li>
+          <li><a href="pythia.utils.ds.html#pythia.utils.ds.ObjectAnalytics._abc_impl">(pythia.utils.ds.ObjectAnalytics attribute)</a>
+</li>
+          <li><a href="pythia.utils.ds.html#pythia.utils.ds.SemanticMasks._abc_impl">(pythia.utils.ds.SemanticMasks attribute)</a>
+</li>
+          <li><a href="pythia.utils.ds.html#pythia.utils.ds.SupportedUserMeta._abc_impl">(pythia.utils.ds.SupportedUserMeta attribute)</a>
+</li>
+          <li><a href="pythia.utils.message_handlers.html#pythia.utils.message_handlers.Stoppable._abc_impl">(pythia.utils.message_handlers.Stoppable attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="pythia.applications.base.html#pythia.applications.base.BaseApplication._before_pipeline_start">_before_pipeline_start() (pythia.applications.base.BaseApplication method)</a>
+</li>
+        <li><a href="pythia.applications.base.html#pythia.applications.base.BaseApplication._build_message_handlers">_build_message_handlers() (pythia.applications.base.BaseApplication method)</a>
+</li>
+        <li><a href="pythia.applications.base.html#pythia.applications.base._build_probe">_build_probe() (in module pythia.applications.base)</a>
+</li>
+        <li><a href="pythia.html#pythia.AnnotateFramesBbox._bus">_bus (pythia.AnnotateFramesBbox attribute)</a>
+
+        <ul>
+          <li><a href="pythia.html#pythia.AnnotateFramesMaskRcnn._bus">(pythia.AnnotateFramesMaskRcnn attribute)</a>
+</li>
+          <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesBase._bus">(pythia.applications.annotation.AnnotateFramesBase attribute)</a>
+</li>
+          <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesBbox._bus">(pythia.applications.annotation.AnnotateFramesBbox attribute)</a>
+</li>
+          <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesMaskRcnn._bus">(pythia.applications.annotation.AnnotateFramesMaskRcnn attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="pythia.event_stream.kafka.html#pythia.event_stream.kafka.Backend._client">_client (pythia.event_stream.kafka.Backend attribute)</a>
+
+        <ul>
+          <li><a href="pythia.event_stream.redis.html#pythia.event_stream.redis.Backend._client">(pythia.event_stream.redis.Backend attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="pythia.cli.app.html#pythia.cli.app._ctx_cb">_ctx_cb() (in module pythia.cli.app)</a>
+</li>
+        <li><a href="pythia.models.base.html#pythia.models.base.Analytics._default_props">_default_props (pythia.models.base.Analytics attribute)</a>
+
+        <ul>
+          <li><a href="pythia.models.base.html#pythia.models.base.InferenceEngine._default_props">(pythia.models.base.InferenceEngine attribute)</a>
+</li>
+          <li><a href="pythia.models.base.html#pythia.models.base.Tracker._default_props">(pythia.models.base.Tracker attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="pythia.applications.demo.html#pythia.applications.demo._Demo">_Demo (class in pythia.applications.demo)</a>
+</li>
+        <li><a href="pythia.event_stream.memory.html#pythia.event_stream.memory.Backend._deque">_deque (pythia.event_stream.memory.Backend attribute)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.event_stream.memory.html#pythia.event_stream.memory.Backend._deque_constructor">_deque_constructor (pythia.event_stream.memory.Backend attribute)</a>
+</li>
+        <li><a href="pythia.applications.annotation.html#pythia.applications.annotation._DumpLogger">_DumpLogger (class in pythia.applications.annotation)</a>
+</li>
+        <li><a href="pythia.utils.maskrcnn.html#pythia.utils.maskrcnn._gen_clips">_gen_clips() (in module pythia.utils.maskrcnn)</a>
+</li>
+        <li><a href="pythia.utils.maskrcnn.html#pythia.utils.maskrcnn._gen_idxs">_gen_idxs() (in module pythia.utils.maskrcnn)</a>
+</li>
+        <li><a href="pythia.utils.maskrcnn.html#pythia.utils.maskrcnn._gen_ranges">_gen_ranges() (in module pythia.utils.maskrcnn)</a>
+</li>
+        <li><a href="pythia.cli.app.html#pythia.cli.app.Mode._generate_next_value_">_generate_next_value_() (pythia.cli.app.Mode method)</a>
+</li>
+        <li><a href="pythia.applications.base.html#pythia.applications.base._get_from_annotations">_get_from_annotations() (in module pythia.applications.base)</a>
+</li>
+        <li><a href="pythia.applications.base.html#pythia.applications.base._get_from_positional_arg_name">_get_from_positional_arg_name() (in module pythia.applications.base)</a>
+</li>
+        <li><a href="pythia.applications.base.html#pythia.applications.base._get_probe_batch_meta_idx">_get_probe_batch_meta_idx() (in module pythia.applications.base)</a>
+</li>
+        <li><a href="pythia.applications.base.html#pythia.applications.base._get_probe_info_idx">_get_probe_info_idx() (in module pythia.applications.base)</a>
+</li>
+        <li><a href="pythia.applications.base.html#pythia.applications.base._get_probe_pad_idx">_get_probe_pad_idx() (in module pythia.applications.base)</a>
+</li>
+        <li><a href="pythia.utils.maskrcnn.html#pythia.utils.maskrcnn._interpolate">_interpolate() (in module pythia.utils.maskrcnn)</a>
+</li>
+        <li><a href="pythia.utils.ds.html#pythia.utils.ds._is_analytics_meta">_is_analytics_meta() (in module pythia.utils.ds)</a>
+</li>
+        <li><a href="pythia.utils.ds.html#pythia.utils.ds._is_frameanalytics_meta">_is_frameanalytics_meta() (in module pythia.utils.ds)</a>
+</li>
+        <li><a href="pythia.applications.base.html#pythia.applications.base.BackgroundThreadLoop._is_protocol">_is_protocol (pythia.applications.base.BackgroundThreadLoop attribute)</a>
+
+        <ul>
+          <li><a href="pythia.applications.base.html#pythia.applications.base.ForegroundLoop._is_protocol">(pythia.applications.base.ForegroundLoop attribute)</a>
+</li>
+          <li><a href="pythia.applications.base.html#pythia.applications.base.RunLoop._is_protocol">(pythia.applications.base.RunLoop attribute)</a>
+</li>
+          <li><a href="pythia.models.base.html#pythia.models.base.Analytics._is_protocol">(pythia.models.base.Analytics attribute)</a>
+</li>
+          <li><a href="pythia.models.base.html#pythia.models.base.InferenceEngine._is_protocol">(pythia.models.base.InferenceEngine attribute)</a>
+</li>
+          <li><a href="pythia.models.base.html#pythia.models.base.Tracker._is_protocol">(pythia.models.base.Tracker attribute)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.BasePipeline._is_protocol">(pythia.pipelines.base.BasePipeline attribute)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.Pipeline._is_protocol">(pythia.pipelines.base.Pipeline attribute)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaFakesink._is_protocol">(pythia.pipelines.base.PythiaFakesink attribute)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaFilesink._is_protocol">(pythia.pipelines.base.PythiaFilesink attribute)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaLiveSink._is_protocol">(pythia.pipelines.base.PythiaLiveSink attribute)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaMultifileSink._is_protocol">(pythia.pipelines.base.PythiaMultifileSink attribute)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaMultiSource._is_protocol">(pythia.pipelines.base.PythiaMultiSource attribute)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaSink._is_protocol">(pythia.pipelines.base.PythiaSink attribute)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaSource._is_protocol">(pythia.pipelines.base.PythiaSource attribute)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaSourceBase._is_protocol">(pythia.pipelines.base.PythiaSourceBase attribute)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaTestSource._is_protocol">(pythia.pipelines.base.PythiaTestSource attribute)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.StringPipeline._is_protocol">(pythia.pipelines.base.StringPipeline attribute)</a>
+</li>
+          <li><a href="pythia.types.html#pythia.types.HasConnections._is_protocol">(pythia.types.HasConnections attribute)</a>
+</li>
+          <li><a href="pythia.types.html#pythia.types.Loop._is_protocol">(pythia.types.Loop attribute)</a>
+</li>
+          <li><a href="pythia.utils.ds.html#pythia.utils.ds.FrameAnalytics._is_protocol">(pythia.utils.ds.FrameAnalytics attribute)</a>
+</li>
+          <li><a href="pythia.utils.ds.html#pythia.utils.ds.ObjectAnalytics._is_protocol">(pythia.utils.ds.ObjectAnalytics attribute)</a>
+</li>
+          <li><a href="pythia.utils.ds.html#pythia.utils.ds.SemanticMasks._is_protocol">(pythia.utils.ds.SemanticMasks attribute)</a>
+</li>
+          <li><a href="pythia.utils.ds.html#pythia.utils.ds.SupportedUserMeta._is_protocol">(pythia.utils.ds.SupportedUserMeta attribute)</a>
+</li>
+          <li><a href="pythia.utils.message_handlers.html#pythia.utils.message_handlers.Stoppable._is_protocol">(pythia.utils.message_handlers.Stoppable attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="pythia.utils.ds.html#pythia.utils.ds._is_segmentation_meta">_is_segmentation_meta() (in module pythia.utils.ds)</a>
+</li>
+        <li><a href="pythia.iterators.html#pythia.iterators._iter_user_meta">_iter_user_meta() (in module pythia.iterators)</a>
+</li>
+        <li><a href="pythia.cli.app.html#pythia.cli.app._jinja_renderer">_jinja_renderer() (in module pythia.cli.app)</a>
+</li>
+        <li><a href="pythia.event_stream.log.html#pythia.event_stream.log.Backend._logger">_logger (pythia.event_stream.log.Backend attribute)</a>
+</li>
+        <li><a href="pythia.applications.annotation.html#pythia.applications.annotation._make_handler">_make_handler() (in module pythia.applications.annotation)</a>
+</li>
+        <li><a href="pythia.applications.annotation.html#pythia.applications.annotation._make_logger">_make_logger() (in module pythia.applications.annotation)</a>
+</li>
+        <li><a href="pythia.cli.app.html#pythia.cli.app.Mode._member_map_">_member_map_ (pythia.cli.app.Mode attribute)</a>
+</li>
+        <li><a href="pythia.cli.app.html#pythia.cli.app.Mode._member_names_">_member_names_ (pythia.cli.app.Mode attribute)</a>
+</li>
+        <li><a href="pythia.cli.app.html#pythia.cli.app.Mode._member_type_">_member_type_ (pythia.cli.app.Mode attribute)</a>
+</li>
+        <li><a href="pythia.cli.app.html#pythia.cli.app._native_renderer">_native_renderer() (in module pythia.cli.app)</a>
+</li>
+        <li><a href="pythia.event_stream.base.html#pythia.event_stream.base._parse_netloc">_parse_netloc() (in module pythia.event_stream.base)</a>
+</li>
+        <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.BasePipeline._pipeline">_pipeline (pythia.pipelines.base.BasePipeline attribute)</a>
+</li>
+        <li><a href="pythia.applications.demo.html#pythia.applications.demo._Demo._play">_play() (pythia.applications.demo._Demo class method)</a>
+</li>
+        <li><a href="pythia.cli.app.html#pythia.cli.app._receive_any_return_kw">_receive_any_return_kw() (in module pythia.cli.app)</a>
+</li>
+        <li><a href="pythia.html#pythia.AnnotateFramesBbox._registered_probes">_registered_probes (pythia.AnnotateFramesBbox attribute)</a>
+
+        <ul>
+          <li><a href="pythia.html#pythia.AnnotateFramesMaskRcnn._registered_probes">(pythia.AnnotateFramesMaskRcnn attribute)</a>
+</li>
+          <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesBase._registered_probes">(pythia.applications.annotation.AnnotateFramesBase attribute)</a>
+</li>
+          <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesBbox._registered_probes">(pythia.applications.annotation.AnnotateFramesBbox attribute)</a>
+</li>
+          <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesMaskRcnn._registered_probes">(pythia.applications.annotation.AnnotateFramesMaskRcnn attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="pythia.models.base.html#pythia.models.base.Analytics._string">_string (pythia.models.base.Analytics attribute)</a>
+
+        <ul>
+          <li><a href="pythia.models.base.html#pythia.models.base.InferenceEngine._string">(pythia.models.base.InferenceEngine attribute)</a>
+</li>
+          <li><a href="pythia.models.base.html#pythia.models.base.Tracker._string">(pythia.models.base.Tracker attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="pythia.utils.maskrcnn.html#pythia.utils.maskrcnn._take_vals">_take_vals() (in module pythia.utils.maskrcnn)</a>
+</li>
+        <li><a href="pythia.cli.app.html#pythia.cli.app._validate_extractors">_validate_extractors() (in module pythia.cli.app)</a>
+</li>
+        <li><a href="pythia.cli.app.html#pythia.cli.app._validate_pipeline">_validate_pipeline() (in module pythia.cli.app)</a>
+</li>
+        <li><a href="pythia.cli.app.html#pythia.cli.app.Mode._value2member_map_">_value2member_map_ (pythia.cli.app.Mode attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="A" class="genindex-section">
+  <h2>A</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.applications.base.html#pythia.applications.base.BaseApplication.after_pipeline_start">after_pipeline_start() (pythia.applications.base.BaseApplication method)</a>
+</li>
+        <li><a href="pythia.models.base.html#pythia.models.base.Analytics">Analytics (class in pythia.models.base)</a>
+</li>
+        <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.BasePipeline.analytics">analytics (pythia.pipelines.base.BasePipeline attribute)</a>
+
+        <ul>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.Pipeline.analytics">(pythia.pipelines.base.Pipeline attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="pythia.iterators.html#pythia.iterators.analytics_per_frame">analytics_per_frame() (in module pythia.iterators)</a>
+</li>
+        <li><a href="pythia.iterators.html#pythia.iterators.analytics_per_obj">analytics_per_obj() (in module pythia.iterators)</a>
+</li>
+        <li><a href="pythia.html#pythia.AnnotateFramesBase">AnnotateFramesBase (class in pythia)</a>
+
+        <ul>
+          <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesBase">(class in pythia.applications.annotation)</a>
+</li>
+        </ul></li>
+        <li><a href="pythia.html#pythia.AnnotateFramesBbox">AnnotateFramesBbox (class in pythia)</a>
+
+        <ul>
+          <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesBbox">(class in pythia.applications.annotation)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.html#pythia.AnnotateFramesMaskRcnn">AnnotateFramesMaskRcnn (class in pythia)</a>
+
+        <ul>
+          <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesMaskRcnn">(class in pythia.applications.annotation)</a>
+</li>
+        </ul></li>
+        <li><a href="pythia.html#pythia.AnnotateFramesBase.annotator_probe">annotator_probe() (pythia.AnnotateFramesBase method)</a>
+
+        <ul>
+          <li><a href="pythia.html#pythia.AnnotateFramesBbox.annotator_probe">(pythia.AnnotateFramesBbox method)</a>
+</li>
+          <li><a href="pythia.html#pythia.AnnotateFramesMaskRcnn.annotator_probe">(pythia.AnnotateFramesMaskRcnn method)</a>
+</li>
+          <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesBase.annotator_probe">(pythia.applications.annotation.AnnotateFramesBase method)</a>
+</li>
+          <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesBbox.annotator_probe">(pythia.applications.annotation.AnnotateFramesBbox method)</a>
+</li>
+          <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesMaskRcnn.annotator_probe">(pythia.applications.annotation.AnnotateFramesMaskRcnn method)</a>
+</li>
+        </ul></li>
+        <li><a href="pythia.html#pythia.Application">Application (class in pythia)</a>
+
+        <ul>
+          <li><a href="pythia.applications.base.html#pythia.applications.base.Application">(class in pythia.applications.base)</a>
+</li>
+        </ul></li>
+        <li><a href="pythia.cli.app.html#pythia.cli.app.Mode.ARGV">ARGV (pythia.cli.app.Mode attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="B" class="genindex-section">
+  <h2>B</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.event_stream.base.html#pythia.event_stream.base.Backend">Backend (class in pythia.event_stream.base)</a>
+
+        <ul>
+          <li><a href="pythia.event_stream.kafka.html#pythia.event_stream.kafka.Backend">(class in pythia.event_stream.kafka)</a>
+</li>
+          <li><a href="pythia.event_stream.log.html#pythia.event_stream.log.Backend">(class in pythia.event_stream.log)</a>
+</li>
+          <li><a href="pythia.event_stream.memory.html#pythia.event_stream.memory.Backend">(class in pythia.event_stream.memory)</a>
+</li>
+          <li><a href="pythia.event_stream.redis.html#pythia.event_stream.redis.Backend">(class in pythia.event_stream.redis)</a>
+</li>
+        </ul></li>
+        <li><a href="pythia.types.html#pythia.types.RegisteredProbe.backend">backend (pythia.types.RegisteredProbe attribute)</a>
+</li>
+        <li><a href="pythia.applications.base.html#pythia.applications.base.BaseApplication.backend">backend() (pythia.applications.base.BaseApplication method)</a>
+</li>
+        <li><a href="pythia.applications.base.html#pythia.applications.base.BackgroundThreadLoop">BackgroundThreadLoop (class in pythia.applications.base)</a>
+</li>
+        <li><a href="pythia.applications.base.html#pythia.applications.base.BaseApplication">BaseApplication (class in pythia.applications.base)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.BasePipeline">BasePipeline (class in pythia.pipelines.base)</a>
+</li>
+        <li><a href="pythia.applications.base.html#pythia.applications.base.BaseApplication.before_loop_join">before_loop_join() (pythia.applications.base.BaseApplication method)</a>
+</li>
+        <li><a href="pythia.applications.base.html#pythia.applications.base.BaseApplication.before_loop_quit">before_loop_quit() (pythia.applications.base.BaseApplication method)</a>
+</li>
+        <li><a href="pythia.applications.base.html#pythia.applications.base.BaseApplication.before_pipeline_start">before_pipeline_start() (pythia.applications.base.BaseApplication method)</a>
+</li>
+        <li><a href="pythia.event_stream.kafka.html#pythia.event_stream.kafka.Backend.bootstrap_servers">bootstrap_servers (pythia.event_stream.kafka.Backend property)</a>
+</li>
+        <li><a href="pythia.applications.base.html#pythia.applications.base.BoundGstPadProbeCallback">BoundGstPadProbeCallback (in module pythia.applications.base)</a>
+</li>
+        <li><a href="pythia.utils.ds.html#pythia.utils.ds.buf2batchmeta">buf2batchmeta() (in module pythia.utils.ds)</a>
+</li>
+        <li><a href="pythia.cli.app.html#pythia.cli.app.build_pipeline">build_pipeline() (in module pythia.cli.app)</a>
+</li>
+        <li><a href="pythia.applications.base.html#pythia.applications.base.BaseApplication.bus">bus (pythia.applications.base.BaseApplication property)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="C" class="genindex-section">
+  <h2>C</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.cli.app.html#pythia.cli.app.choose_renderer">choose_renderer() (in module pythia.cli.app)</a>
+</li>
+        <li><a href="pythia.iterators.html#pythia.iterators.classification_per_object">classification_per_object() (in module pythia.iterators)</a>
+</li>
+        <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.clean_single_uri">clean_single_uri() (in module pythia.pipelines.base)</a>
+</li>
+        <li><a href="pythia.applications.command_line.html#pythia.applications.command_line.CliApplication">CliApplication (class in pythia.applications.command_line)</a>
+</li>
+        <li><a href="pythia.event_stream.kafka.html#pythia.event_stream.kafka.Backend.client">client (pythia.event_stream.kafka.Backend property)</a>
+
+        <ul>
+          <li><a href="pythia.event_stream.redis.html#pythia.event_stream.redis.Backend.client">(pythia.event_stream.redis.Backend property)</a>
+</li>
+        </ul></li>
+        <li><a href="pythia.models.base.html#pythia.models.base.InferenceEngine.compiled_model">compiled_model (pythia.models.base.InferenceEngine attribute)</a>
+</li>
+        <li><a href="pythia.types.html#pythia.types.Con">Con (in module pythia.types)</a>
+</li>
+        <li><a href="pythia.utils.ds.html#pythia.utils.ds.SupportedUserMeta.condition">condition (pythia.utils.ds.SupportedUserMeta attribute)</a>
+</li>
+        <li><a href="pythia.utils.ds.html#pythia.utils.ds.FrameAnalytics.condition">condition() (pythia.utils.ds.FrameAnalytics method)</a>
+
+        <ul>
+          <li><a href="pythia.utils.ds.html#pythia.utils.ds.ObjectAnalytics.condition">(pythia.utils.ds.ObjectAnalytics method)</a>
+</li>
+          <li><a href="pythia.utils.ds.html#pythia.utils.ds.SemanticMasks.condition">(pythia.utils.ds.SemanticMasks method)</a>
+</li>
+        </ul></li>
+        <li><a href="pythia.models.base.html#pythia.models.base.Analytics.config_file">config_file (pythia.models.base.Analytics attribute)</a>
+
+        <ul>
+          <li><a href="pythia.models.base.html#pythia.models.base.InferenceEngine.config_file">(pythia.models.base.InferenceEngine attribute)</a>
+</li>
+          <li><a href="pythia.models.base.html#pythia.models.base.Tracker.config_file">(pythia.models.base.Tracker attribute)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.event_stream.base.html#pythia.event_stream.base.Backend.connect">connect() (pythia.event_stream.base.Backend method)</a>
+
+        <ul>
+          <li><a href="pythia.event_stream.kafka.html#pythia.event_stream.kafka.Backend.connect">(pythia.event_stream.kafka.Backend method)</a>
+</li>
+          <li><a href="pythia.event_stream.log.html#pythia.event_stream.log.Backend.connect">(pythia.event_stream.log.Backend method)</a>
+</li>
+          <li><a href="pythia.event_stream.memory.html#pythia.event_stream.memory.Backend.connect">(pythia.event_stream.memory.Backend method)</a>
+</li>
+          <li><a href="pythia.event_stream.redis.html#pythia.event_stream.redis.Backend.connect">(pythia.event_stream.redis.Backend method)</a>
+</li>
+        </ul></li>
+        <li><a href="pythia.applications.base.html#pythia.applications.base.BaseApplication.connect_bus">connect_bus() (pythia.applications.base.BaseApplication method)</a>
+</li>
+        <li><a href="pythia.models.base.html#pythia.models.base.Analytics.CONNECTIONS">CONNECTIONS (pythia.models.base.Analytics attribute)</a>
+
+        <ul>
+          <li><a href="pythia.models.base.html#pythia.models.base.InferenceEngine.CONNECTIONS">(pythia.models.base.InferenceEngine attribute)</a>
+</li>
+          <li><a href="pythia.models.base.html#pythia.models.base.Tracker.CONNECTIONS">(pythia.models.base.Tracker attribute)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.BasePipeline.CONNECTIONS">(pythia.pipelines.base.BasePipeline property)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.Pipeline.CONNECTIONS">(pythia.pipelines.base.Pipeline property)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaSink.CONNECTIONS">(pythia.pipelines.base.PythiaSink attribute)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaSource.CONNECTIONS">(pythia.pipelines.base.PythiaSource attribute)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaSourceBase.CONNECTIONS">(pythia.pipelines.base.PythiaSourceBase attribute)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.StringPipeline.CONNECTIONS">(pythia.pipelines.base.StringPipeline attribute)</a>
+</li>
+          <li><a href="pythia.types.html#pythia.types.HasConnections.CONNECTIONS">(pythia.types.HasConnections attribute)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="D" class="genindex-section">
+  <h2>D</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.cli.app.html#pythia.cli.app.define_template">define_template() (in module pythia.cli.app)</a>
+</li>
+        <li><a href="pythia.html#pythia.Demo">Demo (in module pythia)</a>
+
+        <ul>
+          <li><a href="pythia.applications.demo.html#pythia.applications.demo.Demo">(in module pythia.applications.demo)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.event_stream.memory.html#pythia.event_stream.memory.Backend.deque">deque (pythia.event_stream.memory.Backend property)</a>
+</li>
+        <li><a href="pythia.applications.base.html#pythia.applications.base.BaseApplication.disconnect_bus">disconnect_bus() (pythia.applications.base.BaseApplication method)</a>
+</li>
+        <li><a href="pythia.utils.maskrcnn.html#pythia.utils.maskrcnn.DsBBox">DsBBox (class in pythia.utils.maskrcnn)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="E" class="genindex-section">
+  <h2>E</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.utils.gst.html#pythia.utils.gst.element_repr">element_repr() (in module pythia.utils.gst)</a>
+</li>
+        <li><a href="pythia.cli.app.html#pythia.cli.app.Exit">Exit (class in pythia.cli.app)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.utils.maskrcnn.html#pythia.utils.maskrcnn.extract_maskrcnn_mask">extract_maskrcnn_mask() (in module pythia.utils.maskrcnn)</a>
+</li>
+        <li><a href="pythia.cli.app.html#pythia.cli.app.Exit.EXTRACTION_NOT_BOUND">EXTRACTION_NOT_BOUND (pythia.cli.app.Exit attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="F" class="genindex-section">
+  <h2>F</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.cli.app.html#pythia.cli.app.Mode.FILE">FILE (pythia.cli.app.Mode attribute)</a>
+</li>
+        <li><a href="pythia.utils.str2pythia.html#pythia.utils.str2pythia.find_analytics">find_analytics() (in module pythia.utils.str2pythia)</a>
+</li>
+        <li><a href="pythia.utils.str2pythia.html#pythia.utils.str2pythia.find_models">find_models() (in module pythia.utils.str2pythia)</a>
+</li>
+        <li><a href="pythia.utils.str2pythia.html#pythia.utils.str2pythia.find_tracker">find_tracker() (in module pythia.utils.str2pythia)</a>
+</li>
+        <li><a href="pythia.applications.base.html#pythia.applications.base.ForegroundLoop">ForegroundLoop (class in pythia.applications.base)</a>
+</li>
+        <li><a href="pythia.utils.ds.html#pythia.utils.ds.FrameAnalytics">FrameAnalytics (class in pythia.utils.ds)</a>
+</li>
+        <li><a href="pythia.iterators.html#pythia.iterators.frames_per_batch">frames_per_batch() (in module pythia.iterators)</a>
+</li>
+        <li><a href="pythia.models.base.html#pythia.models.base.Analytics.from_element">from_element() (pythia.models.base.Analytics class method)</a>
+
+        <ul>
+          <li><a href="pythia.models.base.html#pythia.models.base.InferenceEngine.from_element">(pythia.models.base.InferenceEngine class method)</a>
+</li>
+          <li><a href="pythia.models.base.html#pythia.models.base.Tracker.from_element">(pythia.models.base.Tracker class method)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.models.base.html#pythia.models.base.Analytics.from_file">from_file() (pythia.models.base.Analytics class method)</a>
+
+        <ul>
+          <li><a href="pythia.models.base.html#pythia.models.base.Tracker.from_file">(pythia.models.base.Tracker class method)</a>
+</li>
+        </ul></li>
+        <li><a href="pythia.models.base.html#pythia.models.base.InferenceEngine.from_folder">from_folder() (pythia.models.base.InferenceEngine class method)</a>
+</li>
+        <li><a href="pythia.applications.base.html#pythia.applications.base.BaseApplication.from_pipeline_file">from_pipeline_file() (pythia.applications.base.BaseApplication class method)</a>
+</li>
+        <li><a href="pythia.applications.base.html#pythia.applications.base.BaseApplication.from_pipeline_string">from_pipeline_string() (pythia.applications.base.BaseApplication class method)</a>
+</li>
+        <li><a href="pythia.event_stream.base.html#pythia.event_stream.base.Backend.from_uri">from_uri() (pythia.event_stream.base.Backend class method)</a>
+
+        <ul>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaSink.from_uri">(pythia.pipelines.base.PythiaSink class method)</a>
+</li>
+        </ul></li>
+        <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaSourceBase.from_uris">from_uris() (pythia.pipelines.base.PythiaSourceBase class method)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="G" class="genindex-section">
+  <h2>G</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.html#pythia.AnnotateFramesMaskRcnn.generate_mask_polygon">generate_mask_polygon() (pythia.AnnotateFramesMaskRcnn method)</a>
+
+        <ul>
+          <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesMaskRcnn.generate_mask_polygon">(pythia.applications.annotation.AnnotateFramesMaskRcnn method)</a>
+</li>
+        </ul></li>
+        <li><a href="pythia.utils.ext.html#pythia.utils.ext.get_arch">get_arch() (in module pythia.utils.ext)</a>
+</li>
+        <li><a href="pythia.utils.gst.html#pythia.utils.gst.get_element">get_element() (in module pythia.utils.gst)</a>
+</li>
+        <li><a href="pythia.utils.gst.html#pythia.utils.gst.get_sinkpad">get_sinkpad() (in module pythia.utils.gst)</a>
+</li>
+        <li><a href="pythia.utils.gst.html#pythia.utils.gst.get_srcpad">get_srcpad() (in module pythia.utils.gst)</a>
+</li>
+        <li><a href="pythia.utils.gst.html#pythia.utils.gst.get_static_pad">get_static_pad() (in module pythia.utils.gst)</a>
+</li>
+        <li><a href="pythia.iterators.html#pythia.iterators.glist_iter">glist_iter() (in module pythia.iterators)</a>
+</li>
+        <li><a href="pythia.utils.ext.html#pythia.utils.ext.grouped">grouped() (in module pythia.utils.ext)</a>
+</li>
+        <li><a href="pythia.models.base.html#pythia.models.base.Analytics.gst">gst() (pythia.models.base.Analytics method)</a>
+
+        <ul>
+          <li><a href="pythia.models.base.html#pythia.models.base.InferenceEngine.gst">(pythia.models.base.InferenceEngine method)</a>
+</li>
+          <li><a href="pythia.models.base.html#pythia.models.base.Tracker.gst">(pythia.models.base.Tracker method)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.BasePipeline.gst">(pythia.pipelines.base.BasePipeline method)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.Pipeline.gst">(pythia.pipelines.base.Pipeline method)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaFakesink.gst">(pythia.pipelines.base.PythiaFakesink method)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaFilesink.gst">(pythia.pipelines.base.PythiaFilesink method)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaLiveSink.gst">(pythia.pipelines.base.PythiaLiveSink method)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaMultifileSink.gst">(pythia.pipelines.base.PythiaMultifileSink method)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaMultiSource.gst">(pythia.pipelines.base.PythiaMultiSource method)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaSink.gst">(pythia.pipelines.base.PythiaSink method)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaSource.gst">(pythia.pipelines.base.PythiaSource method)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaSourceBase.gst">(pythia.pipelines.base.PythiaSourceBase method)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaTestSource.gst">(pythia.pipelines.base.PythiaTestSource method)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.StringPipeline.gst">(pythia.pipelines.base.StringPipeline method)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.utils.gst.html#pythia.utils.gst.gst_init">gst_init() (in module pythia.utils.gst)</a>
+</li>
+        <li><a href="pythia.utils.gst.html#pythia.utils.gst.gst_iter">gst_iter() (in module pythia.utils.gst)</a>
+</li>
+        <li><a href="pythia.types.html#pythia.types.GstPadProbeCallback">GstPadProbeCallback (in module pythia.types)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="H" class="genindex-section">
+  <h2>H</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.types.html#pythia.types.HasConnections">HasConnections (class in pythia.types)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.utils.maskrcnn.html#pythia.utils.maskrcnn.DsBBox.height">height (pythia.utils.maskrcnn.DsBBox attribute)</a>
+</li>
+        <li><a href="pythia.event_stream.kafka.html#pythia.event_stream.kafka.Backend.host">host (pythia.event_stream.kafka.Backend property)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="I" class="genindex-section">
+  <h2>I</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.utils.ext.html#pythia.utils.ext.import_from_path">import_from_path() (in module pythia.utils.ext)</a>
+</li>
+        <li><a href="pythia.utils.ext.html#pythia.utils.ext.import_from_str">import_from_str() (in module pythia.utils.ext)</a>
+</li>
+        <li><a href="pythia.exceptions.html#pythia.exceptions.IncompatiblePipelineError">IncompatiblePipelineError</a>
+</li>
+        <li><a href="pythia.models.base.html#pythia.models.base.InferenceEngine">InferenceEngine (class in pythia.models.base)</a>
+</li>
+        <li><a href="pythia.utils.ds.html#pythia.utils.ds.info2batchmeta">info2batchmeta() (in module pythia.utils.ds)</a>
+</li>
+        <li><a href="pythia.utils.ds.html#pythia.utils.ds.inject_external_classification">inject_external_classification() (in module pythia.utils.ds)</a>
+</li>
+        <li><a href="pythia.applications.base.html#pythia.applications.base.BaseApplication.inject_probes">inject_probes() (pythia.applications.base.BaseApplication method)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.iterators.html#pythia.iterators.instance_masks_per_batch">instance_masks_per_batch() (in module pythia.iterators)</a>
+</li>
+        <li><a href="pythia.cli.app.html#pythia.cli.app.Exit.INVALID_EXTRACTION">INVALID_EXTRACTION (pythia.cli.app.Exit attribute)</a>
+</li>
+        <li><a href="pythia.cli.app.html#pythia.cli.app.Exit.INVALID_PIPELINE">INVALID_PIPELINE (pythia.cli.app.Exit attribute)</a>
+</li>
+        <li><a href="pythia.exceptions.html#pythia.exceptions.InvalidPipelineError">InvalidPipelineError</a>
+</li>
+        <li><a href="pythia.utils.str2pythia.html#pythia.utils.str2pythia.is_analytics">is_analytics() (in module pythia.utils.str2pythia)</a>
+</li>
+        <li><a href="pythia.utils.str2pythia.html#pythia.utils.str2pythia.is_inference">is_inference() (in module pythia.utils.str2pythia)</a>
+</li>
+        <li><a href="pythia.utils.str2pythia.html#pythia.utils.str2pythia.is_tracker">is_tracker() (in module pythia.utils.str2pythia)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="J" class="genindex-section">
+  <h2>J</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.applications.base.html#pythia.applications.base.ForegroundLoop.join">join() (pythia.applications.base.ForegroundLoop method)</a>
+
+        <ul>
+          <li><a href="pythia.applications.base.html#pythia.applications.base.RunLoop.join">(pythia.applications.base.RunLoop method)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.applications.annotation.html#pythia.applications.annotation._DumpLogger.json">json() (pythia.applications.annotation._DumpLogger method)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="K" class="genindex-section">
+  <h2>K</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.utils.ds.html#pythia.utils.ds.FrameAnalytics.klass">klass (pythia.utils.ds.FrameAnalytics attribute)</a>
+
+        <ul>
+          <li><a href="pythia.utils.ds.html#pythia.utils.ds.ObjectAnalytics.klass">(pythia.utils.ds.ObjectAnalytics attribute)</a>
+</li>
+          <li><a href="pythia.utils.ds.html#pythia.utils.ds.SemanticMasks.klass">(pythia.utils.ds.SemanticMasks attribute)</a>
+</li>
+          <li><a href="pythia.utils.ds.html#pythia.utils.ds.SupportedUserMeta.klass">(pythia.utils.ds.SupportedUserMeta attribute)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="L" class="genindex-section">
+  <h2>L</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.models.base.html#pythia.models.base.InferenceEngine.labels_file">labels_file (pythia.models.base.InferenceEngine attribute)</a>
+</li>
+        <li><a href="pythia.iterators.html#pythia.iterators.labels_per_classification">labels_per_classification() (in module pythia.iterators)</a>
+</li>
+        <li><a href="pythia.iterators.html#pythia.iterators.labels_per_obj">labels_per_obj() (in module pythia.iterators)</a>
+</li>
+        <li><a href="pythia.utils.maskrcnn.html#pythia.utils.maskrcnn.DsBBox.left">left (pythia.utils.maskrcnn.DsBBox attribute)</a>
+</li>
+        <li><a href="pythia.models.base.html#pythia.models.base.InferenceEngine.locate_compiled_model">locate_compiled_model() (pythia.models.base.InferenceEngine static method)</a>
+</li>
+        <li><a href="pythia.models.base.html#pythia.models.base.InferenceEngine.locate_config_file">locate_config_file() (pythia.models.base.InferenceEngine class method)</a>
+</li>
+        <li><a href="pythia.models.base.html#pythia.models.base.InferenceEngine.locate_labels_file">locate_labels_file() (pythia.models.base.InferenceEngine static method)</a>
+</li>
+        <li><a href="pythia.models.base.html#pythia.models.base.InferenceEngine.locate_source_model">locate_source_model() (pythia.models.base.InferenceEngine class method)</a>
+</li>
+        <li><a href="pythia.event_stream.log.html#pythia.event_stream.log.Backend.logger">logger (pythia.event_stream.log.Backend property)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.utils.gst.html#pythia.utils.gst.long_to_uint64">long_to_uint64() (in module pythia.utils.gst)</a>
+</li>
+        <li><a href="pythia.types.html#pythia.types.Loop">Loop (class in pythia.types)</a>
+</li>
+        <li><a href="pythia.html#pythia.AnnotateFramesBbox.loop">loop (pythia.AnnotateFramesBbox attribute)</a>
+
+        <ul>
+          <li><a href="pythia.html#pythia.AnnotateFramesMaskRcnn.loop">(pythia.AnnotateFramesMaskRcnn attribute)</a>
+</li>
+          <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesBase.loop">(pythia.applications.annotation.AnnotateFramesBase attribute)</a>
+</li>
+          <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesBbox.loop">(pythia.applications.annotation.AnnotateFramesBbox attribute)</a>
+</li>
+          <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesMaskRcnn.loop">(pythia.applications.annotation.AnnotateFramesMaskRcnn attribute)</a>
+</li>
+          <li><a href="pythia.applications.base.html#pythia.applications.base.ForegroundLoop.loop">(pythia.applications.base.ForegroundLoop property)</a>
+</li>
+        </ul></li>
+        <li><a href="pythia.applications.base.html#pythia.applications.base.BaseApplication.loop_cls">loop_cls (pythia.applications.base.BaseApplication attribute)</a>
+</li>
+        <li><a href="pythia.models.base.html#pythia.models.base.Tracker.low_level_library">low_level_library (pythia.models.base.Tracker attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="M" class="genindex-section">
+  <h2>M</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.cli.app.html#pythia.cli.app.main">main() (in module pythia.cli.app)</a>
+</li>
+        <li><a href="pythia.cli.app.html#pythia.cli.app.Mode">Mode (class in pythia.cli.app)</a>
+</li>
+        <li><a href="pythia.models.base.html#pythia.models.base.InferenceEngine.MODEL_CONFIG_SUFFIXES">MODEL_CONFIG_SUFFIXES (pythia.models.base.InferenceEngine attribute)</a>
+</li>
+        <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.Pipeline.model_map">model_map (pythia.pipelines.base.Pipeline property)</a>
+</li>
+        <li><a href="pythia.models.base.html#pythia.models.base.InferenceEngine.MODEL_SUFFIXES">MODEL_SUFFIXES (pythia.models.base.InferenceEngine attribute)</a>
+</li>
+        <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.BasePipeline.models">models (pythia.pipelines.base.BasePipeline attribute)</a>
+
+        <ul>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.Pipeline.models">(pythia.pipelines.base.Pipeline attribute)</a>
+</li>
+        </ul></li>
+        <li>
+    module
+
+        <ul>
+          <li><a href="pythia.html#module-pythia">pythia</a>
+</li>
+          <li><a href="pythia.applications.html#module-pythia.applications">pythia.applications</a>
+</li>
+          <li><a href="pythia.applications.annotation.html#module-pythia.applications.annotation">pythia.applications.annotation</a>
+</li>
+          <li><a href="pythia.applications.base.html#module-pythia.applications.base">pythia.applications.base</a>
+</li>
+          <li><a href="pythia.applications.command_line.html#module-pythia.applications.command_line">pythia.applications.command_line</a>
+</li>
+          <li><a href="pythia.applications.demo.html#module-pythia.applications.demo">pythia.applications.demo</a>
+</li>
+          <li><a href="pythia.cli.html#module-pythia.cli">pythia.cli</a>
+</li>
+          <li><a href="pythia.cli.app.html#module-pythia.cli.app">pythia.cli.app</a>
+</li>
+          <li><a href="pythia.config.html#module-pythia.config">pythia.config</a>
+</li>
+          <li><a href="pythia.event_stream.html#module-pythia.event_stream">pythia.event_stream</a>
+</li>
+          <li><a href="pythia.event_stream.base.html#module-pythia.event_stream.base">pythia.event_stream.base</a>
+</li>
+          <li><a href="pythia.event_stream.kafka.html#module-pythia.event_stream.kafka">pythia.event_stream.kafka</a>
+</li>
+          <li><a href="pythia.event_stream.log.html#module-pythia.event_stream.log">pythia.event_stream.log</a>
+</li>
+          <li><a href="pythia.event_stream.memory.html#module-pythia.event_stream.memory">pythia.event_stream.memory</a>
+</li>
+          <li><a href="pythia.event_stream.redis.html#module-pythia.event_stream.redis">pythia.event_stream.redis</a>
+</li>
+          <li><a href="pythia.exceptions.html#module-pythia.exceptions">pythia.exceptions</a>
+</li>
+          <li><a href="pythia.iterators.html#module-pythia.iterators">pythia.iterators</a>
+</li>
+          <li><a href="pythia.models.html#module-pythia.models">pythia.models</a>
+</li>
+          <li><a href="pythia.models.base.html#module-pythia.models.base">pythia.models.base</a>
+</li>
+          <li><a href="pythia.paths.html#module-pythia.paths">pythia.paths</a>
+</li>
+          <li><a href="pythia.pipelines.html#module-pythia.pipelines">pythia.pipelines</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#module-pythia.pipelines.base">pythia.pipelines.base</a>
+</li>
+          <li><a href="pythia.types.html#module-pythia.types">pythia.types</a>
+</li>
+          <li><a href="pythia.utils.html#module-pythia.utils">pythia.utils</a>
+</li>
+          <li><a href="pythia.utils.ds.html#module-pythia.utils.ds">pythia.utils.ds</a>
+</li>
+          <li><a href="pythia.utils.ext.html#module-pythia.utils.ext">pythia.utils.ext</a>
+</li>
+          <li><a href="pythia.utils.gst.html#module-pythia.utils.gst">pythia.utils.gst</a>
+</li>
+          <li><a href="pythia.utils.maskrcnn.html#module-pythia.utils.maskrcnn">pythia.utils.maskrcnn</a>
+</li>
+          <li><a href="pythia.utils.message_handlers.html#module-pythia.utils.message_handlers">pythia.utils.message_handlers</a>
+</li>
+          <li><a href="pythia.utils.str2pythia.html#module-pythia.utils.str2pythia">pythia.utils.str2pythia</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="N" class="genindex-section">
+  <h2>N</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.utils.ext.html#pythia.utils.ext.not_empty">not_empty() (in module pythia.utils.ext)</a>
+</li>
+        <li><a href="pythia.utils.ext.html#pythia.utils.ext.not_none">not_none() (in module pythia.utils.ext)</a>
+</li>
+        <li><a href="pythia.html#pythia.AnnotateFramesBase.nvds_frame_meta_parser">nvds_frame_meta_parser (pythia.AnnotateFramesBase attribute)</a>
+
+        <ul>
+          <li><a href="pythia.html#pythia.AnnotateFramesBbox.nvds_frame_meta_parser">(pythia.AnnotateFramesBbox attribute)</a>
+</li>
+          <li><a href="pythia.html#pythia.AnnotateFramesMaskRcnn.nvds_frame_meta_parser">(pythia.AnnotateFramesMaskRcnn attribute)</a>
+</li>
+          <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesBase.nvds_frame_meta_parser">(pythia.applications.annotation.AnnotateFramesBase attribute)</a>
+</li>
+          <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesBbox.nvds_frame_meta_parser">(pythia.applications.annotation.AnnotateFramesBbox attribute)</a>
+</li>
+          <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesMaskRcnn.nvds_frame_meta_parser">(pythia.applications.annotation.AnnotateFramesMaskRcnn attribute)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="O" class="genindex-section">
+  <h2>O</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.utils.ds.html#pythia.utils.ds.ObjectAnalytics">ObjectAnalytics (class in pythia.utils.ds)</a>
+</li>
+        <li><a href="pythia.html#pythia.objects_per_batch">objects_per_batch() (in module pythia)</a>
+
+        <ul>
+          <li><a href="pythia.iterators.html#pythia.iterators.objects_per_batch">(in module pythia.iterators)</a>
+</li>
+        </ul></li>
+        <li><a href="pythia.iterators.html#pythia.iterators.objects_per_frame">objects_per_frame() (in module pythia.iterators)</a>
+</li>
+        <li><a href="pythia.utils.message_handlers.html#pythia.utils.message_handlers.on_message_eos">on_message_eos() (in module pythia.utils.message_handlers)</a>
+
+        <ul>
+          <li><a href="pythia.html#pythia.Application.on_message_eos">(pythia.Application method)</a>
+</li>
+          <li><a href="pythia.applications.base.html#pythia.applications.base.Application.on_message_eos">(pythia.applications.base.Application method)</a>
+</li>
+          <li><a href="pythia.applications.command_line.html#pythia.applications.command_line.CliApplication.on_message_eos">(pythia.applications.command_line.CliApplication method)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.utils.message_handlers.html#pythia.utils.message_handlers.on_message_error">on_message_error() (in module pythia.utils.message_handlers)</a>
+
+        <ul>
+          <li><a href="pythia.html#pythia.AnnotateFramesBase.on_message_error">(pythia.AnnotateFramesBase method)</a>
+</li>
+          <li><a href="pythia.html#pythia.Application.on_message_error">(pythia.Application method)</a>
+</li>
+          <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesBase.on_message_error">(pythia.applications.annotation.AnnotateFramesBase method)</a>
+</li>
+          <li><a href="pythia.applications.base.html#pythia.applications.base.Application.on_message_error">(pythia.applications.base.Application method)</a>
+</li>
+          <li><a href="pythia.applications.command_line.html#pythia.applications.command_line.CliApplication.on_message_error">(pythia.applications.command_line.CliApplication method)</a>
+</li>
+        </ul></li>
+        <li><a href="pythia.utils.message_handlers.html#pythia.utils.message_handlers.on_state_change">on_state_change() (in module pythia.utils.message_handlers)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="P" class="genindex-section">
+  <h2>P</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.cli.app.html#pythia.cli.app.parse_arbitrary_argv">parse_arbitrary_argv() (in module pythia.cli.app)</a>
+</li>
+        <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.BasePipeline.parse_launch">parse_launch() (pythia.pipelines.base.BasePipeline method)</a>
+</li>
+        <li><a href="pythia.event_stream.base.html#pythia.event_stream.base.parse_uri">parse_uri() (in module pythia.event_stream.base)</a>
+</li>
+        <li><a href="pythia.cli.app.html#pythia.cli.app.pipe_from_file">pipe_from_file() (in module pythia.cli.app)</a>
+</li>
+        <li><a href="pythia.cli.app.html#pythia.cli.app.pipe_from_parts">pipe_from_parts() (in module pythia.cli.app)</a>
+</li>
+        <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.Pipeline">Pipeline (class in pythia.pipelines.base)</a>
+</li>
+        <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.BasePipeline.pipeline">pipeline (pythia.pipelines.base.BasePipeline property)</a>
+</li>
+        <li><a href="pythia.applications.demo.html#pythia.applications.demo._Demo.play">play() (pythia.applications.demo._Demo class method)</a>
+</li>
+        <li><a href="pythia.utils.maskrcnn.html#pythia.utils.maskrcnn.polygon_to_bbox">polygon_to_bbox() (in module pythia.utils.maskrcnn)</a>
+</li>
+        <li><a href="pythia.models.base.html#pythia.models.base.InferenceEngine.pop_property_or_get_from_nvinfer_conf">pop_property_or_get_from_nvinfer_conf() (pythia.models.base.InferenceEngine static method)</a>
+</li>
+        <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaMultiSource.pop_pythia_args_from_uris">pop_pythia_args_from_uris() (pythia.pipelines.base.PythiaMultiSource static method)</a>
+
+        <ul>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaSource.pop_pythia_args_from_uris">(pythia.pipelines.base.PythiaSource static method)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaSourceBase.pop_pythia_args_from_uris">(pythia.pipelines.base.PythiaSourceBase static method)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaTestSource.pop_pythia_args_from_uris">(pythia.pipelines.base.PythiaTestSource static method)</a>
+</li>
+        </ul></li>
+        <li><a href="pythia.event_stream.kafka.html#pythia.event_stream.kafka.Backend.port">port (pythia.event_stream.kafka.Backend property)</a>
+</li>
+        <li><a href="pythia.event_stream.base.html#pythia.event_stream.base.Backend.post">post() (pythia.event_stream.base.Backend method)</a>
+
+        <ul>
+          <li><a href="pythia.event_stream.kafka.html#pythia.event_stream.kafka.Backend.post">(pythia.event_stream.kafka.Backend method)</a>
+</li>
+          <li><a href="pythia.event_stream.log.html#pythia.event_stream.log.Backend.post">(pythia.event_stream.log.Backend method)</a>
+</li>
+          <li><a href="pythia.event_stream.memory.html#pythia.event_stream.memory.Backend.post">(pythia.event_stream.memory.Backend method)</a>
+</li>
+          <li><a href="pythia.event_stream.redis.html#pythia.event_stream.redis.Backend.post">(pythia.event_stream.redis.Backend method)</a>
+</li>
+        </ul></li>
+        <li><a href="pythia.types.html#pythia.types.RegisteredProbe.probe">probe (pythia.types.RegisteredProbe attribute)</a>
+</li>
+        <li><a href="pythia.applications.base.html#pythia.applications.base.BaseApplication.probe">probe() (pythia.applications.base.BaseApplication method)</a>
+</li>
+        <li><a href="pythia.types.html#pythia.types.PydsClass">PydsClass (in module pythia.types)</a>
+</li>
+        <li>
+    pythia
+
+        <ul>
+          <li><a href="pythia.html#module-pythia">module</a>
+</li>
+        </ul></li>
+        <li>
+    pythia.applications
+
+        <ul>
+          <li><a href="pythia.applications.html#module-pythia.applications">module</a>
+</li>
+        </ul></li>
+        <li>
+    pythia.applications.annotation
+
+        <ul>
+          <li><a href="pythia.applications.annotation.html#module-pythia.applications.annotation">module</a>
+</li>
+        </ul></li>
+        <li>
+    pythia.applications.base
+
+        <ul>
+          <li><a href="pythia.applications.base.html#module-pythia.applications.base">module</a>
+</li>
+        </ul></li>
+        <li>
+    pythia.applications.command_line
+
+        <ul>
+          <li><a href="pythia.applications.command_line.html#module-pythia.applications.command_line">module</a>
+</li>
+        </ul></li>
+        <li>
+    pythia.applications.demo
+
+        <ul>
+          <li><a href="pythia.applications.demo.html#module-pythia.applications.demo">module</a>
+</li>
+        </ul></li>
+        <li>
+    pythia.cli
+
+        <ul>
+          <li><a href="pythia.cli.html#module-pythia.cli">module</a>
+</li>
+        </ul></li>
+        <li>
+    pythia.cli.app
+
+        <ul>
+          <li><a href="pythia.cli.app.html#module-pythia.cli.app">module</a>
+</li>
+        </ul></li>
+        <li>
+    pythia.config
+
+        <ul>
+          <li><a href="pythia.config.html#module-pythia.config">module</a>
+</li>
+        </ul></li>
+        <li>
+    pythia.event_stream
+
+        <ul>
+          <li><a href="pythia.event_stream.html#module-pythia.event_stream">module</a>
+</li>
+        </ul></li>
+        <li>
+    pythia.event_stream.base
+
+        <ul>
+          <li><a href="pythia.event_stream.base.html#module-pythia.event_stream.base">module</a>
+</li>
+        </ul></li>
+        <li>
+    pythia.event_stream.kafka
+
+        <ul>
+          <li><a href="pythia.event_stream.kafka.html#module-pythia.event_stream.kafka">module</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li>
+    pythia.event_stream.log
+
+        <ul>
+          <li><a href="pythia.event_stream.log.html#module-pythia.event_stream.log">module</a>
+</li>
+        </ul></li>
+        <li>
+    pythia.event_stream.memory
+
+        <ul>
+          <li><a href="pythia.event_stream.memory.html#module-pythia.event_stream.memory">module</a>
+</li>
+        </ul></li>
+        <li>
+    pythia.event_stream.redis
+
+        <ul>
+          <li><a href="pythia.event_stream.redis.html#module-pythia.event_stream.redis">module</a>
+</li>
+        </ul></li>
+        <li>
+    pythia.exceptions
+
+        <ul>
+          <li><a href="pythia.exceptions.html#module-pythia.exceptions">module</a>
+</li>
+        </ul></li>
+        <li>
+    pythia.iterators
+
+        <ul>
+          <li><a href="pythia.iterators.html#module-pythia.iterators">module</a>
+</li>
+        </ul></li>
+        <li>
+    pythia.models
+
+        <ul>
+          <li><a href="pythia.models.html#module-pythia.models">module</a>
+</li>
+        </ul></li>
+        <li>
+    pythia.models.base
+
+        <ul>
+          <li><a href="pythia.models.base.html#module-pythia.models.base">module</a>
+</li>
+        </ul></li>
+        <li>
+    pythia.paths
+
+        <ul>
+          <li><a href="pythia.paths.html#module-pythia.paths">module</a>
+</li>
+        </ul></li>
+        <li>
+    pythia.pipelines
+
+        <ul>
+          <li><a href="pythia.pipelines.html#module-pythia.pipelines">module</a>
+</li>
+        </ul></li>
+        <li>
+    pythia.pipelines.base
+
+        <ul>
+          <li><a href="pythia.pipelines.base.html#module-pythia.pipelines.base">module</a>
+</li>
+        </ul></li>
+        <li>
+    pythia.types
+
+        <ul>
+          <li><a href="pythia.types.html#module-pythia.types">module</a>
+</li>
+        </ul></li>
+        <li>
+    pythia.utils
+
+        <ul>
+          <li><a href="pythia.utils.html#module-pythia.utils">module</a>
+</li>
+        </ul></li>
+        <li>
+    pythia.utils.ds
+
+        <ul>
+          <li><a href="pythia.utils.ds.html#module-pythia.utils.ds">module</a>
+</li>
+        </ul></li>
+        <li>
+    pythia.utils.ext
+
+        <ul>
+          <li><a href="pythia.utils.ext.html#module-pythia.utils.ext">module</a>
+</li>
+        </ul></li>
+        <li>
+    pythia.utils.gst
+
+        <ul>
+          <li><a href="pythia.utils.gst.html#module-pythia.utils.gst">module</a>
+</li>
+        </ul></li>
+        <li>
+    pythia.utils.maskrcnn
+
+        <ul>
+          <li><a href="pythia.utils.maskrcnn.html#module-pythia.utils.maskrcnn">module</a>
+</li>
+        </ul></li>
+        <li>
+    pythia.utils.message_handlers
+
+        <ul>
+          <li><a href="pythia.utils.message_handlers.html#module-pythia.utils.message_handlers">module</a>
+</li>
+        </ul></li>
+        <li>
+    pythia.utils.str2pythia
+
+        <ul>
+          <li><a href="pythia.utils.str2pythia.html#module-pythia.utils.str2pythia">module</a>
+</li>
+        </ul></li>
+        <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaFakesink">PythiaFakesink (class in pythia.pipelines.base)</a>
+</li>
+        <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaFilesink">PythiaFilesink (class in pythia.pipelines.base)</a>
+</li>
+        <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaLiveSink">PythiaLiveSink (class in pythia.pipelines.base)</a>
+</li>
+        <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaMultifileSink">PythiaMultifileSink (class in pythia.pipelines.base)</a>
+</li>
+        <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaMultiSource">PythiaMultiSource (class in pythia.pipelines.base)</a>
+</li>
+        <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaSink">PythiaSink (class in pythia.pipelines.base)</a>
+</li>
+        <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaSource">PythiaSource (class in pythia.pipelines.base)</a>
+</li>
+        <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaSourceBase">PythiaSourceBase (class in pythia.pipelines.base)</a>
+</li>
+        <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaTestSource">PythiaTestSource (class in pythia.pipelines.base)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="Q" class="genindex-section">
+  <h2>Q</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.applications.base.html#pythia.applications.base.BackgroundThreadLoop.quit">quit() (pythia.applications.base.BackgroundThreadLoop method)</a>
+
+        <ul>
+          <li><a href="pythia.applications.base.html#pythia.applications.base.ForegroundLoop.quit">(pythia.applications.base.ForegroundLoop method)</a>
+</li>
+          <li><a href="pythia.applications.base.html#pythia.applications.base.RunLoop.quit">(pythia.applications.base.RunLoop method)</a>
+</li>
+          <li><a href="pythia.types.html#pythia.types.Loop.quit">(pythia.types.Loop method)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="R" class="genindex-section">
+  <h2>R</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.types.html#pythia.types.RegisteredProbe">RegisteredProbe (class in pythia.types)</a>
+</li>
+        <li><a href="pythia.utils.ext.html#pythia.utils.ext.remove_prefix">remove_prefix() (in module pythia.utils.ext)</a>
+</li>
+        <li><a href="pythia.utils.ext.html#pythia.utils.ext.remove_suffix">remove_suffix() (in module pythia.utils.ext)</a>
+</li>
+        <li><a href="pythia.models.base.html#pythia.models.base.Analytics.requires_tracker">requires_tracker() (pythia.models.base.Analytics method)</a>
+</li>
+        <li><a href="pythia.utils.maskrcnn.html#pythia.utils.maskrcnn.resize_mask_vec">resize_mask_vec() (in module pythia.utils.maskrcnn)</a>
+</li>
+        <li><a href="pythia.html#pythia.AnnotateFramesBase.run">run() (pythia.AnnotateFramesBase class method)</a>
+
+        <ul>
+          <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesBase.run">(pythia.applications.annotation.AnnotateFramesBase class method)</a>
+</li>
+          <li><a href="pythia.applications.base.html#pythia.applications.base.BackgroundThreadLoop.run">(pythia.applications.base.BackgroundThreadLoop method)</a>
+</li>
+          <li><a href="pythia.types.html#pythia.types.Loop.run">(pythia.types.Loop method)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.html#pythia.AnnotateFramesBase.run_with_probe">run_with_probe() (pythia.AnnotateFramesBase class method)</a>
+
+        <ul>
+          <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesBase.run_with_probe">(pythia.applications.annotation.AnnotateFramesBase class method)</a>
+</li>
+        </ul></li>
+        <li><a href="pythia.applications.base.html#pythia.applications.base.RunLoop">RunLoop (class in pythia.applications.base)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="S" class="genindex-section">
+  <h2>S</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.iterators.html#pythia.iterators.semantic_masks_per_frame">semantic_masks_per_frame() (in module pythia.iterators)</a>
+</li>
+        <li><a href="pythia.utils.ds.html#pythia.utils.ds.SemanticMasks">SemanticMasks (class in pythia.utils.ds)</a>
+</li>
+        <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.BasePipeline.send_eos">send_eos() (pythia.pipelines.base.BasePipeline method)</a>
+</li>
+        <li><a href="pythia.types.html#pythia.types.SinkUri">SinkUri (in module pythia.types)</a>
+</li>
+        <li><a href="pythia.models.base.html#pythia.models.base.InferenceEngine.source_model">source_model (pythia.models.base.InferenceEngine attribute)</a>
+</li>
+        <li><a href="pythia.types.html#pythia.types.SourceUri">SourceUri (in module pythia.types)</a>
+</li>
+        <li><a href="pythia.applications.base.html#pythia.applications.base.ForegroundLoop.start">start() (pythia.applications.base.ForegroundLoop method)</a>
+
+        <ul>
+          <li><a href="pythia.applications.base.html#pythia.applications.base.RunLoop.start">(pythia.applications.base.RunLoop method)</a>
+</li>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.BasePipeline.start">(pythia.pipelines.base.BasePipeline method)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.applications.base.html#pythia.applications.base.BaseApplication.stop">stop() (pythia.applications.base.BaseApplication method)</a>
+
+        <ul>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.BasePipeline.stop">(pythia.pipelines.base.BasePipeline method)</a>
+</li>
+          <li><a href="pythia.utils.message_handlers.html#pythia.utils.message_handlers.Stoppable.stop">(pythia.utils.message_handlers.Stoppable method)</a>
+</li>
+        </ul></li>
+        <li><a href="pythia.utils.message_handlers.html#pythia.utils.message_handlers.Stoppable">Stoppable (class in pythia.utils.message_handlers)</a>
+</li>
+        <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.StringPipeline">StringPipeline (class in pythia.pipelines.base)</a>
+</li>
+        <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaMultifileSink.SUPPORTED_FORMATS">SUPPORTED_FORMATS (pythia.pipelines.base.PythiaMultifileSink attribute)</a>
+</li>
+        <li><a href="pythia.utils.ds.html#pythia.utils.ds.SupportedUserMeta">SupportedUserMeta (class in pythia.utils.ds)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="T" class="genindex-section">
+  <h2>T</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.utils.maskrcnn.html#pythia.utils.maskrcnn.DsBBox.top">top (pythia.utils.maskrcnn.DsBBox attribute)</a>
+</li>
+        <li><a href="pythia.models.base.html#pythia.models.base.Tracker">Tracker (class in pythia.models.base)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.BasePipeline.tracker">tracker (pythia.pipelines.base.BasePipeline attribute)</a>
+
+        <ul>
+          <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.Pipeline.tracker">(pythia.pipelines.base.Pipeline attribute)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="U" class="genindex-section">
+  <h2>U</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.cli.app.html#pythia.cli.app.Exit.UNPLAYABLE_PIPELINE">UNPLAYABLE_PIPELINE (pythia.cli.app.Exit attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="V" class="genindex-section">
+  <h2>V</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.BasePipeline.validate">validate() (pythia.pipelines.base.BasePipeline method)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.cli.app.html#pythia.cli.app.version_callback">version_callback() (in module pythia.cli.app)</a>
+</li>
+        <li><a href="pythia.pipelines.base.html#pythia.pipelines.base.PythiaSink.VIDEO_EXTENSIONS">VIDEO_EXTENSIONS (pythia.pipelines.base.PythiaSink attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="W" class="genindex-section">
+  <h2>W</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.html#pythia.AnnotateFramesBbox.watch_ids">watch_ids (pythia.AnnotateFramesBbox attribute)</a>
+
+        <ul>
+          <li><a href="pythia.html#pythia.AnnotateFramesMaskRcnn.watch_ids">(pythia.AnnotateFramesMaskRcnn attribute)</a>
+</li>
+          <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesBase.watch_ids">(pythia.applications.annotation.AnnotateFramesBase attribute)</a>
+</li>
+          <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesBbox.watch_ids">(pythia.applications.annotation.AnnotateFramesBbox attribute)</a>
+</li>
+          <li><a href="pythia.applications.annotation.html#pythia.applications.annotation.AnnotateFramesMaskRcnn.watch_ids">(pythia.applications.annotation.AnnotateFramesMaskRcnn attribute)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="pythia.utils.maskrcnn.html#pythia.utils.maskrcnn.DsBBox.width">width (pythia.utils.maskrcnn.DsBBox attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2022, RMC Labs
+            </div>
+            Made with &#128420; by <a href="https://dev.rmclabs.io">RMC Labs</a> in Concon, Chile 
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/scripts/furo.js"></script>
+    </body>
+</html>

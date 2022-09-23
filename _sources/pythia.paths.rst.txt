@@ -1,0 +1,8 @@
+pythia.paths
+============
+
+.. automodule:: pythia.paths
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:

@@ -1,0 +1,8 @@
+pythia.event\_stream.memory
+===========================
+
+.. automodule:: pythia.event_stream.memory
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:

@@ -1,0 +1,8 @@
+pythia.applications.demo
+========================
+
+.. automodule:: pythia.applications.demo
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:

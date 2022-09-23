@@ -1,0 +1,16 @@
+pythia.models package
+=====================
+
+.. automodule:: pythia.models
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   pythia.models.base

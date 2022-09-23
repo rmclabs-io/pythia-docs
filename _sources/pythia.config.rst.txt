@@ -1,0 +1,8 @@
+pythia.config
+=============
+
+.. automodule:: pythia.config
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:
