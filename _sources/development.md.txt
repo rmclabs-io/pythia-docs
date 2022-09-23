@@ -7,5 +7,5 @@ asd
 
 ```{toctree}
 development/pytest_.rst
-development/coverage.rst
+development/coverage_.rst
 ```
