@@ -6,7 +6,7 @@
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
 
     <link rel="shortcut icon" href="../../../_static/logo.png"/><meta name="generator" content="sphinx-5.1.1, furo 2022.06.21"/>
-        <title>pythia.models.base - pythia 1.2.3 documentation</title>
+        <title>pythia.models.base - pythia 1.2.4 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -123,7 +123,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../../index.html"><div class="brand">pythia 1.2.3 documentation</div></a>
+      <a href="../../../index.html"><div class="brand">pythia 1.2.4 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -149,7 +149,7 @@
     <img class="sidebar-logo" src="../../../_static/logo.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">pythia 1.2.3 documentation</span>
+  <span class="sidebar-brand-text">pythia 1.2.4 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
   <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
@@ -674,25 +674,24 @@
             <span class="n">_default_props</span><span class="o">=</span><span class="n">props</span><span class="p">,</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="Tracker.gst"><a class="viewcode-back" href="../../../pythia.models.base.html#pythia.models.base.Tracker.gst">[docs]</a>    <span class="k">def</span> <span class="nf">gst</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="viewcode-block" id="Tracker.gst"><a class="viewcode-back" href="../../../pythia.models.base.html#pythia.models.base.Tracker.gst">[docs]</a>    <span class="k">def</span> <span class="nf">gst</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Render nvtracker element with `gst-launch`-like syntax.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            name: gst element name</span>
-<span class="sd">            kw: property name and value for the gst element</span>
+<span class="sd">            kwargs: Additional gst element properties.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            Rendered string.</span>
 
 <span class="sd">        Raises:</span>
-<span class="sd">            FileNotFoundError: Tracker ll-config-file not found.</span>
+<span class="sd">            FileNotFoundError: Tracker `ll-config-file` not found.</span>
 
 <span class="sd">        See Also:</span>
 <span class="sd">            https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_plugin_gst-nvtracker.html#gst-properties</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">inline_props</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_default_props</span><span class="p">))</span>
-        <span class="n">inline_props</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kw</span><span class="p">)</span>
+        <span class="n">inline_props</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="n">props</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
             <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">inline_props</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
         <span class="p">)</span>
@@ -707,7 +706,6 @@
 <span class="s2">            nvtracker</span>
 <span class="s2">              ll-config-file=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config_file</span><span class="si">}</span><span class="s2"></span>
 <span class="s2">              ll-lib-file=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">low_level_library</span><span class="si">}</span><span class="s2"></span>
-<span class="s2">              name=</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"></span>
 <span class="s2">              </span><span class="si">{</span><span class="n">props</span><span class="si">}</span><span class="s2"></span>
 <span class="s2">        &quot;&quot;&quot;</span>
         <span class="p">)</span>
@@ -723,12 +721,11 @@
     <span class="n">_default_props</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">)</span>
     <span class="n">CONNECTIONS</span><span class="p">:</span> <span class="n">Con</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">)</span>  <span class="c1"># noqa: C0103</span>
 
-<div class="viewcode-block" id="Analytics.gst"><a class="viewcode-back" href="../../../pythia.models.base.html#pythia.models.base.Analytics.gst">[docs]</a>    <span class="k">def</span> <span class="nf">gst</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;analytics&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="viewcode-block" id="Analytics.gst"><a class="viewcode-back" href="../../../pythia.models.base.html#pythia.models.base.Analytics.gst">[docs]</a>    <span class="k">def</span> <span class="nf">gst</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Render string as `gst-launch`-like parseable string.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            name: Gst element name.</span>
-<span class="sd">            kw: Mapping to define additional properties.</span>
+<span class="sd">            kwargs: Additional gst element properties.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            Rendered `nvdsanalytics`.</span>
@@ -738,7 +735,7 @@
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">inline_props</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_default_props</span><span class="p">))</span>
-        <span class="n">inline_props</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kw</span><span class="p">)</span>
+        <span class="n">inline_props</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="n">props</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
             <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">inline_props</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
         <span class="p">)</span>
@@ -746,10 +743,10 @@
             <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
 <span class="s2">            nvdsanalytics</span>
 <span class="s2">              config-file=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config_file</span><span class="si">}</span><span class="s2"></span>
-<span class="s2">              name=</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"></span>
 <span class="s2">              </span><span class="si">{</span><span class="n">props</span><span class="si">}</span><span class="s2"></span>
 <span class="s2">        &quot;&quot;&quot;</span>
         <span class="p">)</span>
+
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_string</span></div>
 
 <div class="viewcode-block" id="Analytics.requires_tracker"><a class="viewcode-back" href="../../../pythia.models.base.html#pythia.models.base.Analytics.requires_tracker">[docs]</a>    <span class="k">def</span> <span class="nf">requires_tracker</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -760,7 +757,18 @@
 <span class="sd">                direction andata.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="kc">True</span></div>
+        <span class="n">config</span> <span class="o">=</span> <span class="n">configparser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">()</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config_file</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">section_name</span> <span class="ow">in</span> <span class="n">config</span><span class="o">.</span><span class="n">sections</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">any</span><span class="p">(</span>
+                <span class="n">section_name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="p">(</span>
+                    <span class="s2">&quot;line-crossing&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;direction-detection&quot;</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">):</span>
+                <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
 
 <div class="viewcode-block" id="Analytics.from_file"><a class="viewcode-back" href="../../../pythia.models.base.html#pythia.models.base.Analytics.from_file">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_file</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">A</span><span class="p">],</span> <span class="n">config_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">A</span><span class="p">:</span>
