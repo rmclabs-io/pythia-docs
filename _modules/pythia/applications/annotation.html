@@ -6,7 +6,7 @@
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
 
     <link rel="shortcut icon" href="../../../_static/logo.png"/><meta name="generator" content="sphinx-5.1.1, furo 2022.06.21"/>
-        <title>pythia.applications.annotation - pythia 1.2.4 documentation</title>
+        <title>pythia.applications.annotation - pythia 1.3.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -123,7 +123,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../../index.html"><div class="brand">pythia 1.2.4 documentation</div></a>
+      <a href="../../../index.html"><div class="brand">pythia 1.3.0 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -149,7 +149,7 @@
     <img class="sidebar-logo" src="../../../_static/logo.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">pythia 1.2.4 documentation</span>
+  <span class="sidebar-brand-text">pythia 1.3.0 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
   <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
@@ -272,14 +272,17 @@
 
 <span class="kn">from</span> <span class="nn">pythia.applications.base</span> <span class="kn">import</span> <span class="n">Application</span>
 <span class="kn">from</span> <span class="nn">pythia.applications.base</span> <span class="kn">import</span> <span class="n">BoundSupportedCb</span>
-<span class="kn">from</span> <span class="nn">pythia.iterators</span> <span class="kn">import</span> <span class="n">frames_per_batch</span>
-<span class="kn">from</span> <span class="nn">pythia.iterators</span> <span class="kn">import</span> <span class="n">objects_per_frame</span>
+<span class="kn">from</span> <span class="nn">pythia.iterators</span> <span class="kn">import</span> <span class="n">analytics_per_obj</span>
+<span class="kn">from</span> <span class="nn">pythia.iterators</span> <span class="kn">import</span> <span class="n">objects_per_batch</span>
+<span class="kn">from</span> <span class="nn">pythia.models.base</span> <span class="kn">import</span> <span class="n">Analytics</span>
 <span class="kn">from</span> <span class="nn">pythia.models.base</span> <span class="kn">import</span> <span class="n">InferenceEngine</span>
+<span class="kn">from</span> <span class="nn">pythia.models.base</span> <span class="kn">import</span> <span class="n">Tracker</span>
 <span class="kn">from</span> <span class="nn">pythia.pipelines.base</span> <span class="kn">import</span> <span class="n">Pipeline</span>
 <span class="kn">from</span> <span class="nn">pythia.types</span> <span class="kn">import</span> <span class="n">SourceUri</span>
 <span class="kn">from</span> <span class="nn">pythia.types</span> <span class="kn">import</span> <span class="n">SupportedCb</span>
 <span class="kn">from</span> <span class="nn">pythia.utils.gst</span> <span class="kn">import</span> <span class="n">Gst</span>
 <span class="kn">from</span> <span class="nn">pythia.utils.gst</span> <span class="kn">import</span> <span class="n">gst_init</span>
+<span class="kn">from</span> <span class="nn">pythia.utils.gst</span> <span class="kn">import</span> <span class="n">gst_iter</span>
 <span class="kn">from</span> <span class="nn">pythia.utils.maskrcnn</span> <span class="kn">import</span> <span class="n">extract_maskrcnn_mask</span>
 <span class="kn">from</span> <span class="nn">pythia.utils.message_handlers</span> <span class="kn">import</span> <span class="n">on_message_error</span>
 
@@ -359,6 +362,43 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_dst_folder</span> <span class="o">=</span> <span class="n">dst_folder</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">_make_logger</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">dst_folder</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="AnnotateFramesBase._extract_common"><a class="viewcode-back" href="../../../pythia.applications.annotation.html#pythia.AnnotateFramesBase._extract_common">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_extract_common</span><span class="p">(</span>
+        <span class="n">pad</span><span class="p">,</span> <span class="n">frame</span><span class="p">,</span> <span class="n">detection</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">extract_analytics</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="p">):</span>
+        <span class="n">frame_num</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">frame_num</span>
+        <span class="n">box</span> <span class="o">=</span> <span class="n">detection</span><span class="o">.</span><span class="n">rect_params</span>
+        <span class="n">base</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;frame_num&quot;</span><span class="p">:</span> <span class="n">frame_num</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">detection</span><span class="o">.</span><span class="n">object_id</span><span class="p">,</span>
+            <span class="s2">&quot;engine_id&quot;</span><span class="p">:</span> <span class="n">detection</span><span class="o">.</span><span class="n">unique_component_id</span><span class="p">,</span>
+            <span class="s2">&quot;engine&quot;</span><span class="p">:</span> <span class="n">pad</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="s2">&quot;pad_index&quot;</span><span class="p">:</span> <span class="n">frame</span><span class="o">.</span><span class="n">pad_index</span><span class="p">,</span>
+            <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="n">detection</span><span class="o">.</span><span class="n">obj_label</span><span class="p">,</span>
+            <span class="s2">&quot;left&quot;</span><span class="p">:</span> <span class="n">box</span><span class="o">.</span><span class="n">left</span><span class="p">,</span>
+            <span class="s2">&quot;top&quot;</span><span class="p">:</span> <span class="n">box</span><span class="o">.</span><span class="n">top</span><span class="p">,</span>
+            <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="n">box</span><span class="o">.</span><span class="n">width</span><span class="p">,</span>
+            <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="n">box</span><span class="o">.</span><span class="n">height</span><span class="p">,</span>
+            <span class="s2">&quot;confidence&quot;</span><span class="p">:</span> <span class="n">detection</span><span class="o">.</span><span class="n">confidence</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">extract_analytics</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">base</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">analytics</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">analytics_per_obj</span><span class="p">(</span><span class="n">detection</span><span class="p">)))</span>
+        <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">base</span>
+        <span class="n">base</span><span class="p">[</span><span class="s2">&quot;analytics&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">attr</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">analytics</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="p">(</span>
+                <span class="s2">&quot;dirStatus&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;lcStatus&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;ocStatus&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;roiStatus&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;unique_id&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">base</span></div>
+
 <div class="viewcode-block" id="AnnotateFramesBase.run"><a class="viewcode-back" href="../../../pythia.applications.annotation.html#pythia.AnnotateFramesBase.run">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>  <span class="c1"># noqa: R0913</span>
         <span class="bp">cls</span><span class="p">,</span>
@@ -367,6 +407,8 @@
         <span class="n">dst_folder</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span>
         <span class="o">*</span><span class="n">args</span><span class="p">,</span>
         <span class="n">suffix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;.jpg&quot;</span><span class="p">,</span>
+        <span class="n">analytics</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Path</span><span class="p">,</span> <span class="n">Analytics</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">tracker</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Path</span><span class="p">,</span> <span class="n">Tracker</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Run an annotation application.</span>
@@ -377,6 +419,8 @@
 <span class="sd">            dst_folder: Path to store annotations and frames.</span>
 <span class="sd">            args: Forwarded to class constructor.</span>
 <span class="sd">            suffix: output frames suffix.</span>
+<span class="sd">            analytics: optional analytics for the pipline.</span>
+<span class="sd">            tracker: optional tracker for the pipline.</span>
 <span class="sd">            kwargs: Forwarded to class constructor.</span>
 
 <span class="sd">        Raises:</span>
@@ -404,11 +448,42 @@
             <span class="n">sources</span><span class="o">=</span><span class="p">[</span><span class="n">src</span><span class="p">],</span>
             <span class="n">models</span><span class="o">=</span><span class="p">[</span><span class="n">model</span><span class="p">],</span>
             <span class="n">sink</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">frames</span><span class="p">),</span>
+            <span class="n">analytics</span><span class="o">=</span><span class="n">analytics</span><span class="p">,</span>
+            <span class="n">tracker</span><span class="o">=</span><span class="n">tracker</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">app</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">dst_folder</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="n">pgie</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">pipeline</span><span class="o">.</span><span class="n">model_map</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
-        <span class="n">app</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span><span class="n">pgie</span><span class="p">,</span> <span class="n">pad_direction</span><span class="o">=</span><span class="s2">&quot;src&quot;</span><span class="p">)(</span><span class="n">app</span><span class="o">.</span><span class="n">annotator_probe</span><span class="p">)</span>
+
+        <span class="n">target</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">default_probe_target</span><span class="p">(</span><span class="n">pipeline</span><span class="p">)</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="s2">&quot;src&quot;</span><span class="p">)(</span><span class="n">app</span><span class="o">.</span><span class="n">annotator_probe</span><span class="p">)</span>
+
         <span class="n">app</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="AnnotateFramesBase.default_probe_target"><a class="viewcode-back" href="../../../pythia.applications.annotation.html#pythia.AnnotateFramesBase.default_probe_target">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">default_probe_target</span><span class="p">(</span><span class="n">pipeline</span><span class="p">:</span> <span class="n">Pipeline</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Retreive an element name to attach the probe to.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            pipeline: Pythia Pipeline containing the elements.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            The name of the most downstream element contained in the</span>
+<span class="sd">                pipeline. The precedence order is: analytics, tracker,</span>
+<span class="sd">                nvinfer.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            LookupError: none of the required deepstream elements was</span>
+<span class="sd">                found.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">gst_iter</span><span class="p">(</span><span class="n">pipeline</span><span class="o">.</span><span class="n">pipeline</span><span class="o">.</span><span class="n">iterate_sorted</span><span class="p">()):</span>
+            <span class="n">factory_name</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="n">get_factory</span><span class="p">()</span><span class="o">.</span><span class="n">name</span>
+            <span class="k">if</span> <span class="n">factory_name</span> <span class="o">==</span> <span class="s2">&quot;nvdsanalytics&quot;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">element</span><span class="o">.</span><span class="n">name</span>
+            <span class="k">if</span> <span class="n">factory_name</span> <span class="o">==</span> <span class="s2">&quot;nvtracker&quot;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">element</span><span class="o">.</span><span class="n">name</span>
+            <span class="k">if</span> <span class="n">factory_name</span> <span class="o">==</span> <span class="s2">&quot;nvinfer&quot;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">element</span><span class="o">.</span><span class="n">name</span>
+        <span class="k">raise</span> <span class="ne">LookupError</span><span class="p">(</span><span class="s2">&quot;Unable to find analyrtics, tracker, nvinfer&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="AnnotateFramesBase.run_with_probe"><a class="viewcode-back" href="../../../pythia.applications.annotation.html#pythia.AnnotateFramesBase.run_with_probe">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">run_with_probe</span><span class="p">(</span>
@@ -443,21 +518,9 @@
         <span class="n">info</span><span class="p">:</span> <span class="n">Gst</span><span class="o">.</span><span class="n">PadProbeInfo</span><span class="p">,</span>
         <span class="n">batch_meta</span><span class="p">:</span> <span class="n">pyds</span><span class="o">.</span><span class="n">NvDsBatchMeta</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Gst</span><span class="o">.</span><span class="n">PadProbeReturn</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">frames_per_batch</span><span class="p">(</span><span class="n">batch_meta</span><span class="p">):</span>
-            <span class="n">frame_num</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">frame_num</span>
-            <span class="k">for</span> <span class="n">detection</span> <span class="ow">in</span> <span class="n">objects_per_frame</span><span class="p">(</span><span class="n">frame</span><span class="p">):</span>
-                <span class="n">box</span> <span class="o">=</span> <span class="n">detection</span><span class="o">.</span><span class="n">rect_params</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">json</span><span class="p">(</span>
-                    <span class="p">{</span>
-                        <span class="s2">&quot;frame_num&quot;</span><span class="p">:</span> <span class="n">frame_num</span><span class="p">,</span>
-                        <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="n">detection</span><span class="o">.</span><span class="n">obj_label</span><span class="p">,</span>
-                        <span class="s2">&quot;left&quot;</span><span class="p">:</span> <span class="n">box</span><span class="o">.</span><span class="n">left</span><span class="p">,</span>
-                        <span class="s2">&quot;top&quot;</span><span class="p">:</span> <span class="n">box</span><span class="o">.</span><span class="n">top</span><span class="p">,</span>
-                        <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="n">box</span><span class="o">.</span><span class="n">width</span><span class="p">,</span>
-                        <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="n">box</span><span class="o">.</span><span class="n">height</span><span class="p">,</span>
-                        <span class="s2">&quot;confidence&quot;</span><span class="p">:</span> <span class="n">detection</span><span class="o">.</span><span class="n">confidence</span><span class="p">,</span>
-                    <span class="p">}</span>
-                <span class="p">)</span>
+        <span class="k">for</span> <span class="n">frame</span><span class="p">,</span> <span class="n">detection</span> <span class="ow">in</span> <span class="n">objects_per_batch</span><span class="p">(</span><span class="n">batch_meta</span><span class="p">):</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extract_common</span><span class="p">(</span><span class="n">pad</span><span class="p">,</span> <span class="n">frame</span><span class="p">,</span> <span class="n">detection</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Gst</span><span class="o">.</span><span class="n">PadProbeReturn</span><span class="o">.</span><span class="n">OK</span></div></div>
 
 
@@ -529,25 +592,21 @@
         <span class="n">info</span><span class="p">:</span> <span class="n">Gst</span><span class="o">.</span><span class="n">PadProbeInfo</span><span class="p">,</span>
         <span class="n">batch_meta</span><span class="p">:</span> <span class="n">pyds</span><span class="o">.</span><span class="n">NvDsBatchMeta</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Gst</span><span class="o">.</span><span class="n">PadProbeReturn</span><span class="p">:</span>
-
-        <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">frames_per_batch</span><span class="p">(</span><span class="n">batch_meta</span><span class="p">):</span>
-            <span class="n">frame_num</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">frame_num</span>
-            <span class="k">for</span> <span class="n">detection</span> <span class="ow">in</span> <span class="n">objects_per_frame</span><span class="p">(</span><span class="n">frame</span><span class="p">):</span>
-                <span class="n">box</span> <span class="o">=</span> <span class="n">detection</span><span class="o">.</span><span class="n">rect_params</span>
-                <span class="n">mask_mtx</span> <span class="o">=</span> <span class="n">extract_maskrcnn_mask</span><span class="p">(</span><span class="n">detection</span><span class="p">)</span>
-                <span class="n">mask_poly</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_mask_polygon</span><span class="p">(</span><span class="n">mask_mtx</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">json</span><span class="p">(</span>
-                    <span class="p">{</span>
-                        <span class="s2">&quot;frame_num&quot;</span><span class="p">:</span> <span class="n">frame_num</span><span class="p">,</span>
-                        <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="n">detection</span><span class="o">.</span><span class="n">obj_label</span><span class="p">,</span>
-                        <span class="s2">&quot;left&quot;</span><span class="p">:</span> <span class="n">box</span><span class="o">.</span><span class="n">left</span><span class="p">,</span>
-                        <span class="s2">&quot;top&quot;</span><span class="p">:</span> <span class="n">box</span><span class="o">.</span><span class="n">top</span><span class="p">,</span>
-                        <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="n">box</span><span class="o">.</span><span class="n">width</span><span class="p">,</span>
-                        <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="n">box</span><span class="o">.</span><span class="n">height</span><span class="p">,</span>
-                        <span class="s2">&quot;confidence&quot;</span><span class="p">:</span> <span class="n">detection</span><span class="o">.</span><span class="n">confidence</span><span class="p">,</span>
-                        <span class="s2">&quot;mask&quot;</span><span class="p">:</span> <span class="n">mask_poly</span><span class="p">,</span>
-                    <span class="p">}</span>
-                <span class="p">)</span>
+        <span class="k">for</span> <span class="n">frame</span><span class="p">,</span> <span class="n">detection</span> <span class="ow">in</span> <span class="n">objects_per_batch</span><span class="p">(</span><span class="n">batch_meta</span><span class="p">):</span>
+            <span class="n">bbox_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extract_common</span><span class="p">(</span>
+                <span class="n">pad</span><span class="p">,</span>
+                <span class="n">frame</span><span class="p">,</span>
+                <span class="n">detection</span><span class="p">,</span>
+                <span class="n">extract_analytics</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pipeline</span><span class="o">.</span><span class="n">analytics</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">mask_mtx</span> <span class="o">=</span> <span class="n">extract_maskrcnn_mask</span><span class="p">(</span><span class="n">detection</span><span class="p">)</span>
+            <span class="n">mask_poly</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_mask_polygon</span><span class="p">(</span><span class="n">mask_mtx</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">json</span><span class="p">(</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;mask&quot;</span><span class="p">:</span> <span class="n">mask_poly</span><span class="p">,</span>
+                    <span class="o">**</span><span class="n">bbox_data</span><span class="p">,</span>
+                <span class="p">}</span>
+            <span class="p">)</span>
         <span class="k">return</span> <span class="n">Gst</span><span class="o">.</span><span class="n">PadProbeReturn</span><span class="o">.</span><span class="n">OK</span></div></div>
 </pre></div>
         </article>
