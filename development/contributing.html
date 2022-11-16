@@ -4,10 +4,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Contributing" href="contributing.html" /><link rel="prev" title="Pytest" href="pytest_.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="prev" title="Coverage" href="coverage.html" />
 
     <link rel="shortcut icon" href="../_static/logo.png"/><meta name="generator" content="sphinx-5.1.1, furo 2022.06.21"/>
-        <title>Coverage - pythia 1.3.0 documentation</title>
+        <title>Contributing - pythia 1.3.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -135,7 +135,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -210,8 +210,8 @@
 </li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="../development.html">Developers corner</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="pytest_.html">Pytest</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Coverage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coverage.html">Coverage</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Contributing</a></li>
 </ul>
 </li>
 </ul>
@@ -241,38 +241,72 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <section id="coverage">
-<h1>Coverage<a class="headerlink" href="#coverage" title="Permalink to this heading">#</a></h1>
-<iframe src="coverage/index.html" frameborder="0" scrolling="yes" seamless="seamless" style="display:block; width:100%; height:100vh;"></iframe></section>
+          <section id="contributing">
+<h1>Contributing<a class="headerlink" href="#contributing" title="Permalink to this heading">#</a></h1>
+<p>Because the code is meant to be run using NVIDIA hardware, the continuous integration
+(used for formatting, linting, and testing) runs on our own self hosted devices (both
+Jetson and GPU)). Our main repo is private then for security reasons, and we sync
+both internal and external contributions in the following manner:</p>
+<p><img alt="contribution workflow" src="../_images/repos.svg" /></p>
+<p>We find this cumbersome but at the moment it’s the safest bet we’ve got. If you can
+think of better alternatives, please get in touch!</p>
+<section id="external-contributors-witha-access-to-pythiags-dev">
+<h2>External contributors (witha access to pythiags-dev)<a class="headerlink" href="#external-contributors-witha-access-to-pythiags-dev" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>fork pythiags-dev</p></li>
+<li><p>clone the fork</p></li>
+<li><p>Pull Request from new branch into <strong>develop</strong>.</p></li>
+<li><p>[Optional, recommended]: use provided devcontainer.</p></li>
+<li><p>[Optional, recommended]: run <code class="docutils literal notranslate"><span class="pre">pre-commit</span> <span class="pre">install</span></code> to validate commits.</p></li>
+<li><p>add tests, docs, code, scripts, etc</p></li>
+<li><p>[Optional] check code manually, with <code class="docutils literal notranslate"><span class="pre">./scripts/format</span></code>, <code class="docutils literal notranslate"><span class="pre">./scripts/lint</span></code>,
+<code class="docutils literal notranslate"><span class="pre">./scripts/docs</span></code>, <code class="docutils literal notranslate"><span class="pre">./scripts/test</span></code>, etc.</p></li>
+<li><p>Commit using
+<a class="reference external" href="https://www.conventionalcommits.org/en/v1.0.0/#summary">Conventional commits</a>.</p></li>
+<li><p>push, wait for ci and/or maintainers feedback</p></li>
+<li><p>repeat 6-8 until success!</p></li>
+<li><p>Your contribution should appear in upcoming release</p></li>
+</ol>
+</section>
+<section id="internal-contributors-with-access-to-private-repo">
+<h2>Internal contributors (with access to private repo)<a class="headerlink" href="#internal-contributors-with-access-to-private-repo" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>fork private repo</p></li>
+<li><p>clone</p></li>
+<li><p>Pull Request from new branch into <strong>master</strong></p></li>
+<li><p>[Optional, recommended]: use provided devcontainer.</p></li>
+<li><p>[Optional, recommended]: run <code class="docutils literal notranslate"><span class="pre">pre-commit</span> <span class="pre">install</span></code> to validate commits.</p></li>
+<li><p>add tests, docs, code, scripts, etc</p></li>
+<li><p>[Optional] check code manually, with <code class="docutils literal notranslate"><span class="pre">./scripts/format</span></code>, <code class="docutils literal notranslate"><span class="pre">./scripts/lint</span></code>,
+<code class="docutils literal notranslate"><span class="pre">./scripts/docs</span></code>, <code class="docutils literal notranslate"><span class="pre">./scripts/test</span></code>, etc.</p></li>
+<li><p>Commit using
+<a class="reference external" href="https://www.conventionalcommits.org/en/v1.0.0/#summary">Conventional commits</a>.</p></li>
+<li><p>push, wait for ci and/or maintainers feedback</p></li>
+<li><p>repeat 6-8 until success!</p></li>
+</ol>
+</section>
+</section>
 
         </article>
       </div>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="contributing.html">
-              <div class="page-info">
-                <div class="context">
-                  <span>Next</span>
-                </div>
-                <div class="title">Contributing</div>
-              </div>
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-            </a>
-          <a class="prev-page" href="pytest_.html">
+          
+          <a class="prev-page" href="coverage.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Pytest</div>
+                <div class="title">Coverage</div>
                 
               </div>
             </a>
@@ -293,8 +327,28 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Contributing</a><ul>
+<li><a class="reference internal" href="#external-contributors-witha-access-to-pythiags-dev">External contributors (witha access to pythiags-dev)</a></li>
+<li><a class="reference internal" href="#internal-contributors-with-access-to-private-repo">Internal contributors (with access to private repo)</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
